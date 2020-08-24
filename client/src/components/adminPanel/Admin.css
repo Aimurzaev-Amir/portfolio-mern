@@ -1,0 +1,211 @@
+.signIn {
+  padding-top: 152px;
+  margin: 0 auto 100px auto;
+  text-align: center;
+  width: 300px;
+}
+.signIn h1 {
+  padding-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+  font-weight: 400;
+}
+.signIn img {
+  width: 100px;
+  margin-bottom: 10px;
+}
+.signInForm {
+  display: grid;
+  justify-content: space-around;
+  padding: 30px;
+  background-color: #fff;
+  border: 1px solid rgb(121, 117, 117);
+  border-radius: 15px;
+}
+.signInForm input {
+  padding: 10px;
+  width: 230px;
+  height: 30px;
+  font-size: 13px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid rgb(184, 178, 178);
+  background-color: #e8f0fe;
+}
+.signInForm button {
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+  padding: 8px;
+  font-size: 14px;
+  background-color: #2c974b;
+  color: #fff;
+}
+.signInForm p {
+  text-align: left;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+.panelGrid {
+  padding-top: 92px;
+  display: grid;
+  grid-template-columns: 1fr 4.5fr;
+  border-right: 1px solid #e5e5e5;
+  border-left: 1px solid #e5e5e5;
+}
+.actionsMenu {
+  padding: 30px;
+  border-right: 1px solid #e5e5e5;
+}
+.panelAdmin p {
+  font-size: 16px;
+  font-weight: 500;
+}
+.actionsMenu img {
+  width: 20px;
+  margin-right: 15px;
+}
+.actionsList {
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.actionsList li {
+  display: flex;
+  font-size: 14px;
+  flex-direction: row;
+  margin-bottom: 17px;
+  cursor: pointer;
+}
+.workSpace {
+  margin-bottom: 30px;
+}
+.panelBlock {
+  padding-left: 15px;
+  margin-top: 15px;
+}
+.panelBlock h2 {
+  font-size: 17px;
+  font-weight: 500;
+  padding: 15px 0 15px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+.panelItems {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+.panelItem {
+  position: relative;
+  display: inline-block;
+  border: 1px solid #e5e5e5;
+  border-radius: 17px;
+  width: 250px;
+  cursor: pointer;
+  overflow: hidden;
+  text-align: center;
+}
+.panelItem img {
+  height: 150px;
+  padding-bottom: 20px;
+}
+.panelItem p {
+  position: absolute;
+  display: block;
+  bottom: 15px;
+  left: 20px;
+  background-color: #fff;
+}
+.adminNavLink {
+  text-decoration: none;
+  color: #000;
+}
+.editTitlesInput {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 30px;
+}
+.editTitlesInput input {
+  font-weight: normal;
+  font-size: 18px;
+  width: 200px;
+  text-align: center;
+}
+.editTitlesInput textarea {
+  font-weight: normal;
+  font-size: 18px;
+  margin-top: 20px;
+  padding: 5px 0 0 20px;
+  width: 800px;
+}
+.editInput {
+  display: flex;
+  justify-items: center;
+  margin-top: 30px;
+}
+.editInput textarea {
+  font-weight: normal;
+  font-size: 18px;
+  color: #6b6a6a;
+}
+
+.editInput button {
+  font-weight: normal;
+  font-size: 18px;
+  color: #6b6a6a;
+}
+.editInput input {
+  width: 200px;
+  font-weight: normal;
+  font-size: 18px;
+  color: #6b6a6a;
+}
+.editInput input[type="color"] {
+  margin-right: 20px;
+}
+.editEllipseColor {
+  margin-top: 0px;
+}
+.editTextStyles {
+  display: grid;
+  justify-items: left;
+}
+.editInput input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+}
+.editInput input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+.editInput input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 100%;
+}
+
+#workPhoto,
+#workBackground,
+#workPreview {
+  display: none;
+}
+
+.workIntroEdit {
+  display: grid;
+  grid-template-columns: 300px 150px;
+  color: #fff;
+  padding: 92px 50px 50px 50px;
+}
+.workIntroEditColumn {
+  display: grid;
+  grid-row-gap: 10px;
+}
+.workIntroTextEdit {
+  padding-top: 60px;
+  text-align: center;
+  max-width: 675px;
+  color: #fff;
+}
