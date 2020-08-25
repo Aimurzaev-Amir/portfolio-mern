@@ -1,6 +1,5 @@
 import React from "react";
 import { Field } from "redux-form";
-import Button from "../../../../../common/Button";
 import { useState } from "react";
 
 const WorkDetailsEdit = (props) => {
@@ -45,7 +44,6 @@ const WorkDetailsEdit = (props) => {
           <Field placeholder="Used technologies" name="technologyUsed" component="textarea" />
         </div>
       </div>
-      <Button btnUrl={props.work.onlineUrl} btnTarget="_blank" btnText="Visit site" />
     </div>
   );
 };

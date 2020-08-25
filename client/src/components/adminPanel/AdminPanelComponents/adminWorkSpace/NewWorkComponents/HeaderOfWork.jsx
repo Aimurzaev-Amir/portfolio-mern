@@ -44,8 +44,10 @@ const HeaderOFWork = (props) => {
           </div>
           <div className="workIntroEditColumn">
             <Field placeholder="Photo Description" name="photoDescription" component="input" />
-            <Field placeholder="Background Description" name="style" component="input" />
+            <Field placeholder="Preview Description" name="previewDescription" component="input" />
+            <Field placeholder="URL of the work" name="urlAdress" component="input" />
           </div>
+          <button>Create Work</button>
         </div>
         <div className="workIntroTextEdit wrapper">
           <div className="editTitlesInput">

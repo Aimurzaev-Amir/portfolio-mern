@@ -9,16 +9,32 @@ import {
   setColor,
   setWhatIDid,
 } from "../../../../Redux/WorksReducer";
+import { useHttp } from "../../../../hooks/http.hook";
 
 const WorkSpaceNewWorkContainer = (props) => {
-  const setWork = (formData) => {
-    // return console.log(formData);
+  const { loading, error, request } = useHttp();
+
+  const createWorkItem = async (formData) => {
+    // console.log(formData)
+    try {
+      // const worksLength = await request("/api/works/create", "POST", { id: 9, ...formData });
+      await request("/api/works/create", "POST", { id: 0, ...formData });
+    } catch (e) {}
+  };
+
+  const updateWorkItem = async (formData) => {
+    // console.log(formData)
+    try {
+      await request("/api/works/0", "PATCH", { ...formData });
+    } catch (e) {}
   };
 
   return (
     <CreateNewWorkReduxForm
       work={props.newWork}
-      onSubmit={setWork}
+      onSubmit={updateWorkItem}
+      // updateWorkItem={updateWorkItem}
+      // createWorkItem={createWorkItem}
       changePhoto={props.changePhoto}
       changeBackground={props.changeBackground}
       changePreview={props.changePreview}
@@ -32,6 +48,7 @@ const WorkSpaceNewWorkContainer = (props) => {
 let mapStateToProps = (state) => {
   return {
     newWork: state.works.newWork,
+    token: state.admin.token,
   };
 };
 

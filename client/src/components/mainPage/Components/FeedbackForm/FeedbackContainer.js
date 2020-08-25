@@ -12,9 +12,9 @@ let FeedbackContainer = (props) => {
       await request(
         "/api/feedback/sendFeedback",
         "POST",
-        { ...formData },
+        { ...formData }, 
         // {
-        //   Authorization: `Bearer ${props.token}`,
+        //   authorization: `Bearer ${props.token}`,
         // }
       );
       formData.name = null;

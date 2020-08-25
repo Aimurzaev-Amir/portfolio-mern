@@ -58,7 +58,7 @@ const WorkOverviewEdit = (props) => {
           <h2>Text styles</h2>
           {workStyle}
           <div className="editInput editTextStyles">
-            <Field placeholder="Wtite style" name="style" component="input" />
+            <Field placeholder="Write style" name="style" component="input" />
             <Field name="fontWeight" component="select">
               <option></option>
               <option>Light</option>

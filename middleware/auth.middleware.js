@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 const config = require("config");
-
 module.exports = (req, res, next) => {
   if (req.method === "OPTIONS") {
     return next();
@@ -17,6 +16,6 @@ module.exports = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (e) {
-    res.status(401).json({ message: "don't have authorization" });
+    res.status(401).json({ message: "don't have access" });
   }
 };

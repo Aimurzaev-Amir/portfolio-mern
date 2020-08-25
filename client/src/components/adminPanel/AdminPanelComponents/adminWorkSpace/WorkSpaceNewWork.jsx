@@ -1,12 +1,10 @@
 import React from "react";
 import { reduxForm } from "redux-form";
-// import Button from "../../../../common/Button";
 import "../../Admin.css";
 import mainImg from "../../img/mainImgExample.png";
 import HeaderOFWork from "./NewWorkComponents/HeaderOfWork";
 import WorkOverviewEdit from "./NewWorkComponents/WorkOverviewEdit";
 import WorkDetailsEdit from "./NewWorkComponents/WorkDetailesEdit";
-import Button from "../../../../common/Button";
 import BlockTitleText from "../../../../common/BlockTitle";
 
 const WorkSpaceNewWork = (props) => {
@@ -14,17 +12,14 @@ const WorkSpaceNewWork = (props) => {
     // props.setMobileImg(e.target.files[0]);
     console.log(e.target.files[0]);
   };
-  const createWork = () => {
-    console.log("hello");
-  };
   return (
     <form onSubmit={props.handleSubmit}>
-      {/* <p onClick={createWork}>Create Work</p> */}
       <HeaderOFWork
         work={props.work}
         changePreview={props.changePreview}
         changePhoto={props.changePhoto}
         changeBackground={props.changeBackground}
+        createWorkItem={props.createWorkItem}
       />
       <div className="workDescriber">
         <div className="workMainLogo">
@@ -107,8 +102,6 @@ const WorkSpaceNewWork = (props) => {
             </tbody>
           </table>
         </div>
-        <p className="viewAllParagraph">To view all sections, please go to the project website.</p>
-        <Button btnUrl={props.work.onlineUrl} btnTarget="_blank" btnText="Visit site" />
       </div>
     </form>
   );
