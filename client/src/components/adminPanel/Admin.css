@@ -125,7 +125,7 @@
   display: grid;
   justify-content: center;
   justify-items: center;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 .editTitlesInput input {
   font-weight: normal;
@@ -195,7 +195,7 @@
 
 .workIntroEdit {
   display: grid;
-  grid-template-columns: 300px 150px;
+  grid-template-columns: 300px 180px 150px;
   color: #fff;
   padding: 92px 50px 50px 50px;
 }
@@ -204,8 +204,14 @@
   grid-row-gap: 10px;
 }
 .workIntroTextEdit {
-  padding-top: 60px;
+  /* padding-top: 60px; */
   text-align: center;
   max-width: 675px;
   color: #fff;
+}
+
+.whiteBtn button {
+  margin-top: 20px;
+  color: #fff;
+  border: 1.5px solid #fff;
 }

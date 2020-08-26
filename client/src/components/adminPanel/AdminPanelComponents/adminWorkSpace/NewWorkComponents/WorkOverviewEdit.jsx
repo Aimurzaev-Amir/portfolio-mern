@@ -1,28 +1,12 @@
 import React, { useState } from "react";
 import { Field } from "redux-form";
-import { useEffect } from "react";
+import UpdateWorkStyles from "./Forms/OverviewStylesForm";
+import UpdateWorkTitle from "./Forms/OverviewUpdateWorkTitleForm";
+import UpdateWorkFontName from "./Forms/OverviewUpdateFontNameForm";
 
 const WorkOverviewEdit = (props) => {
-  let [color, setColor] = useState(null);
-
-  const onColorChange = (e) => {
-    setColor(e.currentTarget.value);
-  };
-  const setChangedColor = () => {
-    props.setColor(color);
-    // console.log(color)
-  };
-  
   let workColors = props.work.additional.colors.map((color) => {
     return <div key={color.id} className="colorEllipse" style={{ background: color.color }}></div>;
-  });
-
-  let fontSizesArray = [];
-  for (let i = 0; i < 40; i++) {
-    fontSizesArray.push(i);
-  }
-  let fontSizeOption = fontSizesArray.map((size) => {
-    return <option key={size}>{size}</option>;
   });
 
   let workStyle = props.work.additional.textStyles.map((style) => {
@@ -39,44 +23,20 @@ const WorkOverviewEdit = (props) => {
 
   return (
     <div className="workOverview">
-      <div className="workTitle">
-        <h2>ABOUT PROJECT</h2>
-        <div className="editTitlesInput">
-          <Field placeholder="About project" name="aboutProject" component="textarea" />
-        </div>
-      </div>
+      <UpdateWorkTitle onSubmit={props.updateWorkItem} />
       <div className="designInfo">
-        <div className="workTypography">
-          <h2>Typography</h2>
-          <div className="editInput">
-            <Field placeholder="Font Name" name="fontName" component="input" />
-          </div>
-          <p>ABCDEFGIJKLMNOPQRSTUVWXYZ</p>
-          <p>abcdefgijklmnopqrstuvwxyz</p>
-        </div>
+        <UpdateWorkFontName onSubmit={props.updateWorkItem} />
         <div className="workStyles">
           <h2>Text styles</h2>
           {workStyle}
-          <div className="editInput editTextStyles">
-            <Field placeholder="Write style" name="style" component="input" />
-            <Field name="fontWeight" component="select">
-              <option></option>
-              <option>Light</option>
-              <option>Regular</option>
-              <option>Bold</option>
-            </Field>
-            <Field name="size" component="select">
-              {fontSizeOption}
-            </Field>
-            <button>add</button>
-          </div>
+          <UpdateWorkStyles onSubmit={props.createWorkStyle} />
         </div>
         <div className="workColors">
           <h2>Colors</h2>
           <div className="colorEllipses">{workColors}</div>
           <div className="editInput editEllipseColor">
-            <input onChange={onColorChange} name="newColorData" type="color" />
-            <button onClick={setChangedColor}>add</button>
+            <input onChange={props.onColorChange} name="newColorData" type="color" />
+            <button onClick={props.createWorkColor}>add</button>
           </div>
         </div>
       </div>

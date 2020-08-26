@@ -7,15 +7,12 @@ import Feedback from "./Feedback";
 let FeedbackContainer = (props) => {
   const { loading, error, request } = useHttp();
 
-  const sendFeedback = async (formData) => {
+  const sendFeedback = async (formData) => { 
     try {
       await request(
         "/api/feedback/sendFeedback",
         "POST",
-        { ...formData }, 
-        // {
-        //   authorization: `Bearer ${props.token}`,
-        // }
+        { ...formData },
       );
       formData.name = null;
       formData.number = null;
