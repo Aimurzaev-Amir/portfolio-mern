@@ -15,7 +15,7 @@ let PortfolioPage = (props) => {
     slidesPerView: "auto",
     breakpoints: {
       0: {
-        spaceBetween: 140,
+        spaceBetween: 0,
       },
       500: {
         spaceBetween: 100,

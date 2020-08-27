@@ -18,9 +18,10 @@ const HeaderOFWork = (props) => {
         <UpdateWorkImages
           onSubmit={props.updateWorkItem}
           work={props.work}
-          changePreview={props.changePreview}
-          changePhoto={props.changePhoto}
-          changeBackground={props.changeBackground}
+          onChangePhoto={props.onChangePhoto}
+          onChangeBackground={props.onChangeBackground}
+          onChangePreview={props.onChangePreview}
+          updateWorkPhoto={props.updateWorkPhoto}
         />
         <CreateNewWorkItem onSubmit={props.createWorkItem} />
       </div>

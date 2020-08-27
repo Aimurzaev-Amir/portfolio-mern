@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { reduxForm } from "redux-form";
 import "../../Admin.css";
 import mainImg from "../../img/mainImgExample.png";
@@ -7,7 +7,6 @@ import WorkOverviewEdit from "./NewWorkComponents/WorkOverviewEdit";
 import WorkDetailsEdit from "./NewWorkComponents/WorkDetailesEdit";
 import BlockTitleText from "../../../../common/BlockTitle";
 import WorkImagesEdit from "./NewWorkComponents/WorkImagesEdit";
-import { useEffect } from "react";
 
 const WorkSpaceNewWork = (props) => {
   const onChangeMobileImg = (e) => {
@@ -15,15 +14,19 @@ const WorkSpaceNewWork = (props) => {
     console.log(e.target.files[0]);
   };
 
+  // const imagesData = props.images.map((image) => {
+  //   return <img key={image.name} src={image.url} />;
+  // });
   return (
     <div>
       <HeaderOFWork
         work={props.work}
-        changePreview={props.changePreview}
-        changePhoto={props.changePhoto}
-        changeBackground={props.changeBackground}
         createWorkItem={props.createWorkItem}
         updateWorkItem={props.updateWorkItem}
+        onChangePhoto={props.onChangePhoto}
+        onChangeBackground={props.onChangeBackground}
+        onChangePreview={props.onChangePreview}
+        updateWorkPhoto={props.updateWorkPhoto}
       />
       <div className="workDescriber">
         <div className="workMainLogo">
@@ -49,6 +52,10 @@ const WorkSpaceNewWork = (props) => {
         </div>
       </div>
       <WorkImagesEdit work={props.work} onChangeMobileImg={onChangeMobileImg} />
+      {/* <div>{imagesData}</div> */}
+      <div>
+        <img src="" alt=""/>
+      </div>
     </div>
   );
 };

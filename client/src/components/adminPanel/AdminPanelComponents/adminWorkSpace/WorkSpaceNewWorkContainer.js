@@ -11,15 +11,29 @@ import {
   setWork,
   setWorkId,
   setStyle,
+  setImagesData,
 } from "../../../../Redux/WorksReducer";
 import { useHttp } from "../../../../hooks/http.hook";
 
 const WorkSpaceNewWorkContainer = (props) => {
   const { loading, error, request } = useHttp();
   let [color, setColor] = useState(null);
-
   const onColorChange = (e) => {
     setColor(e.currentTarget.value);
+  };
+  const [mainImg, setMainImg] = useState(null);
+  const [mainPreview, setMainPreview] = useState(null);
+  const [mainBackground, setMainBackground] = useState(null);
+
+  const onChangePhoto = (e) => {
+    setMainImg(e.target.files[0]);
+  };
+
+  const onChangeBackground = (e) => {
+    setMainBackground(e.target.files[0]);
+  };
+  const onChangePreview = (e) => {
+    setMainPreview(e.target.files[0]);
   };
 
   const getWorkData = async (formData) => {
@@ -34,6 +48,24 @@ const WorkSpaceNewWorkContainer = (props) => {
       props.setStyle(worksStyles);
       const whatIDid = await request(`/api/works/didPoint/${currentWorkId}`, "GET", null);
       props.setWhatIDid(whatIDid);
+      const images = await request("/api/works/photos/workPhoto", "GET", null);
+      props.setImagesData(images);
+      // const ImagesArray = images.map((imageData) => {
+      //   props.setImagesData({ src: require("../../../../../../" + imageData.fieldname)});
+      // });
+      // const encodeImage = (mimetype, arrayBuffer) => {
+      //   let u8 = new Uint8Array(arrayBuffer);
+      //   const b64encoded = btoa(
+      //     [].reduce.call(new Uint8Array(arrayBuffer), function (p, c) {
+      //       return p + String.fromCharCode(c);
+      //     })
+      //   );
+      //   return "data:" + mimetype + ";base64," + b64encoded;
+      // };
+      // const ImagesArray = images.map((imageData) => {
+      //   const dataURL = encodeImage(imageData.contentType, imageData.image.data);
+      //   props.setImagesData({ name: imageData.name, url: dataURL });
+      // });
     } catch (e) {}
   };
 
@@ -96,9 +128,29 @@ const WorkSpaceNewWorkContainer = (props) => {
     } catch (e) {}
   };
 
+  const updateWorkPhoto = async (formData) => {
+    const data = new FormData();
+    data.append("mainImg", mainImg);
+    console.log(data);
+    console.log(mainImg);
+    try {
+      // const worksData = await request("/api/works", "GET", null);
+      const updatedData = await request(
+        "/api/works/uploadPhoto",
+        "POST",
+        {
+          data,
+        },
+        { "Content-Type": "multipart/form-data" }
+        // { "Content-Type": "multipart/form-data" }
+      );
+    } catch (e) {}
+  };
+
   return (
     <WorkSpaceNewWork
       work={props.newWork}
+      images={props.images}
       // work={props.allWorks[props.allWorks.length - 1]}
       onSubmit={createWorkColor}
       //async req to server
@@ -108,11 +160,12 @@ const WorkSpaceNewWorkContainer = (props) => {
       createWorkStyle={createWorkStyle}
       createWorkDidPoint={createWorkDidPoint}
       getWorkData={getWorkData}
+      updateWorkPhoto={updateWorkPhoto}
       // my functions
       onColorChange={onColorChange}
-      changePhoto={props.changePhoto}
-      changeBackground={props.changeBackground}
-      changePreview={props.changePreview}
+      onChangePhoto={onChangePhoto}
+      onChangeBackground={onChangeBackground}
+      onChangePreview={onChangePreview}
       setMobileImg={props.setMobileImg}
     />
   );
@@ -124,6 +177,7 @@ let mapStateToProps = (state) => {
     token: state.admin.token,
     newWork: state.works.newWork,
     allWorks: state.works.works,
+    images: state.works.images,
   };
 };
 
@@ -137,4 +191,5 @@ export default connect(mapStateToProps, {
   setWork,
   setWorkId,
   setStyle,
+  setImagesData,
 })(WorkSpaceNewWorkContainer);
