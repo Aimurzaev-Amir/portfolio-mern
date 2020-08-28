@@ -31,15 +31,13 @@ router.post(
   }
 );
 
-router.get("/"),
-  auth,
-  async (req, res) => {
-    try {
-      const feedbacks = await Feedback;
-      res.json(feedbacks);
-    } catch (e) {
-      res.status(500).json({ message: "Something went wrong, please, try again" });
-    }
-  };
+router.get("/", async (req, res) => {
+  try {
+    const feedbacksData = await Feedback.find();
+    res.json(feedbacksData);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
 
 module.exports = router;

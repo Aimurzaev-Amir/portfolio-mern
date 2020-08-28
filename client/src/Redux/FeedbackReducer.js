@@ -1,5 +1,6 @@
 const newFeedback = "FEEDBACKREDUCER/NEWFEEDBACK";
 const feedbackError = "FEEDBACKREDUCER/FEEDBACKERROR";
+const setFeedbacksData = "FEEDBACKREDUCER/SET-FEEDBACKS-DATA";
 
 let initialState = {
   Messages: [],
@@ -9,25 +10,26 @@ let initialState = {
 
 const FeedbackReducer = (state = initialState, action) => {
   switch (action.type) {
-    case newFeedback:
-      let feedback = {
-        name: action.feedbackData.name,
-        number: action.feedbackData.number,
-        email: action.feedbackData.email,
-        message: action.feedbackData.message,
-      };
+    case setFeedbacksData:
       return {
         ...state,
-        Messages: [...state.Messages, feedback],
+        Messages: action.feedbackData,
       };
     default:
       return state;
   }
 };
 
-export const addFeedback = (feedbackData) => {
+// export const addFeedback = (feedbackData) => {
+//   return {
+//     type: newFeedback,
+//     feedbackData,
+//   };
+// };
+
+export const setFeedbacks = (feedbackData) => {
   return {
-    type: newFeedback,
+    type: setFeedbacksData,
     feedbackData,
   };
 };

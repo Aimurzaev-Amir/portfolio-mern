@@ -4,7 +4,7 @@ const setCurrentArticleType = "ARTICLESRUDUCER/CHANGE-ARTICLE-ID";
 let initialState = {
   Articles: [
     {
-      id: 0,
+      id: 0, 
       articleName: "Feedback form html + css + php + JavaScript + jQuery",
       articleDate: "28 February",
       articleSmallDescription:

@@ -215,3 +215,12 @@
   color: #fff;
   border: 1.5px solid #fff;
 }
+
+/* feedbacks menu block */
+
+
+.feedbacks{
+  display: grid;
+  padding-top: 100px;
+  text-align: center;
+}

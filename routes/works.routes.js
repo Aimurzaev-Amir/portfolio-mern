@@ -3,7 +3,8 @@ const Works = require("../models/Works");
 const Colors = require("../models/Colors");
 const textStyles = require("../models/TextStyles");
 const whatIDid = require("../models/WhatIDid");
-const auth = require("../middleware/auth.middleware");
+// const auth = require("../middleware/auth.middleware");
+// const config = require("config");
 const router = Router();
 
 // /api/works/create
@@ -132,63 +133,130 @@ router.get("/didPoint/:id", async (req, res) => {
   }
 });
 
-// /api/works/uploadPhoto
-// request made by multer
-const multer = require("multer");
-const path = require("path");
 
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
-  },
-});
 
-var upload = multer({ storage: storage });
-const Img = require("../models/Img");
-const fs = require("fs");
 
-router.post("/uploadPhoto", upload.single("workPhoto"), async (req, res, next) => {
-  try {
-    const newImg = req.file;
+// // Image post in mongoDb part started
 
-    const image = fs.readFileSync(newImg.path);
-    const encode_image = image.toString("base64");
-    // const Work = await Works.findOne({ _id: req.body.id });
-    // const workId = Work._id;
-    // define JSON Object for the image
-    const finalImg = {
-      name: newImg.originalname,
-      fieldname: newImg.fieldname,
-      contentType: newImg.mimetype,
-      path: newImg.path,
-      image: new Buffer(encode_image, "base64"),
-      // owner: workId,
-    };
+// const path = require("path");
+// const crypto = require("crypto");
+// const multer = require("multer");
+// const GridFsStorage = require("multer-gridfs-storage");
+// const Grid = require("gridfs-stream");
+// const mongoose = require("mongoose");
 
-    // insert the image to database
-    await Img.create(finalImg).then((resolve) => {
-      console.log(`STATUS :: Success`);
-      res.status(201).send({
-        finalImg,
-      });
-    });
+// const conn = mongoose.createConnection(config.get("mongoURI"), {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
-    res.status(500).json({ finalImg });
-  } catch (e) {
-    res.status(500).json({ message: "Something went wrong, please, try again" });
-  }
-});
+// // init gfs
+// let gfs;
 
-router.get("/photos/:folder", async (req, res) => {
-  try {
-    const ImgsData = await Img.find({fieldname: req.params.folder});
-    res.json(ImgsData);
-  } catch (e) {
-    res.status(500).json({ message: "Something went wrong, please, try again" });
-  }
-});
+// conn.once("open", () => {
+//   console.log("connections is opened ");
+//   // init stream
+//   gfs = Grid(conn.db, mongoose.mongo);
+//   gfs.collection("uploads");
+// });
+
+// // create storage engine
+// const storage = new GridFsStorage({
+//   url: config.get("mongoURI"),
+//   file: (req, file) => {
+//     return new Promise((resolve, reject) => {
+//       crypto.randomBytes(16, (err, buf) => {
+//         if (err) {
+//           return reject(err);
+//         }
+//         const filename = buf.toString("hex") + path.extname(file.originalname);
+//         const fileInfo = {
+//           filename: filename,
+//           bucketName: "uploads",
+//         };
+//         resolve(fileInfo);
+//       });
+//     });
+//   },
+// });
+// const upload = multer({ storage });
+
+// // /api/works/uploadFiles (upload image data to database)
+// router.post("/uploadFiles", upload.single("file"), (req, res) => {
+//   // res.json({ file: req.file });
+//   res.redirect("/admin/create-new-work");
+// });
+
+// // api/works/files (get all images data)
+// router.get("/files", (req, res) => {
+//   gfs.files.find().toArray((err, files) => {
+//     // Check if files
+//     if (!files || files.length === 0) {
+//       return res.status(404).json({
+//         err: "No files exist",
+//       });
+//     }
+//     // Files exist
+//     return res.json(files);
+//   });
+// });
+
+// // api/works/files/:filename (get current image data)
+// router.get("/files/:filename", (req, res) => {
+//   gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
+//     // Check if file
+//     if (!files || files.length === 0) {
+//       return res.status(404).json({
+//         err: "No files exist",
+//       });
+//     }
+//     // File exist
+//     return res.json(file);
+//   });
+// });
+
+// // api/works/images/:filename (get all images)
+// router.get("/images/:filename", (req, res) => {
+//   gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
+//     // Check if file
+//     if (!files || files.length === 0) {
+//       return res.status(404).json({
+//         err: "No files exist",
+//       });
+//     }
+//     // Check if image
+//     if (file.contentType === "image/jpeg" || ile.contentType === "image/png") {
+//       // Read output to browser
+//       const readstream = gfs.createReadStream(file.fileName);
+//       readstream.pipe(res);
+//     } else {
+//       res.status(404).json({
+//         err: "Not an image",
+//       });
+//     }
+//   });
+// });
+
+// // api/works/images/:filename (get current photo)
+// router.get("/images/:filename", (req, res) => {
+//   gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
+//     // Check if file
+//     if (!files || files.length === 0) {
+//       return res.status(404).json({
+//         err: "No files exist",
+//       });
+//     }
+//     // Check if image
+//     if (file.contentType === "image/jpeg" || ile.contentType === "image/png") {
+//       // Read output to browser
+//       const readstream = gfs.createReadStream(file.fileName);
+//       readstream.pipe(res);
+//     } else {
+//       res.status(404).json({
+//         err: "Not an image",
+//       });
+//     }
+//   });
+// });
 
 module.exports = router;

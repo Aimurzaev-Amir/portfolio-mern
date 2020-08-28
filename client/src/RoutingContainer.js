@@ -30,6 +30,11 @@ const WorkSpaceNewWorkContainer = React.lazy(() =>
 const WorkSpaceNewArticle = React.lazy(() =>
   import("./components/adminPanel/AdminPanelComponents/adminWorkSpace/WorkSpaceNewArticle")
 );
+const WorkSpaceFeedbacksContainer = React.lazy(() =>
+  import(
+    "./components/adminPanel/AdminPanelComponents/adminFeedbacksSpace/WorkSpaceFeedbacksContainer"
+  )
+);
 
 function App(props) {
   // const storageName = "userData";
@@ -57,6 +62,7 @@ function App(props) {
       <Route exact path="/admin" render={SuspenseHOC(AdminPanelMenuContainer)} />
       <Route exact path="/admin/create-new-work" render={SuspenseHOC(WorkSpaceNewWorkContainer)} />
       <Route exact path="/admin/create-new-article" render={SuspenseHOC(WorkSpaceNewArticle)} />
+      <Route exact path="/admin/feedbacks" render={SuspenseHOC(WorkSpaceFeedbacksContainer)} />
 
       <Footer />
     </div>

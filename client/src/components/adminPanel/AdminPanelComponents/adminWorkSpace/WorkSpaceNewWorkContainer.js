@@ -48,8 +48,13 @@ const WorkSpaceNewWorkContainer = (props) => {
       props.setStyle(worksStyles);
       const whatIDid = await request(`/api/works/didPoint/${currentWorkId}`, "GET", null);
       props.setWhatIDid(whatIDid);
-      const images = await request("/api/works/photos/workPhoto", "GET", null);
-      props.setImagesData(images);
+      
+      // const images = await request("/api/works/photos/workPhoto", "GET", null);
+      // props.setImagesData(images);
+
+      // const images = await request("/api/works/files", "GET", null);
+      // console.log(images);
+
       // const ImagesArray = images.map((imageData) => {
       //   props.setImagesData({ src: require("../../../../../../" + imageData.fieldname)});
       // });

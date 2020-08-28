@@ -3,16 +3,21 @@ const config = require("config");
 const mongoose = require("mongoose");
 
 const bodyParser = require("body-parser");
+const methodOverride = require("method-override");
 
 const app = express();
 
 app.use(express.json({ extended: true }));
 // use the middleware of bodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(methodOverride("_method"));
 
 app.use("/api/auth", require("./routes/auth.routes"));
 app.use("/api/feedback", require("./routes/feedback.routes"));
 app.use("/api/works", require("./routes/works.routes"));
+app.use("/api/articles", require("./routes/articles.routes"));
+
+
 
 const PORT = config.get("port") || 5000;
 
@@ -30,6 +35,7 @@ async function start() {
 }
 
 start();
+
 
 app.listen(5000, () => {
   console.log(`App has been started on port ${PORT}...`);

@@ -27,10 +27,13 @@ const AdminActionMenu = (props) => {
             <p>Create Article</p>
           </li>
         </NavLink>
-        <li>
-          <img src={message} alt="messages" />
-          <p>Feedback</p>
-        </li>
+        <NavLink to={"/admin/feedbacks"} className="adminNavLink">
+          <li>
+            <img src={message} alt="messages" />
+            <p>Feedback</p>
+          </li>
+        </NavLink>
+
         <li>
           <img src={drafts} alt="drafts" />
           <p>Drafts</p>

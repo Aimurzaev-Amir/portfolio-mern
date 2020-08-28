@@ -5,13 +5,13 @@ const MainImagesUploadForm = (props) => {
   return (
     <div>
       <form
-        action="/api/works/uploadPhoto"
+        action="/api/works/uploadFiles"
         method="POST"
         encType="multipart/form-data"
         className="workIntroEditColumn"
       >
         <label htmlFor="workPhoto"> Click to choose project main img </label>
-        <input type="file" name="workPhoto" onChange={props.onChangePhoto} />
+        <input type="file" name="file" onChange={props.onChangePhoto} />
         <input type="submit" value="Upload Photo" />
       </form>
       <p onClick={props.updateWorkPhoto}>save</p>

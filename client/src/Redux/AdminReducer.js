@@ -41,6 +41,7 @@ let initialState = {
       imdDescr: "like a model",
     },
   ],
+  feedbacks: [],
 };
 
 const AdminReducer = (state = initialState, action) => {
