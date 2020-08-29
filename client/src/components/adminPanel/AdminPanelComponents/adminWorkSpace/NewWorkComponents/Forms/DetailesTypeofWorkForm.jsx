@@ -3,7 +3,7 @@ import { reduxForm, Field } from "redux-form";
 
 const DetailesTypeOfWorkForm = (props) => {
   return (
-    <form className="detailsInfo" onClick={props.handleSubmit}>
+    <form className="detailsInfo" onSubmit={props.handleSubmit}>
       <h3>PROJECT TYPE</h3>
       <div className="editInput">
         <Field placeholder="Type of project" name="smallDescription" component="input" />

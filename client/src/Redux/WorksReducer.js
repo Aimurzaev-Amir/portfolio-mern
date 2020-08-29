@@ -416,6 +416,12 @@ const worksReducer = (state = initialState, action) => {
         }),
       };
 
+      // if (work._id === action.img.owner && work.) {
+      //   return {
+      //     ...work,
+      //     colors: action.newColorData,
+      //   };
+
     case setPointWhatIDid:
       return {
         ...state,
