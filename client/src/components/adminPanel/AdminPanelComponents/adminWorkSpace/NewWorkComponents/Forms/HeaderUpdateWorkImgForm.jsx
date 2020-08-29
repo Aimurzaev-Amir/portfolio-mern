@@ -13,7 +13,6 @@ const HeaderUpdateWorkImgForm = (props) => {
         onChangePhoto={props.onChangePhoto}
         onChangeBackground={props.onChangeBackground}
         onChangePreview={props.onChangePreview}
-        updateWorkPhoto={props.updateWorkPhoto}
       />
       <form onSubmit={props.handleSubmit}>
         <div className="workIntroEditColumn">

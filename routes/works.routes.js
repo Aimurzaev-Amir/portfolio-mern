@@ -3,8 +3,7 @@ const Works = require("../models/Works");
 const Colors = require("../models/Colors");
 const textStyles = require("../models/TextStyles");
 const whatIDid = require("../models/WhatIDid");
-// const auth = require("../middleware/auth.middleware");
-// const config = require("config");
+const Img = require("../models/Img");
 const router = Router();
 
 // /api/works/create
@@ -133,130 +132,48 @@ router.get("/didPoint/:id", async (req, res) => {
   }
 });
 
+// /api/works/addPhoto
+router.post("/addPhoto", async (req, res) => {
+  const { name, descr, type, img, owner } = req.body;
+  const imageData = new Img({
+    name,
+    descr,
+    type,
+    owner,
+  });
+  saveImage(imageData, img);
+  try {
+    const newImg = await imageData.save();
+    res.redirect("/admin/create-new-work");
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
 
+// accessable mimetypes
+const imageMimeTypes = ["image/jpeg", "image/png", "image/gif"];
 
+// creating function for decoding to utf-8 type for economy space in the database
+function saveImage(imageData, imgEncoded) {
+  if (imgEncoded == null) {
+    return;
+  }
 
-// // Image post in mongoDb part started
+  const img = JSON.parse(imgEncoded);
+  if (img != null && imageMimeTypes.includes(img.type)) {
+    imageData.img = new Buffer.from(img.data, "utf-8");
+    imageData.imgType = img.type;
+  }
+}
 
-// const path = require("path");
-// const crypto = require("crypto");
-// const multer = require("multer");
-// const GridFsStorage = require("multer-gridfs-storage");
-// const Grid = require("gridfs-stream");
-// const mongoose = require("mongoose");
-
-// const conn = mongoose.createConnection(config.get("mongoURI"), {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-
-// // init gfs
-// let gfs;
-
-// conn.once("open", () => {
-//   console.log("connections is opened ");
-//   // init stream
-//   gfs = Grid(conn.db, mongoose.mongo);
-//   gfs.collection("uploads");
-// });
-
-// // create storage engine
-// const storage = new GridFsStorage({
-//   url: config.get("mongoURI"),
-//   file: (req, file) => {
-//     return new Promise((resolve, reject) => {
-//       crypto.randomBytes(16, (err, buf) => {
-//         if (err) {
-//           return reject(err);
-//         }
-//         const filename = buf.toString("hex") + path.extname(file.originalname);
-//         const fileInfo = {
-//           filename: filename,
-//           bucketName: "uploads",
-//         };
-//         resolve(fileInfo);
-//       });
-//     });
-//   },
-// });
-// const upload = multer({ storage });
-
-// // /api/works/uploadFiles (upload image data to database)
-// router.post("/uploadFiles", upload.single("file"), (req, res) => {
-//   // res.json({ file: req.file });
-//   res.redirect("/admin/create-new-work");
-// });
-
-// // api/works/files (get all images data)
-// router.get("/files", (req, res) => {
-//   gfs.files.find().toArray((err, files) => {
-//     // Check if files
-//     if (!files || files.length === 0) {
-//       return res.status(404).json({
-//         err: "No files exist",
-//       });
-//     }
-//     // Files exist
-//     return res.json(files);
-//   });
-// });
-
-// // api/works/files/:filename (get current image data)
-// router.get("/files/:filename", (req, res) => {
-//   gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
-//     // Check if file
-//     if (!files || files.length === 0) {
-//       return res.status(404).json({
-//         err: "No files exist",
-//       });
-//     }
-//     // File exist
-//     return res.json(file);
-//   });
-// });
-
-// // api/works/images/:filename (get all images)
-// router.get("/images/:filename", (req, res) => {
-//   gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
-//     // Check if file
-//     if (!files || files.length === 0) {
-//       return res.status(404).json({
-//         err: "No files exist",
-//       });
-//     }
-//     // Check if image
-//     if (file.contentType === "image/jpeg" || ile.contentType === "image/png") {
-//       // Read output to browser
-//       const readstream = gfs.createReadStream(file.fileName);
-//       readstream.pipe(res);
-//     } else {
-//       res.status(404).json({
-//         err: "Not an image",
-//       });
-//     }
-//   });
-// });
-
-// // api/works/images/:filename (get current photo)
-// router.get("/images/:filename", (req, res) => {
-//   gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
-//     // Check if file
-//     if (!files || files.length === 0) {
-//       return res.status(404).json({
-//         err: "No files exist",
-//       });
-//     }
-//     // Check if image
-//     if (file.contentType === "image/jpeg" || ile.contentType === "image/png") {
-//       // Read output to browser
-//       const readstream = gfs.createReadStream(file.fileName);
-//       readstream.pipe(res);
-//     } else {
-//       res.status(404).json({
-//         err: "Not an image",
-//       });
-//     }
-//   });
-// });
+// /api/works/getPhotos/:type
+router.get("/getPhotos/:type", async (req, res) => {
+  try {
+    const img = await Img.find({ type: req.params.type });
+    res.json(img);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
 
 module.exports = router;

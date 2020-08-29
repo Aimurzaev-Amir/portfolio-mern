@@ -1,17 +1,14 @@
-import React /*{ useEffect }*/ from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { Route } from "react-router-dom";
 import SuspenseHOC from "./Suspense/Suspense";
 import { connect } from "react-redux";
 import { login } from "./Redux/AdminReducer";
-// import BlogPageContainer from "./components/BlogPage/BlogPageContainer";
 import ArticleContainer from "./components/BlogPage/BlogPageComponents/ArticleContainer";
 import PortfolioPageContainer from "./components/PortfolioPage/PortfolioPageContainer";
 import WorkContainer from "./components/PortfolioPage/PortfolioPageWorks/WorkContainer";
 import Footer from "./components/footer/Footer";
 import NavbarContainer from "./components/Header/NavbarContainer";
-// import AdminPanel from "./components/adminPanel/AdminPanel";
-// const PortfolioPageContainer = React.lazy(() => import("./components/PortfolioPage/PortfolioPageContainer"));
 const BlogPageContainer = React.lazy(() => import("./components/BlogPage/BlogPageContainer"));
 const MainPage = React.lazy(() => import("./components/mainPage/MainPage"));
 const AboutMePage = React.lazy(() => import("./components/aboutMePage/AboutMePage"));
@@ -37,33 +34,32 @@ const WorkSpaceFeedbacksContainer = React.lazy(() =>
 );
 
 function App(props) {
-  // const storageName = "userData";
-  // useEffect(() => {
-  //   const data = JSON.parse(localStorage.getItem(storageName));
-  //   if (data && data.token) {
-  //     props.login(data.token, data.userId);
-  //   }
-  // }, [props.login]);
+  const storageName = "userData";
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem(storageName));
+    if (data && data.token) {
+      props.login(data.token, data.userId);
+    }
+  }, [props.login]);
   return (
     <div>
       <NavbarContainer />
+      {/* Main pages Routers */}
       <Route exact path="/" render={SuspenseHOC(MainPage)} />
       <Route exact path="/about-me" render={SuspenseHOC(AboutMePage)} />
       <Route exact path="/contacts" render={SuspenseHOC(FeedbackContainer)} />
-      {/* <Route exact path="/portfolio" render={SuspenseHOC(PortfolioPageContainer)} /> */}
+      {/* Portfolio pages Routers */}
       <Route exact path="/portfolio" component={() => <PortfolioPageContainer />} />
       <Route path="/portfolio/:workName?" component={() => <WorkContainer />} />
-
+      {/* Blog pages Routers */}
       <Route exact path="/blog" render={SuspenseHOC(BlogPageContainer)} />
       <Route path="/blog/:articleName?" component={() => <ArticleContainer />} />
-
       {/* Admin Panel Routers */}
       <Route exact path="/authorization" render={SuspenseHOC(AdminPanelContainer)} />
       <Route exact path="/admin" render={SuspenseHOC(AdminPanelMenuContainer)} />
       <Route exact path="/admin/create-new-work" render={SuspenseHOC(WorkSpaceNewWorkContainer)} />
       <Route exact path="/admin/create-new-article" render={SuspenseHOC(WorkSpaceNewArticle)} />
       <Route exact path="/admin/feedbacks" render={SuspenseHOC(WorkSpaceFeedbacksContainer)} />
-
       <Footer />
     </div>
   );

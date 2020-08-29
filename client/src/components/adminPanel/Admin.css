@@ -194,10 +194,7 @@
 }
 
 .workIntroEdit {
-  display: grid;
-  grid-template-columns: 300px 180px 150px;
-  color: #fff;
-  padding: 92px 50px 50px 50px;
+  padding-top: 115px;
 }
 .workIntroEditColumn {
   display: grid;
@@ -218,8 +215,7 @@
 
 /* feedbacks menu block */
 
-
-.feedbacks{
+.feedbacks {
   display: grid;
   padding-top: 100px;
   text-align: center;

@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { reduxForm } from "redux-form";
+import React, { useState, useEffect } from "react";
 import "../../Admin.css";
 import mainImg from "../../img/mainImgExample.png";
 import HeaderOFWork from "./NewWorkComponents/HeaderOfWork";
 import WorkOverviewEdit from "./NewWorkComponents/WorkOverviewEdit";
 import WorkDetailsEdit from "./NewWorkComponents/WorkDetailesEdit";
-import BlockTitleText from "../../../../common/BlockTitle";
 import WorkImagesEdit from "./NewWorkComponents/WorkImagesEdit";
+import SendImageToDatabase from "./NewWorkComponents/FilePondWorks";
+import { useHttp } from "../../../../hooks/http.hook";
 
 const WorkSpaceNewWork = (props) => {
   const onChangeMobileImg = (e) => {
@@ -14,9 +14,19 @@ const WorkSpaceNewWork = (props) => {
     console.log(e.target.files[0]);
   };
 
-  // const imagesData = props.images.map((image) => {
-  //   return <img key={image.name} src={image.url} />;
-  // });
+  const { loading, error, request } = useHttp();
+  useEffect(() => {
+    const getImages = async () => {
+      const images = await request("/api/works/getPhotos/workPhoto", "GET", null);
+      props.setImagesData(images);
+    };
+    getImages();
+  }, []);
+
+  const imagesData = props.images.map((image) => {
+    const imgSrc = `data:${image.imgType};charset=utf-8;base64,${image.img.toString("base64")}`;
+    return <img key={image.name} src={imgSrc} />;
+  });
   return (
     <div>
       <HeaderOFWork
@@ -26,14 +36,10 @@ const WorkSpaceNewWork = (props) => {
         onChangePhoto={props.onChangePhoto}
         onChangeBackground={props.onChangeBackground}
         onChangePreview={props.onChangePreview}
-        updateWorkPhoto={props.updateWorkPhoto}
       />
       <div className="workDescriber">
         <div className="workMainLogo">
           <img src={props.work.workPhoto || mainImg} alt={props.work.photoDescription} />
-        </div>
-        <div>
-          <button onClick={props.getWorkData}>click to get</button>
         </div>
         <div className="workMainInfo wrapper">
           <WorkOverviewEdit
@@ -51,11 +57,10 @@ const WorkSpaceNewWork = (props) => {
           />
         </div>
       </div>
-      <WorkImagesEdit work={props.work} onChangeMobileImg={onChangeMobileImg} />
-      {/* <div>{imagesData}</div> */}
-      <div>
-        <img src="" alt=""/>
-      </div>
+      <SendImageToDatabase  />
+      <div>{imagesData}</div>
+      {/* <WorkImagesEdit work={props.work} onChangeMobileImg={onChangeMobileImg} /> */}
+      {loading ? "loading..." : null}
     </div>
   );
 };

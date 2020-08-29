@@ -8,10 +8,14 @@ import "../../Admin.css";
 
 const WorkSpaceFeedbacksContainer = (props) => {
   const { loading, error, request } = useHttp();
-  useEffect(async () => {
-    const feedbacks = await request(`/api/feedback`, "GET", null);
-    props.setFeedbacks(feedbacks);
+  useEffect(() => {
+    const feedbacksA = async () => {
+      const response = await request(`/api/feedback`, "GET", null);
+      props.setFeedbacks(response);
+    };
+    feedbacksA();
   }, []);
+
   const FeedbacksData = props.feedbacks.map((feedback) => {
     return (
       <FeedbacksMenu

@@ -14,7 +14,6 @@ const MainImagesUploadForm = (props) => {
         <input type="file" name="file" onChange={props.onChangePhoto} />
         <input type="submit" value="Upload Photo" />
       </form>
-      <p onClick={props.updateWorkPhoto}>save</p>
       <label htmlFor="workPreview"> Click to choose project preview (card) </label>
       <input type="file" name="workPreview" id="workPreview" onChange={props.onChangePreview} />
       <label htmlFor="workBackground"> Click to choose project backgroud </label>

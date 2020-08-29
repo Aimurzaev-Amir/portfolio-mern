@@ -17,27 +17,8 @@ import { useHttp } from "../../../../hooks/http.hook";
 
 const WorkSpaceNewWorkContainer = (props) => {
   const { loading, error, request } = useHttp();
-  let [color, setColor] = useState(null);
-  const onColorChange = (e) => {
-    setColor(e.currentTarget.value);
-  };
-  const [mainImg, setMainImg] = useState(null);
-  const [mainPreview, setMainPreview] = useState(null);
-  const [mainBackground, setMainBackground] = useState(null);
-
-  const onChangePhoto = (e) => {
-    setMainImg(e.target.files[0]);
-  };
-
-  const onChangeBackground = (e) => {
-    setMainBackground(e.target.files[0]);
-  };
-  const onChangePreview = (e) => {
-    setMainPreview(e.target.files[0]);
-  };
-
-  const getWorkData = async (formData) => {
-    try {
+  useEffect(() => {
+    const getLastWorkData = async () => {
       const worksData = await request("/api/works", "GET", null);
       props.setWork(worksData);
       const currentWorkId = worksData[worksData.length - 1]._id;
@@ -48,30 +29,26 @@ const WorkSpaceNewWorkContainer = (props) => {
       props.setStyle(worksStyles);
       const whatIDid = await request(`/api/works/didPoint/${currentWorkId}`, "GET", null);
       props.setWhatIDid(whatIDid);
-      
-      // const images = await request("/api/works/photos/workPhoto", "GET", null);
-      // props.setImagesData(images);
+    };
+    getLastWorkData();
+  }, []);
 
-      // const images = await request("/api/works/files", "GET", null);
-      // console.log(images);
+  let [color, setColor] = useState(null);
+  const onColorChange = (e) => {
+    setColor(e.currentTarget.value);
+  };
 
-      // const ImagesArray = images.map((imageData) => {
-      //   props.setImagesData({ src: require("../../../../../../" + imageData.fieldname)});
-      // });
-      // const encodeImage = (mimetype, arrayBuffer) => {
-      //   let u8 = new Uint8Array(arrayBuffer);
-      //   const b64encoded = btoa(
-      //     [].reduce.call(new Uint8Array(arrayBuffer), function (p, c) {
-      //       return p + String.fromCharCode(c);
-      //     })
-      //   );
-      //   return "data:" + mimetype + ";base64," + b64encoded;
-      // };
-      // const ImagesArray = images.map((imageData) => {
-      //   const dataURL = encodeImage(imageData.contentType, imageData.image.data);
-      //   props.setImagesData({ name: imageData.name, url: dataURL });
-      // });
-    } catch (e) {}
+  const [mainImg, setMainImg] = useState(null);
+  const [mainPreview, setMainPreview] = useState(null);
+  const [mainBackground, setMainBackground] = useState(null);
+  const onChangePhoto = (e) => {
+    setMainImg(e.target.files[0]);
+  };
+  const onChangeBackground = (e) => {
+    setMainBackground(e.target.files[0]);
+  };
+  const onChangePreview = (e) => {
+    setMainPreview(e.target.files[0]);
   };
 
   const createWorkItem = async (formData) => {
@@ -133,22 +110,9 @@ const WorkSpaceNewWorkContainer = (props) => {
     } catch (e) {}
   };
 
-  const updateWorkPhoto = async (formData) => {
-    const data = new FormData();
-    data.append("mainImg", mainImg);
-    console.log(data);
-    console.log(mainImg);
+  const postImage = async (formData) => {
     try {
-      // const worksData = await request("/api/works", "GET", null);
-      const updatedData = await request(
-        "/api/works/uploadPhoto",
-        "POST",
-        {
-          data,
-        },
-        { "Content-Type": "multipart/form-data" }
-        // { "Content-Type": "multipart/form-data" }
-      );
+      console.log(formData);
     } catch (e) {}
   };
 
@@ -164,14 +128,14 @@ const WorkSpaceNewWorkContainer = (props) => {
       createWorkColor={createWorkColor}
       createWorkStyle={createWorkStyle}
       createWorkDidPoint={createWorkDidPoint}
-      getWorkData={getWorkData}
-      updateWorkPhoto={updateWorkPhoto}
+      setImagesData={props.setImagesData}
       // my functions
       onColorChange={onColorChange}
       onChangePhoto={onChangePhoto}
       onChangeBackground={onChangeBackground}
       onChangePreview={onChangePreview}
       setMobileImg={props.setMobileImg}
+      postImage={postImage}
     />
   );
 };
