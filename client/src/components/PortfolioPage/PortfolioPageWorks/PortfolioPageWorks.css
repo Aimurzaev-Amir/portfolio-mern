@@ -58,6 +58,7 @@
 .workOverview {
   max-width: 815px;
   margin-right: 50px;
+  width: 100%;
 }
 .workOverview .workTitle h2 {
   margin-bottom: 30px;

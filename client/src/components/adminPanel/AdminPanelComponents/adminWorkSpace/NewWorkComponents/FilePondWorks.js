@@ -25,95 +25,61 @@ const FilePondWorks = (props) => {
   const [files, setFiles] = useState([]);
 
   return (
-    <div className="filePondWorks">
+    <div className="filePondWorks wrapper">
       <form action="/api/works/addPhoto" method="POST">
-        <div>
-          <label htmlFor="name">Name: </label>
-          <input type="text" name="name" />
+        <h2 className="editImageDataTitle">Add image to work</h2>
+        <div className="editImgData">
+          <div className="editInput imgInput">
+            <label htmlFor="name">Name: </label>
+            <input type="text" name="name" />
+          </div>
+          <div className="editInput imgInput">
+            <label htmlFor="descr">Description: </label>
+            <input type="text" name="descr" />
+          </div>
+          {props.allWorks ? (
+            <div className="editInput imgInput hideInput">
+              <label htmlFor="owner">Owner: </label>
+              <input
+                type="text"
+                name="owner"
+                value={props.allWorks[props.allWorks.length - 1]._id}
+              />
+            </div>
+          ) : null}
+          <div className="editFontStyle">
+            <label htmlFor="type">Type: </label>
+            <select name="type" id="">
+              <option value="workPhoto">workPhoto</option>
+              <option value="workPreviw">workPreviw</option>
+              <option value="workBackground">workBackground</option>
+              <option value="desktopImg">desktopImg</option>
+              <option value="mobileImg">mobileImg</option>
+            </select>
+          </div>
         </div>
-        <div>
-          <label htmlFor="descr">Description: </label>
-          <input type="text" name="descr" />
+        <div className="filePondArea">
+          <FilePond
+            setOptions={{
+              stylePanelAspectRatio: 150 / 100,
+              imageResizeTargetWidth: 100,
+              imageResizeTargetHight: 150,
+            }}
+            files={files}
+            onupdatefiles={setFiles}
+            allowMultiple={false}
+            maxFiles={1}
+            name="img"
+            labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+          />
+          <div className="buttonPage">
+            <button type="submit">Save</button>
+          </div>
         </div>
-        <div>
-          <label htmlFor="type">Type: </label>
-          <select name="type" id="">
-            <option value="workPhoto">workPhoto</option>
-            <option value="workPreviw">workPreviw</option>
-            <option value="workBackground">workBackground</option>
-            <option value="desktopImg">desktopImg</option>
-            <option value="mobileImg">mobileImg</option>
-          </select>
-        </div>
-        <FilePond
-          setOptions={{
-            stylePanelAspectRatio: 150 / 100,
-            imageResizeTargetWidth: 100,
-            imageResizeTargetHight: 150,
-          }}
-          files={files}
-          onupdatefiles={setFiles}
-          allowMultiple={false}
-          maxFiles={1}
-          name="img"
-          labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
-        />
-        <div>
-          <button type="submit">Save</button>
-        </div>
+        <div>{props.loading ? "loading..." : null}</div>
       </form>
     </div>
   );
 };
 
 export default FilePondWorks;
-
-//     <div className="filePondWorks">
-//       <form onSubmit={props.handleSubmit}>
-//         <div>
-//           <label htmlFor="name">Name: </label>
-//           <Field placeholder="Name of the image" name="name" type="text" component="input" />
-//         </div>
-//         <div>
-//           <label htmlFor="descr">Description: </label>
-//           <Field
-//             placeholder="Description of the image"
-//             name="descr"
-//             type="text"
-//             component="input"
-//           />
-//         </div>
-//         <div>
-//           <label htmlFor="type">Type: </label>
-//           <Field name="type" component="select">
-//             <option></option>
-//             <option>workPhoto</option>
-//             <option>workPreviw</option>
-//             <option>workBackground</option>
-//             <option>desktopImg</option>
-//             <option>mobileImg</option>
-//           </Field>
-//         </div>
-//         <FilePond
-//           setOptions={{
-//             stylePanelAspectRatio: 150 / 100,
-//             imageResizeTargetWidth: 100,
-//             imageResizeTargetHight: 150,
-//           }}
-//           files={files}
-//           onupdatefiles={setFiles}
-//           allowMultiple={false}
-//           maxFiles={1}
-//           name="img"
-//           labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
-//         />
-
-//         <button>Save</button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// const SendImageToDatabase = reduxForm({ form: "sendImg" })(FilePondWorks);
-
-// export default SendImageToDatabase;

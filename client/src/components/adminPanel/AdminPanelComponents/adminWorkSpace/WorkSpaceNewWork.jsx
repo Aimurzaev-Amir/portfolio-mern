@@ -5,15 +5,10 @@ import HeaderOFWork from "./NewWorkComponents/HeaderOfWork";
 import WorkOverviewEdit from "./NewWorkComponents/WorkOverviewEdit";
 import WorkDetailsEdit from "./NewWorkComponents/WorkDetailesEdit";
 import WorkImagesEdit from "./NewWorkComponents/WorkImagesEdit";
-import SendImageToDatabase from "./NewWorkComponents/FilePondWorks";
+import FilePondWorks from "./NewWorkComponents/FilePondWorks";
 import { useHttp } from "../../../../hooks/http.hook";
 
 const WorkSpaceNewWork = (props) => {
-  const onChangeMobileImg = (e) => {
-    // props.setMobileImg(e.target.files[0]);
-    console.log(e.target.files[0]);
-  };
-
   const { loading, error, request } = useHttp();
   useEffect(() => {
     const getImages = async () => {
@@ -23,19 +18,12 @@ const WorkSpaceNewWork = (props) => {
     getImages();
   }, []);
 
-  const imagesData = props.images.map((image) => {
-    const imgSrc = `data:${image.imgType};charset=utf-8;base64,${image.img.toString("base64")}`;
-    return <img key={image.name} src={imgSrc} />;
-  });
   return (
     <div>
       <HeaderOFWork
         work={props.work}
         createWorkItem={props.createWorkItem}
         updateWorkItem={props.updateWorkItem}
-        onChangePhoto={props.onChangePhoto}
-        onChangeBackground={props.onChangeBackground}
-        onChangePreview={props.onChangePreview}
       />
       <div className="workDescriber">
         <div className="workMainLogo">
@@ -57,10 +45,11 @@ const WorkSpaceNewWork = (props) => {
           />
         </div>
       </div>
-      <SendImageToDatabase  />
-      <div>{imagesData}</div>
-      {/* <WorkImagesEdit work={props.work} onChangeMobileImg={onChangeMobileImg} /> */}
-      {loading ? "loading..." : null}
+      <FilePondWorks loading={loading} allWorks={props.allWorks} />
+      <WorkImagesEdit 
+        work={props.work}
+        images={props.images}
+      />
     </div>
   );
 };

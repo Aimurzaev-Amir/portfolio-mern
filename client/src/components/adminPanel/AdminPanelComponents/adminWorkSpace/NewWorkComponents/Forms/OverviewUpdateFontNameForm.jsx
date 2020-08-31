@@ -6,7 +6,9 @@ const OverviewUpdateFontNameForm = (props) => {
     <form onSubmit={props.handleSubmit} className="workTypography">
       <h2>Typography</h2>
       <div className="editInput">
-        <Field placeholder="Font Name" name="fontName" component="input" />
+        <div className="editOverviewDataInput">
+          <Field placeholder="Font Name" name="fontName" component="input" />
+        </div>
         <button>save</button>
       </div>
       <p>ABCDEFGIJKLMNOPQRSTUVWXYZ</p>

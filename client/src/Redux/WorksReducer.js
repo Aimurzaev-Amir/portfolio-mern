@@ -346,7 +346,7 @@ let initialState = {
       },
     },
   ],
-  works: [],
+  works: null,
   currentWorkId: null,
   newWork: {
     id: 0,
@@ -416,11 +416,11 @@ const worksReducer = (state = initialState, action) => {
         }),
       };
 
-      // if (work._id === action.img.owner && work.) {
-      //   return {
-      //     ...work,
-      //     colors: action.newColorData,
-      //   };
+    // if (work._id === action.img.owner && work.) {
+    //   return {
+    //     ...work,
+    //     colors: action.newColorData,
+    //   };
 
     case setPointWhatIDid:
       return {
@@ -440,7 +440,7 @@ const worksReducer = (state = initialState, action) => {
       return {
         ...state,
         // images: [...state.images, action.imagesData],
-        images: action.imagesData
+        images: action.imagesData,
       };
 
     case setWorkDesktopImg:

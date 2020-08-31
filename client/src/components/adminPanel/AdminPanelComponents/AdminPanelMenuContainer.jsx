@@ -6,7 +6,7 @@ import { withAuthRedirect } from "../../../Hoc/withRedirect";
 import { logout } from "../../../Redux/AdminReducer"
 
 const AdminPanelManuContaienr = (props) => {
-  return <AdminPanelMenu works={props.works} articles={props.articles} logout={props.logout} />;
+  return <AdminPanelMenu works={props.works} articles={props.articles} logout={props.logout} />; 
 };
 
 let mapStateToProps = (state) => {

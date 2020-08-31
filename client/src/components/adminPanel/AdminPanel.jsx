@@ -7,7 +7,7 @@ import LoginForm from "./AdminPanelComponents/LoginForm";
 let AdminPanel = (props) => {
   return (
     <div>
-      {props.validation ? (
+      {props.validation ? ( 
         <Redirect to={"/admin"} />
       ) : (
         <div className="wrapper signIn">

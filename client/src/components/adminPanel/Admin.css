@@ -125,7 +125,6 @@
   display: grid;
   justify-content: center;
   justify-items: center;
-  /* margin-top: 30px; */
 }
 .editTitlesInput input {
   font-weight: normal;
@@ -144,26 +143,51 @@
   display: flex;
   justify-items: center;
   margin-top: 30px;
+  font-weight: normal;
+  font-size: 18px;
+  color: #6b6a6a;
 }
 .editInput textarea {
   font-weight: normal;
   font-size: 18px;
   color: #6b6a6a;
+  max-width: 160px;
+  padding: 3px 0 3px 15px;
 }
-
+.editInput label {
+  padding-top: 4px;
+  margin-right: 5px;
+}
 .editInput button {
   font-weight: normal;
   font-size: 18px;
   color: #6b6a6a;
 }
 .editInput input {
-  width: 200px;
+  max-width: 160px;
+  font-weight: normal;
+  font-size: 18px;
+  color: #6b6a6a;
+  padding: 3px 0 3px 15px;
+}
+.editFontStyle {
+  font-weight: normal;
+  font-size: 18px;
+  color: #6b6a6a;
+}
+.hideInput {
+  display: none;
+}
+.editFontStyle select {
   font-weight: normal;
   font-size: 18px;
   color: #6b6a6a;
 }
 .editInput input[type="color"] {
   margin-right: 20px;
+}
+.editOverviewDataInput input {
+  max-width: 260px;
 }
 .editEllipseColor {
   margin-top: 0px;
@@ -178,6 +202,7 @@
   width: 32px;
   height: 32px;
   border-radius: 100%;
+  padding: 0;
 }
 .editInput input[type="color"]::-webkit-color-swatch-wrapper {
   padding: 0;
@@ -186,7 +211,26 @@
   border: none;
   border-radius: 100%;
 }
-
+.editAboutProject {
+  display: flex;
+  justify-items: center;
+  width: 100%;
+}
+.editAboutProject textarea {
+  width: 100%;
+  font-weight: normal;
+  font-size: 18px;
+  color: #6b6a6a;
+  padding: 8px 0 0 15px;
+}
+.editAboutProject button {
+  font-weight: normal;
+  font-size: 18px;
+  color: #6b6a6a;
+}
+.imgInput {
+  margin-top: 0;
+}
 #workPhoto,
 #workBackground,
 #workPreview {
@@ -213,6 +257,31 @@
   border: 1.5px solid #fff;
 }
 
+.filePondWorks {
+  margin-top: 30px;
+}
+.editImgData {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+.editImageDataTitle {
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+.filePondArea {
+  display: flex;
+  justify-content: space-between;
+}
+.filePondArea .buttonPage {
+  max-height: 76px;
+}
+.filepond--wrapper {
+  width: 100%;
+}
 /* feedbacks menu block */
 
 .feedbacks {

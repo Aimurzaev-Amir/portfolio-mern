@@ -11,16 +11,23 @@ const OverviewStylesForm = (props) => {
   });
   return (
     <form onSubmit={props.handleSubmit} className="editInput editTextStyles">
-      <Field placeholder="Write style" name="name" component="input" />
-      <Field name="weight" component="select">
-        <option></option>
-        <option>Light</option>
-        <option>Regular</option>
-        <option>Bold</option>
-      </Field>
-      <Field name="size" component="select">
-        {fontSizeOption}
-      </Field>
+      <div className="editOverviewDataInput">
+        <Field placeholder="Write style" name="name" component="input" />
+      </div>
+      <div className="editFontStyle">
+        <Field name="weight" component="select">
+          <option></option>
+          <option>Light</option>
+          <option>Regular</option>
+          <option>Bold</option>
+        </Field>
+      </div>
+      <div className="editFontStyle">
+        <Field name="size" component="select">
+          {fontSizeOption}
+        </Field>
+      </div>
+
       <button>add</button>
     </form>
   );

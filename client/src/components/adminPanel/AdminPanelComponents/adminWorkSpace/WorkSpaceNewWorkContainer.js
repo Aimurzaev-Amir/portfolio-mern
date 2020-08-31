@@ -2,10 +2,6 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import WorkSpaceNewWork from "./WorkSpaceNewWork";
 import {
-  changePhoto,
-  changeBackground,
-  changePreview,
-  setMobileImg,
   setColor,
   setWhatIDid,
   setWork,
@@ -41,15 +37,6 @@ const WorkSpaceNewWorkContainer = (props) => {
   const [mainImg, setMainImg] = useState(null);
   const [mainPreview, setMainPreview] = useState(null);
   const [mainBackground, setMainBackground] = useState(null);
-  const onChangePhoto = (e) => {
-    setMainImg(e.target.files[0]);
-  };
-  const onChangeBackground = (e) => {
-    setMainBackground(e.target.files[0]);
-  };
-  const onChangePreview = (e) => {
-    setMainPreview(e.target.files[0]);
-  };
 
   const createWorkItem = async (formData) => {
     try {
@@ -110,32 +97,20 @@ const WorkSpaceNewWorkContainer = (props) => {
     } catch (e) {}
   };
 
-  const postImage = async (formData) => {
-    try {
-      console.log(formData);
-    } catch (e) {}
-  };
-
   return (
     <WorkSpaceNewWork
       work={props.newWork}
       images={props.images}
-      // work={props.allWorks[props.allWorks.length - 1]}
-      onSubmit={createWorkColor}
+      allWorks={props.allWorks}
       //async req to server
       updateWorkItem={updateWorkItem}
       createWorkItem={createWorkItem}
       createWorkColor={createWorkColor}
       createWorkStyle={createWorkStyle}
       createWorkDidPoint={createWorkDidPoint}
-      setImagesData={props.setImagesData}
       // my functions
       onColorChange={onColorChange}
-      onChangePhoto={onChangePhoto}
-      onChangeBackground={onChangeBackground}
-      onChangePreview={onChangePreview}
-      setMobileImg={props.setMobileImg}
-      postImage={postImage}
+      setImagesData={props.setImagesData}
     />
   );
 };
@@ -151,10 +126,6 @@ let mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  changePhoto,
-  changeBackground,
-  changePreview,
-  setMobileImg,
   setColor,
   setWhatIDid,
   setWork,

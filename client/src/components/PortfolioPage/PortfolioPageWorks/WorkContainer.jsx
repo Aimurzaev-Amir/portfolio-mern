@@ -13,7 +13,6 @@ let WorkContainer = (props) => {
 let mapStateToProps = (state) => {
   return {
     works: state.works.Works,
-    currentWorkId: state.works.currentWorkId,
   };
 };
 

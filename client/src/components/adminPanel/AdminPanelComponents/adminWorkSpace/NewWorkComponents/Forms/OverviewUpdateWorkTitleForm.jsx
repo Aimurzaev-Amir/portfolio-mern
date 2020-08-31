@@ -5,10 +5,10 @@ const OverviewUpdateWorkTitleForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit} className="workTitle">
       <h2>ABOUT PROJECT</h2>
-      <div className="editTitlesInput">
+      <div className="editAboutProject">
         <Field placeholder="About project" name="aboutProject" component="textarea" />
+        <button>save</button>
       </div>
-      <button>save</button>
     </form>
   );
 };

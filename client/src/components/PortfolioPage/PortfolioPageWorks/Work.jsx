@@ -4,7 +4,6 @@ import Button from "../../../common/Button";
 import "./PortfolioPageWorks.css";
 
 let Work = (props) => {
-  // console.log(props.workName)
   let WorkData = props.works.map((work) => {
     if (props.workName) {
       if (work.urlAdress === props.workName) {

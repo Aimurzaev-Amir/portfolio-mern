@@ -176,4 +176,24 @@ router.get("/getPhotos/:type", async (req, res) => {
   }
 });
 
+// /api/works/getPhotos/:owner
+router.get("/getPhotos/:owner", async (req, res) => {
+  try {
+    const img = await Img.find({ _id: req.params.owner });
+    res.json(img);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+// /api/works/updatePhotos/:id
+router.patch("/updatePhoto/:id", async (req, res) => {
+  try {
+    const Image = await Img.updateOne({ _id: req.params.id }, { $set: req.body });
+    res.json({ Image });
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
 module.exports = router;
