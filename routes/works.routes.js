@@ -186,14 +186,4 @@ router.get("/getPhotos/:owner", async (req, res) => {
   }
 });
 
-// /api/works/updatePhotos/:id
-router.patch("/updatePhoto/:id", async (req, res) => {
-  try {
-    const Image = await Img.updateOne({ _id: req.params.id }, { $set: req.body });
-    res.json({ Image });
-  } catch (e) {
-    res.status(500).json({ message: "Something went wrong, please, try again" });
-  }
-});
-
 module.exports = router;
