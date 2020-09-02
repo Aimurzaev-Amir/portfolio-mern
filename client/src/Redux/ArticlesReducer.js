@@ -1,10 +1,11 @@
 const newArticleType = "ARTICLESREDUCER/ADD-WORK";
-const setCurrentArticleType = "ARTICLESRUDUCER/CHANGE-ARTICLE-ID";
+const setCurrentArticleType = "ARTICLESREDUCER/CHANGE-ARTICLE-ID";
+const setArticleData = "ARTICLESREDUCER/SET-ARTICLE-DATA"
 
 let initialState = {
   Articles: [
     {
-      id: 0, 
+      id: 0,
       articleName: "Feedback form html + css + php + JavaScript + jQuery",
       articleDate: "28 February",
       articleSmallDescription:
@@ -523,24 +524,16 @@ let initialState = {
       ],
     },
   ],
+  articles: null,
   currentArticleId: 1,
 };
 
 const ArticlesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case newArticleType:
-      let newArticle = {
-        id: 4,
-        articleName: "KazTransGas",
-        articleDate: "",
-        articleSmallDescription: "Website",
-        articlePreview: require(`${action.newArticlePreview}`),
-        previewDescription: "kaztransgas redesign website Aimurzaev Amir",
-        urlAdress: "works/work-KazTransGas.html",
-      };
+    case setArticleData:
       return {
         ...state,
-        Works: [...state.Works, newArticle],
+        articles: action.newArticleData,
       };
     case setCurrentArticleType:
       return {
@@ -552,10 +545,10 @@ const ArticlesReducer = (state = initialState, action) => {
   }
 };
 
-export const addArticle = (newArticlePreview) => {
+export const setArticles = (newArticleData) => {
   return {
-    type: newArticleType,
-    newArticlePreview,
+    type: setArticleData,
+    newArticleData,
   };
 };
 export const setArticleId = (currentArticleId) => {

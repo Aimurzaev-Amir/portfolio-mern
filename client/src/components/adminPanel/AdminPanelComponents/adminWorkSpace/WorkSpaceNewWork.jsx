@@ -12,7 +12,9 @@ const WorkSpaceNewWork = (props) => {
   const { loading, error, request } = useHttp();
   useEffect(() => {
     const getImages = async () => {
-      const images = await request("/api/works/getPhotos/workPhoto", "GET", null);
+      const worksData = await request("/api/works", "GET", null);
+      const currentWorkId = worksData[worksData.length - 1]._id;
+      const images = await request(`/api/works/getPhotos/${currentWorkId}`, "GET", null);
       props.setImagesData(images);
     };
     getImages();
@@ -46,10 +48,7 @@ const WorkSpaceNewWork = (props) => {
         </div>
       </div>
       <FilePondWorks loading={loading} allWorks={props.allWorks} />
-      <WorkImagesEdit 
-        work={props.work}
-        images={props.images}
-      />
+      <WorkImagesEdit allWorks={props.allWorks} images={props.images} />
     </div>
   );
 };

@@ -6,4 +6,4 @@ const schema = new Schema({
   owner: { type: Types.ObjectId, ref: "ArticleFullVersion" },
 });
 
-module.exports = model("SectionTitle", schema);
+module.exports = model("SectionTitle", schema); 

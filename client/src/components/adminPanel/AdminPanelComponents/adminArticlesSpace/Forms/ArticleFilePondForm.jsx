@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
-
-// Import React FilePond
 import { FilePond, File, registerPlugin, setOptions } from "react-filepond";
+import "../../../Admin.css";
 
 // Import FilePond styles
 import "filepond/dist/filepond.min.css";
@@ -21,13 +19,12 @@ registerPlugin(
   FilePondPluginImageResize
 );
 
-const FilePondWorks = (props) => {
+const ArticleFilePondForm = (props) => {
   const [files, setFiles] = useState([]);
-
   return (
     <div className="filePondWorks wrapper">
-      <form action="/api/works/addPhoto" method="POST">
-        <h2 className="editImageDataTitle">Add image to work</h2>
+      <form action="/api/articles/addPhoto" method="POST">
+        <h2 className="editImageDataTitle">Add main article image</h2>
         <div className="editImgData">
           <div className="editInput imgInput">
             <label htmlFor="name">Name: </label>
@@ -37,26 +34,21 @@ const FilePondWorks = (props) => {
             <label htmlFor="descr">Description: </label>
             <input type="text" name="descr" />
           </div>
-          {props.allWorks != undefined || props.allWorks != null ? (
+          {props.articles ? (
             <div className="editInput imgInput hideInput">
               <label htmlFor="owner">Owner: </label>
               <input
                 type="text"
                 name="owner"
-                value={
-                  props.allWorks.length != 0 ? props.allWorks[props.allWorks.length - 1]._id : null
-                }
+                value={props.articles[props.articles.length - 1]._id}
               />
             </div>
           ) : null}
           <div className="editFontStyle">
             <label htmlFor="type">Type: </label>
             <select name="type" id="">
-              <option value="workPhoto">workPhoto</option>
-              <option value="workPreviw">workPreviw</option>
-              <option value="workBackground">workBackground</option>
-              <option value="desktopImg">desktopImg</option>
-              <option value="mobileImg">mobileImg</option>
+              <option value="workPhoto">articlePreview</option>
+              <option value="mobileImg">articleBlock</option>
             </select>
           </div>
         </div>
@@ -84,4 +76,4 @@ const FilePondWorks = (props) => {
   );
 };
 
-export default FilePondWorks;
+export default ArticleFilePondForm;

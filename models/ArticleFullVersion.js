@@ -8,4 +8,4 @@ const schema = new Schema({
   owner: { type: Types.ObjectId, ref: "Articles" },
 });
 
-module.exports = model("ArticleFullVersion", schema);
+module.exports = model("ArticleFullVersion", schema); 

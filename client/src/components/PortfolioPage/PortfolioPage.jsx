@@ -4,6 +4,7 @@ import "swiper/css/swiper.css";
 import "./PortfolioPage.css";
 import { NavLink } from "react-router-dom";
 import BlockTitleText from "../../common/BlockTitle";
+import Preloader from "../../common/Preloader/Preloader";
 // import { Route, BrowserRouter } from "react-router-dom";
 // import KazTransGas from "./PortfolioPageWorks/KazTransGas";
 
@@ -36,25 +37,32 @@ let PortfolioPage = (props) => {
   };
 
   let Works = props.works.map((work) => {
+    const workPhotoArr = [];
+    if (props.images != undefined) {
+      props.images.map((imgData) => {
+        if (imgData.owner === work._id) {
+          const imgSrc = `data:${imgData.imgType};charset=utf-8;base64,${imgData.img.toString(
+            "base64"
+          )}`;
+          workPhotoArr.push({ imgSrc });
+        }
+      });
+    }
+
     return (
-      <div key={work.id} className="work">
+      <div key={work._id} className="work">
         <div className="workInfo">
           <h1>{work.workName}</h1>
-          <h2>{work.whatIDid}</h2>
+          {/* <h2>{work.whatIDid}</h2> */}
+          <h2>UX | UI | WEB DEVELOPMENT</h2>
           <div className="buttonPage">
             <NavLink to={"/portfolio/" + work.urlAdress} className="navItemLink">
-              <button
-                onClick={() => {
-                  props.setWorkId(work.id);
-                }}
-              >
-                View project
-              </button>
+              <button>View project</button>
             </NavLink>
           </div>
         </div>
         <div className="workImg">
-          <img src={work.workPhoto} alt="" />
+          <img src={workPhotoArr.length != 0 ? workPhotoArr[0].imgSrc : null} alt="" />
         </div>
       </div>
     );
@@ -72,7 +80,7 @@ let PortfolioPage = (props) => {
           Each project has a description, design approaches taken and technologies used.
         </p>
       </div>
-      <Swiper {...params}>{Works}</Swiper>
+      {props.loading ? <Preloader /> : <Swiper {...params}>{Works}</Swiper>}
     </div>
   );
 };

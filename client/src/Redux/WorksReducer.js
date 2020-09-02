@@ -346,7 +346,7 @@ let initialState = {
       },
     },
   ],
-  works: null,
+  works: [],
   currentWorkId: null,
   newWork: {
     id: 0,
@@ -416,12 +416,6 @@ const worksReducer = (state = initialState, action) => {
         }),
       };
 
-    // if (work._id === action.img.owner && work.) {
-    //   return {
-    //     ...work,
-    //     colors: action.newColorData,
-    //   };
-
     case setPointWhatIDid:
       return {
         ...state,
@@ -439,7 +433,6 @@ const worksReducer = (state = initialState, action) => {
     case setImages:
       return {
         ...state,
-        // images: [...state.images, action.imagesData],
         images: action.imagesData,
       };
 

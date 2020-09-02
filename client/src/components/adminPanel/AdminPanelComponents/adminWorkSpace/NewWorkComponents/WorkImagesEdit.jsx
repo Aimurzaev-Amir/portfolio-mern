@@ -3,14 +3,26 @@ import BlockTitleText from "../../../../../common/BlockTitle";
 import { useState } from "react";
 
 const WorkImagesEdit = (props) => {
+  const MobileArr = [];
+  const DesktopArr = [];
+  if (props.images.length != 0) {
+    const createArr = props.images.map((ImgData) => {
+      if (ImgData.type === "mobileImg") {
+        MobileArr.push(ImgData);
+      } else if (ImgData.type === "desktopImg") {
+        DesktopArr.push(ImgData);
+      }
+    });
+  }
+
   const DesktopImg = (num) => {
-    if (props.images[num] != undefined) {
-      const imgSrc = `data:${props.images[num].imgType};charset=utf-8;base64,${props.images[
+    if (DesktopArr.length != 0) {
+      const imgSrc = `data:${DesktopArr[num].imgType};charset=utf-8;base64,${DesktopArr[
         num
       ].img.toString("base64")}`;
       return (
         <div>
-          <img src={imgSrc} alt={props.images[num].name}></img>
+          <img src={imgSrc} alt={DesktopArr[num].descr}></img>
         </div>
       );
     } else {
@@ -19,8 +31,15 @@ const WorkImagesEdit = (props) => {
   };
 
   const MobileImg = (num) => {
-    if (props.work.additional.mobileImg.length != 0) {
-      return <img src={props.work.additional.mobileImg[num].img} alt=""></img>;
+    if (MobileArr.length != 0) {
+      const imgSrc = `data:${MobileArr[num].imgType};charset=utf-8;base64,${MobileArr[
+        num
+      ].img.toString("base64")}`;
+      return (
+        <div>
+          <img src={imgSrc} alt={MobileArr[num].descr}></img>
+        </div>
+      );
     } else {
       return <p>don't have img</p>;
     }
@@ -29,8 +48,10 @@ const WorkImagesEdit = (props) => {
     <div className="workScreenshots wrapper">
       <BlockTitleText titleclassName="titleLines titleLines3" blockTitleText="desktop version" />
       <p className="sectionsParagraph">
-        Main sections of the {props.work.workName ? props.work.workName : '"WorkName"  '}
-        {props.work.smallDescription ? props.work.smallDescription : '"WorkType"'}. <br />
+        Main sections of the{" "}
+        {props.allWorks ? props.allWorks[props.allWorks.length - 1].workName + " " : '"WorkName"'}
+        {props.allWorks ? props.allWorks[props.allWorks.length - 1].smallDescription : '"WorkType"'}
+        . <br />
         Display on the desktop version.
       </p>
 
@@ -50,8 +71,14 @@ const WorkImagesEdit = (props) => {
       <div className="mobileVersionSection">
         <BlockTitleText titleclassName="titleLines titleLines3" blockTitleText="mobile version" />
         <p className="sectionsParagraph">
-          Main sections of the {props.work.workName ? props.work.workName : '"WorkName"  '}
-          {props.work.smallDescription ? props.work.smallDescription : '"WorkType"'}. <br />
+          Main sections of the{" "}
+          {props.allWorks
+            ? props.allWorks[props.allWorks.length - 1].workName + " "
+            : '"WorkName"  '}
+          {props.allWorks
+            ? props.allWorks[props.allWorks.length - 1].smallDescription
+            : '"WorkType"'}
+          . <br />
           Display on the mobile version.
         </p>
 

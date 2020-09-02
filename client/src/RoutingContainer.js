@@ -24,8 +24,15 @@ const AdminPanelMenuContainer = React.lazy(() =>
 const WorkSpaceNewWorkContainer = React.lazy(() =>
   import("./components/adminPanel/AdminPanelComponents/adminWorkSpace/WorkSpaceNewWorkContainer")
 );
-const WorkSpaceNewArticle = React.lazy(() =>
-  import("./components/adminPanel/AdminPanelComponents/adminWorkSpace/WorkSpaceNewArticle")
+const AdminArticlesSpaceContainer = React.lazy(() =>
+  import(
+    "./components/adminPanel/AdminPanelComponents/adminArticlesSpace/AdminArticlesSpaceContainer"
+  )
+);
+const UpdateLatestArticleDataContainer = React.lazy(() =>
+  import(
+    "./components/adminPanel/AdminPanelComponents/adminArticlesSpace/UpdateLatestArticleDataContainer"
+  )
 );
 const WorkSpaceFeedbacksContainer = React.lazy(() =>
   import(
@@ -58,7 +65,16 @@ function App(props) {
       <Route exact path="/authorization" render={SuspenseHOC(AdminPanelContainer)} />
       <Route exact path="/admin" render={SuspenseHOC(AdminPanelMenuContainer)} />
       <Route exact path="/admin/create-new-work" render={SuspenseHOC(WorkSpaceNewWorkContainer)} />
-      <Route exact path="/admin/create-new-article" render={SuspenseHOC(WorkSpaceNewArticle)} />
+      <Route
+        exact
+        path="/admin/create-new-article"
+        render={SuspenseHOC(AdminArticlesSpaceContainer)}
+      />
+      <Route
+        exact
+        path="/admin/update-latest-article"
+        render={SuspenseHOC(UpdateLatestArticleDataContainer)}
+      />
       <Route exact path="/admin/feedbacks" render={SuspenseHOC(WorkSpaceFeedbacksContainer)} />
       <Footer />
     </div>

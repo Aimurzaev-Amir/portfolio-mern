@@ -50,6 +50,16 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// /api/works/:id
+router.get("/getWork/:name", async (req, res) => {
+  try {
+    const Work = await Works.findById({ workName: req.params.name });
+    res.json(Work);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
 // /api/works/create-color
 router.post("/create-color", async (req, res) => {
   try {
@@ -166,10 +176,10 @@ function saveImage(imageData, imgEncoded) {
   }
 }
 
-// /api/works/getPhotos/:type
-router.get("/getPhotos/:type", async (req, res) => {
+// /api/works/getPhotos/:owner
+router.get("/getPhotos/:owner", async (req, res) => {
   try {
-    const img = await Img.find({ type: req.params.type });
+    const img = await Img.find({ owner: req.params.owner });
     res.json(img);
   } catch (e) {
     res.status(500).json({ message: "Something went wrong, please, try again" });
@@ -177,9 +187,9 @@ router.get("/getPhotos/:type", async (req, res) => {
 });
 
 // /api/works/getPhotos/:owner
-router.get("/getPhotos/:owner", async (req, res) => {
+router.get("/getMainPhotos/:type", async (req, res) => {
   try {
-    const img = await Img.find({ _id: req.params.owner });
+    const img = await Img.find({ type: req.params.type });
     res.json(img);
   } catch (e) {
     res.status(500).json({ message: "Something went wrong, please, try again" });

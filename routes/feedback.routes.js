@@ -5,19 +5,31 @@ const auth = require("../middleware/auth.middleware");
 const router = Router();
 
 // /api/feedback/sendFeedback
-router.post("/createArticleBlock", async (req, res) => {
-  try {
-    const { name, number, email, message } = req.body;
+router.post(
+  "/sendFeedback",
+  // auth,
+  [check("email", "Incorrect email").isEmail()],
+  async (req, res) => {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({
+          errors: errors.array(),
+          message: "Incorrect feedback data",
+        });
+      }
+      const { name, number, email, message } = req.body;
 
-    const feedback = new Feedback({ name, number, email, message });
+      const feedback = new Feedback({ name, number, email, message });
 
-    await feedback.save();
+      await feedback.save();
 
-    res.status(201).json({ message: "Article block send" });
-  } catch (e) {
-    res.status(500).json({ message: "Something went wrong, please, try again" });
+      res.status(201).json({ message: "Feedback send" });
+    } catch (e) {
+      res.status(500).json({ message: "Something went wrong, please, try again" });
+    }
   }
-});
+);
 
 router.get("/", async (req, res) => {
   try {
