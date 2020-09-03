@@ -15,26 +15,33 @@ import {
 import { useState } from "react";
 
 let WorkContainer = (props) => {
+  // get data from url
   let workName = props.match.params.workName;
   const { loading, error, request } = useHttp();
   useEffect(() => {
     const getLastWorkData = async () => {
+      // get all works data
       const worksData = await request("/api/works", "GET", null);
       props.setWork(worksData);
-      if (worksData.length != 0 || props.works.length != 0) {
-        worksData.map(async (data) => {
-          if (data.urlAdress === workName) {
-            props.setWorkId(data._id);
-            const worksColors = await request(`/api/works/colors/${data._id}`, "GET", null);
-            props.setColor(worksColors);
-            const worksStyles = await request(`/api/works/textStyles/${data._id}`, "GET", null);
-            props.setStyle(worksStyles);
-            const whatIDid = await request(`/api/works/didPoint/${data._id}`, "GET", null);
-            props.setWhatIDid(whatIDid);
-            const images = await request(`/api/works/getPhotos/${data._id}`, "GET", null);
-            props.setImagesData(images);
-          }
-        });
+      worksData.map(async (data) => {
+        if (data.urlAdress === workName) {
+          props.setWorkId(data._id);
+        }
+      });
+      // get extended current work data
+      if (props.currentWorkId != null) {
+        const worksColors = await request(`/api/works/colors/${props.currentWorkId}`, "GET", null);
+        props.setColor(worksColors);
+        const worksStyles = await request(
+          `/api/works/textStyles/${props.currentWorkId}`,
+          "GET",
+          null
+        );
+        props.setStyle(worksStyles);
+        const whatIDid = await request(`/api/works/didPoint/${props.currentWorkId}`, "GET", null);
+        props.setWhatIDid(whatIDid);
+        const images = await request(`/api/works/getPhotos/${props.currentWorkId}`, "GET", null);
+        props.setImagesData(images);
       }
     };
     getLastWorkData();
@@ -48,6 +55,7 @@ let mapStateToProps = (state) => {
     // works: state.works.Works,
     works: state.works.works,
     images: state.works.images,
+    currentWorkId: state.works.currentWorkId,
   };
 };
 

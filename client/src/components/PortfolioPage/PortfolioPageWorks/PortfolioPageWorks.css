@@ -370,3 +370,127 @@ TABLE {
     width: 100%;
     padding: 50px;
   } */
+
+@media (min-height: 1000px) {
+  .workDescriber {
+    margin-top: -30vh;
+  }
+}
+@media (min-height: 1500px) {
+  .workDescriber {
+    margin-top: -20vh;
+  }
+}
+@media (max-width: 1180px) {
+  .workDescriber {
+    margin-top: -30vh;
+  }
+  .workMainInfo,
+  .workScreenshots {
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+  }
+  .workIntroText {
+    padding-top: 200px;
+  }
+  .workOverview .designInfo {
+    flex-wrap: wrap;
+  }
+  .workOverview .designInfo .workTypography {
+    margin-bottom: 30px;
+  }
+  .mobileVersionScreenshots img {
+    padding: 20px;
+  }
+}
+@media (max-width: 700px) {
+  .leftSideButton {
+    justify-content: unset;
+    align-items: unset;
+  }
+  .workIntroText {
+    padding-top: 182px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .workMainInfo {
+    flex-direction: column;
+    align-items: unset;
+  }
+  .workOverview {
+    padding-right: 0px;
+  }
+  .workOverview .workTitle h2 {
+    text-align: center;
+  }
+  .workOverview .workTitle p {
+    padding-left: 27px;
+    border-left: 1px solid #6b6a6a;
+    padding-bottom: 30px;
+    font-size: 18px;
+  }
+  .workMainInfo {
+    margin-top: 15vh !important;
+  }
+  .workOverview .designInfo {
+    margin-top: 0px;
+    padding: 0 0 30px 30px;
+    flex-direction: column;
+    border-left: 1px solid #6b6a6a;
+  }
+  .workOverview .designInfo .workTypography {
+    margin-bottom: 0px;
+  }
+  .workOverview .designInfo .workStyles {
+    padding-top: 30px;
+  }
+  .workOverview .designInfo .workStyles .workStyle {
+    margin-top: 10px;
+    color: #6b6a6a;
+  }
+  .workOverview .designInfo .workColors {
+    padding-top: 30px;
+    text-align: left;
+  }
+  .colorEllipses {
+    grid-template-columns: 43px 43px 43px 43px;
+  }
+  .workOverview .designInfo p {
+    margin-top: 10px;
+  }
+  .desktopVersionScreenshots {
+    grid-template-columns: 1fr 1px;
+  }
+  .desktopVersionScreenshots img {
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid #6b6a6a;
+  }
+  .mobileVersionScreenshots {
+    grid-template-columns: auto auto;
+  }
+  .mobileVersionScreenshots img {
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid #6b6a6a;
+  }
+  .verticalLine {
+    border-left: unset;
+  }
+  .horizontalLine {
+    border-bottom: unset;
+  }
+  tr {
+    display: flex;
+    flex-direction: column;
+  }
+  td {
+    border: none;
+  }
+  .desktopScreenshotsRow {
+    padding: 0px;
+    border: none;
+  }
+  .desktopScreenshotsRow img {
+    padding: 0px;
+    width: 100%;
+  }
+}

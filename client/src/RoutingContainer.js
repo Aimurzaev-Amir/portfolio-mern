@@ -57,7 +57,7 @@ function App(props) {
       <Route exact path="/contacts" render={SuspenseHOC(FeedbackContainer)} />
       {/* Portfolio pages Routers */}
       <Route exact path="/portfolio" component={() => <PortfolioPageContainer />} />
-      <Route path="/portfolio/:workName?" component={() => <WorkContainer />} />
+      <Route path="/work/:workName?" component={() => <WorkContainer />} />
       {/* Blog pages Routers */}
       <Route exact path="/blog" render={SuspenseHOC(BlogPageContainer)} />
       <Route path="/blog/:articleName?" component={() => <ArticleContainer />} />
@@ -65,6 +65,7 @@ function App(props) {
       <Route exact path="/authorization" render={SuspenseHOC(AdminPanelContainer)} />
       <Route exact path="/admin" render={SuspenseHOC(AdminPanelMenuContainer)} />
       <Route exact path="/admin/create-new-work" render={SuspenseHOC(WorkSpaceNewWorkContainer)} />
+      {/* Create/Update alredy existing articles */}
       <Route
         exact
         path="/admin/create-new-article"

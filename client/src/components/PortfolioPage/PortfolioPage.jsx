@@ -56,7 +56,7 @@ let PortfolioPage = (props) => {
           {/* <h2>{work.whatIDid}</h2> */}
           <h2>UX | UI | WEB DEVELOPMENT</h2>
           <div className="buttonPage">
-            <NavLink to={"/portfolio/" + work.urlAdress} className="navItemLink">
+            <NavLink to={"/work/" + work.urlAdress} className="navItemLink">
               <button>View project</button>
             </NavLink>
           </div>
@@ -69,18 +69,24 @@ let PortfolioPage = (props) => {
   });
 
   return (
-    <div className="bgWhite">
-      <div className="portfolio wrapper">
-        <BlockTitleText
-          titleclassName="titleLines titleLines1 titleWrapper"
-          blockTitleText="projects"
-        />
-        <p className="titleWrapper">
-          Below you will find my previous works along with some projects which I have just taken on.
-          Each project has a description, design approaches taken and technologies used.
-        </p>
-      </div>
-      {props.loading ? <Preloader /> : <Swiper {...params}>{Works}</Swiper>}
+    <div>
+      {props.loading ? (
+        <Preloader />
+      ) : (
+        <div className="bgWhite">
+          <div className="portfolio wrapper">
+            <BlockTitleText
+              titleclassName="titleLines titleLines1 titleWrapper"
+              blockTitleText="projects"
+            />
+            <p className="titleWrapper">
+              Below you will find my previous works along with some projects which I have just taken
+              on. Each project has a description, design approaches taken and technologies used.
+            </p>
+          </div>
+          <Swiper {...params}>{Works}</Swiper>
+        </div>
+      )}
     </div>
   );
 };
