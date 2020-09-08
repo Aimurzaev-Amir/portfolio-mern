@@ -3,7 +3,7 @@ import { reduxForm, Field } from "redux-form";
 
 const OverviewStylesForm = (props) => {
   let fontSizesArray = [];
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 90; i++) {
     fontSizesArray.push(i);
   }
   let fontSizeOption = fontSizesArray.map((size) => {

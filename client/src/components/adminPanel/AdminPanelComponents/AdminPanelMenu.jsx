@@ -9,7 +9,12 @@ const AdminPanelMenu = (props) => {
     <div className="wrapper panelGrid">
       <AdminActionMenu logout={props.logout} />
       <div className="workSpace">
-        <WorkSpacePreview works={props.works} articles={props.articles} />
+        <WorkSpacePreview
+          works={props.works}
+          images={props.images}
+          articles={props.articles}
+          loading={props.loading}
+        />
       </div>
     </div>
   );

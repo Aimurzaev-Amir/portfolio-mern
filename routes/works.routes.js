@@ -9,9 +9,8 @@ const router = Router();
 // /api/works/create
 router.post("/create", async (req, res) => {
   try {
-    // const { id, urlAdress } = req.body;
-    const Work = new Works(req.body);
-
+    let Work = new Works(req.body);
+    console.log(Work);
     await Work.save();
 
     res.status(201).json({ Work });

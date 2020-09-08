@@ -18,7 +18,7 @@ let Navbar = (props) => {
       setToggle(true);
     } else {
       setToggle(false);
-    }
+    } 
   };
 
   const closeMenu = () => {

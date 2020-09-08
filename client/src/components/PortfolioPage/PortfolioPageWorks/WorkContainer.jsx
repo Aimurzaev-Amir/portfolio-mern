@@ -26,23 +26,35 @@ let WorkContainer = (props) => {
       worksData.map(async (data) => {
         if (data.urlAdress === workName) {
           props.setWorkId(data._id);
+          // get extended current work data
+          if (props.currentWorkId != null && props.currentWorkId === data._id) {
+            const worksColors = await request(
+              `/api/works/colors/${props.currentWorkId}`,
+              "GET",
+              null
+            );
+            props.setColor(worksColors);
+            const worksStyles = await request(
+              `/api/works/textStyles/${props.currentWorkId}`,
+              "GET",
+              null
+            );
+            props.setStyle(worksStyles);
+            const whatIDid = await request(
+              `/api/works/didPoint/${props.currentWorkId}`,
+              "GET",
+              null
+            );
+            props.setWhatIDid(whatIDid);
+            const images = await request(
+              `/api/works/getPhotos/${props.currentWorkId}`,
+              "GET",
+              null
+            );
+            props.setImagesData(images);
+          }
         }
       });
-      // get extended current work data
-      if (props.currentWorkId != null) {
-        const worksColors = await request(`/api/works/colors/${props.currentWorkId}`, "GET", null);
-        props.setColor(worksColors);
-        const worksStyles = await request(
-          `/api/works/textStyles/${props.currentWorkId}`,
-          "GET",
-          null
-        );
-        props.setStyle(worksStyles);
-        const whatIDid = await request(`/api/works/didPoint/${props.currentWorkId}`, "GET", null);
-        props.setWhatIDid(whatIDid);
-        const images = await request(`/api/works/getPhotos/${props.currentWorkId}`, "GET", null);
-        props.setImagesData(images);
-      }
     };
     getLastWorkData();
   }, []);
@@ -52,7 +64,6 @@ let WorkContainer = (props) => {
 
 let mapStateToProps = (state) => {
   return {
-    // works: state.works.Works,
     works: state.works.works,
     images: state.works.images,
     currentWorkId: state.works.currentWorkId,

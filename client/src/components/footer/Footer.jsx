@@ -5,6 +5,7 @@ import behance from "./img/socialNetworks/behance-footer.svg";
 import instagram from "./img/socialNetworks/instagram-footer.svg";
 import linkedin from "./img/socialNetworks/linkedin-footer.svg";
 import vk from "./img/socialNetworks/vk-footer.svg";
+import { NavLink } from "react-router-dom";
 
 let Footer = () => {
   return (
@@ -17,24 +18,24 @@ let Footer = () => {
       <nav className="footerNav" data-aos="zoom-in-up" data-aos-delay="100">
         <ul className="navLinks">
           <li className="navItem">
-            <a href="about-me.html" className="navItemLink">
+            <NavLink to={"/about-me"} className="navItemLink">
               About me
-            </a>
+            </NavLink>
           </li>
           <li className="navItem">
-            <a href="Portfolio.html" className="navItemLink">
+            <NavLink to={"/portfolio"} className="navItemLink">
               Portfolio
-            </a>
+            </NavLink>
           </li>
           <li className="navItem">
-            <a href="Blog.html" className="navItemLink">
+            <NavLink to={"/blog"} className="navItemLink">
               Blog
-            </a>
+            </NavLink>
           </li>
           <li className="navItem">
-            <a href="Contacts.html" className="navItemLink">
+            <NavLink to={"/contacts"} className="navItemLink">
               Contacts
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>

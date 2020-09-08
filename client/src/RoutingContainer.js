@@ -84,10 +84,7 @@ function App(props) {
 
 let mapStateToProps = (state) => {
   return {
-    works: state.works.Works,
     currentWorkId: state.works.currentWorkId,
-    articles: state.articles.Articles,
-    currentArticleId: state.articles.currentArticleId,
   };
 };
 

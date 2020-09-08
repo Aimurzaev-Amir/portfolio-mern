@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Swiper from "react-id-swiper";
 import "swiper/css/swiper.css";
 import "./PortfolioPage.css";
@@ -9,6 +9,9 @@ import Preloader from "../../common/Preloader/Preloader";
 // import KazTransGas from "./PortfolioPageWorks/KazTransGas";
 
 let PortfolioPage = (props) => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const params = {
     effect: "coverflow",
     grabCursor: true,
@@ -33,7 +36,6 @@ let PortfolioPage = (props) => {
       el: ".swiper-pagination",
       clickable: true,
     },
-    // loop: false,
   };
 
   let Works = props.works.map((work) => {

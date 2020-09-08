@@ -33,7 +33,6 @@ let PortfolioPageContainer = (props) => {
 
 let mapStateToProps = (state) => {
   return {
-    // works: state.works.Works,
     works: state.works.works,
     currentWorkId: state.works.currentWorkId,
     images: state.works.images,

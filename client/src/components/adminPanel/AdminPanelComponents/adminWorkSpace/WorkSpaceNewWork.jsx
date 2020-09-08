@@ -9,17 +9,6 @@ import FilePondWorks from "./NewWorkComponents/FilePondWorks";
 import { useHttp } from "../../../../hooks/http.hook";
 
 const WorkSpaceNewWork = (props) => {
-  const { loading, error, request } = useHttp();
-  useEffect(() => {
-    const getImages = async () => {
-      const worksData = await request("/api/works", "GET", null);
-      const currentWorkId = worksData[worksData.length - 1]._id;
-      const images = await request(`/api/works/getPhotos/${currentWorkId}`, "GET", null);
-      props.setImagesData(images);
-    };
-    getImages();
-  }, []);
-
   return (
     <div>
       <HeaderOFWork
@@ -47,7 +36,7 @@ const WorkSpaceNewWork = (props) => {
           />
         </div>
       </div>
-      <FilePondWorks loading={loading} allWorks={props.allWorks} />
+      <FilePondWorks loading={props.loading} allWorks={props.allWorks} />
       <WorkImagesEdit allWorks={props.allWorks} images={props.images} />
     </div>
   );

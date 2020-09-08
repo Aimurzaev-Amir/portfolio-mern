@@ -1,6 +1,5 @@
 import React from "react";
 import BlockTitleText from "../../../../../common/BlockTitle";
-import { useState } from "react";
 
 const WorkImagesEdit = (props) => {
   const MobileArr = [];
@@ -16,7 +15,7 @@ const WorkImagesEdit = (props) => {
   }
 
   const DesktopImg = (num) => {
-    if (DesktopArr.length != 0) {
+    if (DesktopArr.length != 0 && DesktopArr.length >= num + 1) {
       const imgSrc = `data:${DesktopArr[num].imgType};charset=utf-8;base64,${DesktopArr[
         num
       ].img.toString("base64")}`;
@@ -31,7 +30,7 @@ const WorkImagesEdit = (props) => {
   };
 
   const MobileImg = (num) => {
-    if (MobileArr.length != 0) {
+    if (MobileArr.length != 0 && MobileArr.length >= num + 1) {
       const imgSrc = `data:${MobileArr[num].imgType};charset=utf-8;base64,${MobileArr[
         num
       ].img.toString("base64")}`;
@@ -49,8 +48,12 @@ const WorkImagesEdit = (props) => {
       <BlockTitleText titleclassName="titleLines titleLines3" blockTitleText="desktop version" />
       <p className="sectionsParagraph">
         Main sections of the{" "}
-        {props.allWorks ? props.allWorks[props.allWorks.length - 1].workName + " " : '"WorkName"'}
-        {props.allWorks ? props.allWorks[props.allWorks.length - 1].smallDescription : '"WorkType"'}
+        {props.allWorks.length != 0
+          ? props.allWorks[props.allWorks.length - 1].workName + " "
+          : '"WorkName"'}
+        {props.allWorks.length != 0
+          ? props.allWorks[props.allWorks.length - 1].smallDescription
+          : '"WorkType"'}
         . <br />
         Display on the desktop version.
       </p>
@@ -72,10 +75,10 @@ const WorkImagesEdit = (props) => {
         <BlockTitleText titleclassName="titleLines titleLines3" blockTitleText="mobile version" />
         <p className="sectionsParagraph">
           Main sections of the{" "}
-          {props.allWorks
+          {props.allWorks.length != 0
             ? props.allWorks[props.allWorks.length - 1].workName + " "
             : '"WorkName"  '}
-          {props.allWorks
+          {props.allWorks.length != 0
             ? props.allWorks[props.allWorks.length - 1].smallDescription
             : '"WorkType"'}
           . <br />

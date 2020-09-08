@@ -53,7 +53,7 @@ const FilePondWorks = (props) => {
             <label htmlFor="type">Type: </label>
             <select name="type" id="">
               <option value="workPhoto">workPhoto</option>
-              <option value="workPreviw">workPreviw</option>
+              <option value="workPreview">workPreview</option>
               <option value="workBackground">workBackground</option>
               <option value="desktopImg">desktopImg</option>
               <option value="mobileImg">mobileImg</option>

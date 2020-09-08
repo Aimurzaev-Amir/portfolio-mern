@@ -10,6 +10,17 @@ import { NavLink } from "react-router-dom";
 
 let LatestWorks = (props) => {
   let Works = props.works.map((work) => {
+    const workPhotoArr = [];
+    if (props.images != undefined) {
+      props.images.map((imgData) => {
+        if (imgData.owner === work._id) {
+          const imgSrc = `data:${imgData.imgType};charset=utf-8;base64,${imgData.img.toString(
+            "base64"
+          )}`;
+          workPhotoArr.push({ imgSrc });
+        }
+      });
+    }
     return (
       <div className="workCard" key={work.id}>
         <div className="cardInfoOverlay">
@@ -26,18 +37,18 @@ let LatestWorks = (props) => {
             </div>
           </div>
           <div className="cardBody">
-            <img src={work.workPreview} alt={props.previewDescription} />
+            <img
+              src={workPhotoArr.length != 0 ? workPhotoArr[0].imgSrc : null}
+              alt={props.previewDescription}
+            />
           </div>
           <div className="workCardInfo">
             <p>{work.smallDescription}</p>
             <h3>{work.workName}</h3>
             <div className="buttonPage workCardButton">
-              <NavLink to={"/portfolio/" + work.urlAdress}>
+              <NavLink to={"/work/" + work.urlAdress}>
                 <button>View project</button>
               </NavLink>
-              {/* <a href={work.urlAdress}>
-                <button>View project</button>
-              </a> */}
             </div>
           </div>
         </div>
@@ -52,7 +63,7 @@ let LatestWorks = (props) => {
         blockTitleText={"Latest works"}
       />
       <div className="workCards">
-        <Swiper {...props.params}>{Works}</Swiper>
+        {props.loading ? "loading..." : <Swiper {...props.params}>{Works}</Swiper>}
       </div>
       <div className="buttonPage">
         <NavLink to="/portfolio/">

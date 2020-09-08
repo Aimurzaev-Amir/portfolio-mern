@@ -8,7 +8,12 @@ import bg from "../../adminPanel/img/mainBackgroundExample.jpg";
 let Work = (props) => {
   let WorkData = props.works.map((work) => {
     if (props.workName) {
-      if (work.urlAdress === props.workName) {
+      if (
+        work.urlAdress === props.workName &&
+        work.textStyles != undefined &&
+        work.whatIDid != undefined &&
+        work.colors != undefined
+      ) {
         let workStyle = work.textStyles.map((style) => {
           return (
             <p
@@ -99,6 +104,7 @@ let Work = (props) => {
               <header
                 className="workHeader"
                 style={{
+                  background: work.background,
                   backgroundImage: "url(" + Background + ")",
                 }}
               >

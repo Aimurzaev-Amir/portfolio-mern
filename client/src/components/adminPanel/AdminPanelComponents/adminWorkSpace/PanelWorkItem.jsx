@@ -3,7 +3,8 @@ import React from "react";
 let PanelWorkItem = (props) => {
   return (
     <div className="panelItem">
-      <img src={props.workPhoto} alt={props.previewDescription} />
+      {props.loading ? "loading..." : <img src={props.workPhoto} alt={props.previewDescription} />}
+
       <p>{props.workName}</p>
     </div>
   );

@@ -41,10 +41,12 @@
 .designSide img {
   animation: design-animation 0.5s ease-out forwards;
   z-index: 1;
+  max-height: 600px;
 }
 .frontEndSide img {
   animation: front-end-animation 0.5s ease-out forwards;
   z-index: 1;
+  max-height: 600px;
 }
 @keyframes side-text-anim {
   from {

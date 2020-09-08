@@ -9,7 +9,6 @@ import FeedbackContainer from "./Components/FeedbackForm/FeedbackContainer";
 
 let MainPage = () => {
   const section = useRef(null);
-
   const gotoSection = () => {
     window.scrollTo({
       top: section.current.offsetTop,
@@ -38,7 +37,7 @@ let MainPage = () => {
       },
     },
   };
-  return (
+  return ( 
     <div className="bgBlue">
       <header className="aboutMePage">
         <MainBanner gotoSection={gotoSection} />

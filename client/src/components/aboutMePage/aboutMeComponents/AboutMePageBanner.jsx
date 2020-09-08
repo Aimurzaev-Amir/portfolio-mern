@@ -1,9 +1,7 @@
 import React from "react";
-import "../aboutMePage.css"
-import "../../Media.css"
+import "../aboutMePage.css";
 import left from "../img/left.png";
 import right from "../img/right.png";
-
 
 let AboutMePageBanner = () => {
   return (
@@ -18,7 +16,6 @@ let AboutMePageBanner = () => {
                 experiences.
               </p>
             </div>
-
             <img src={left} alt="" />
           </div>
 

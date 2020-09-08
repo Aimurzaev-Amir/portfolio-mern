@@ -17,8 +17,8 @@ const WorkSpaceNewWorkContainer = (props) => {
     const getLastWorkData = async () => {
       const worksData = await request("/api/works", "GET", null);
       props.setWork(worksData);
-      if (worksData.length != 0 || props.allWork.length != 0) {
-        const currentWorkId = worksData[worksData.length - 1]._id;
+      if (props.allWorks.length !== 0) {
+        const currentWorkId = await worksData[worksData.length - 1]._id;
         props.setWorkId(currentWorkId);
         const worksColors = await request(`/api/works/colors/${currentWorkId}`, "GET", null);
         props.setColor(worksColors);
@@ -26,6 +26,8 @@ const WorkSpaceNewWorkContainer = (props) => {
         props.setStyle(worksStyles);
         const whatIDid = await request(`/api/works/didPoint/${currentWorkId}`, "GET", null);
         props.setWhatIDid(whatIDid);
+        const images = await request(`/api/works/getPhotos/${currentWorkId}`, "GET", null);
+        props.setImagesData(images);
       }
     };
     getLastWorkData();
@@ -114,6 +116,7 @@ const WorkSpaceNewWorkContainer = (props) => {
       onColorChange={onColorChange}
       setImagesData={props.setImagesData}
       currentWorkId={props.currentWorkId}
+      loading={loading}
     />
   );
 };

@@ -2,7 +2,6 @@ import React from "react";
 import "../MainPage.css";
 import "../../Media.css";
 import BlockTitleText from "../../../common/BlockTitle";
-import Button from "../../../common/Button";
 import { NavLink } from "react-router-dom";
 
 let Introduction = (props) => {
