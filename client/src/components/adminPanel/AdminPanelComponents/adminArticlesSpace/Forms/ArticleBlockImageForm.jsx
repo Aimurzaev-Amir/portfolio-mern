@@ -19,12 +19,12 @@ registerPlugin(
   FilePondPluginImageResize
 );
 
-const ArticleFilePondForm = (props) => {
+const ArticleBlockImageForm = (props) => {
   const [files, setFiles] = useState([]);
   return (
     <div className="filePondWorks wrapper">
-      <form action="/api/articles/addPhoto" method="POST">
-        <h2 className="editImageDataTitle">Add main article image</h2>
+      <form action="/api/articles/block/addPhoto" method="POST">
+        <h2 className="editImageDataTitle">Add image for block if necessary</h2>
         <div className="editImgData">
           <div className="editInput imgInput">
             <label htmlFor="descr">Description: </label>
@@ -35,15 +35,25 @@ const ArticleFilePondForm = (props) => {
               <label htmlFor="owner">Owner: </label>
               <input
                 type="text"
-                name="owner"
+                name="articleOwner"
                 defaultValue={props.articles[props.articles.length - 1]._id}
+              />
+            </div>
+          ) : null}
+          {props.blocks.length != 0 ? (
+            <div className="editInput imgInput hideInput">
+              <label htmlFor="owner">Owner: </label>
+              <input
+                type="text"
+                name="blockOwner"
+                defaultValue={props.blocks[props.blocks.length - 1]._id}
               />
             </div>
           ) : null}
           <div className="editFontStyle">
             <label htmlFor="type">Type: </label>
             <select name="type" id="">
-              <option value="articlePreview">articlePreview</option>
+              <option value="articleBlock">articleBlock</option>
             </select>
           </div>
         </div>
@@ -71,4 +81,4 @@ const ArticleFilePondForm = (props) => {
   );
 };
 
-export default ArticleFilePondForm;
+export default ArticleBlockImageForm;

@@ -6,7 +6,7 @@ const whatIDid = require("../models/WhatIDid");
 const Img = require("../models/Img");
 const router = Router();
 
-// /api/works/create
+// /api/works/create (create work)
 router.post("/create", async (req, res) => {
   try {
     let Work = new Works(req.body);
@@ -19,7 +19,7 @@ router.post("/create", async (req, res) => {
   }
 });
 
-// /api/works/:id
+// /api/works/:id (update data for current work(by id))
 router.patch("/:id", async (req, res) => {
   try {
     const Work = await Works.updateOne({ _id: req.params.id }, { $set: req.body });
@@ -29,7 +29,7 @@ router.patch("/:id", async (req, res) => {
   }
 });
 
-// /api/works/
+// /api/works/ (get all data about all works)
 router.get("/", async (req, res) => {
   try {
     const WorksData = await Works.find();
@@ -39,7 +39,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// /api/works/:id
+// /api/works/:id (get work data by id)
 router.get("/:id", async (req, res) => {
   try {
     const Work = await Works.findById(req.params.id);
@@ -49,7 +49,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// /api/works/:id
+// /api/works/:id (get work data by work name)
 router.get("/getWork/:name", async (req, res) => {
   try {
     const Work = await Works.findById({ workName: req.params.name });
@@ -175,7 +175,7 @@ function saveImage(imageData, imgEncoded) {
   }
 }
 
-// /api/works/getPhotos/:owner
+// /api/works/getPhotos/:owner (get images for only current work)
 router.get("/getPhotos/:owner", async (req, res) => {
   try {
     const img = await Img.find({ owner: req.params.owner });
@@ -184,8 +184,8 @@ router.get("/getPhotos/:owner", async (req, res) => {
     res.status(500).json({ message: "Something went wrong, please, try again" });
   }
 });
-
-// /api/works/getPhotos/:owner
+ 
+// /api/works/getPhotos/:owner (get only work covers)
 router.get("/getMainPhotos/:type", async (req, res) => {
   try {
     const img = await Img.find({ type: req.params.type });

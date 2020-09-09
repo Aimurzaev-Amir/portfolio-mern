@@ -3,10 +3,6 @@ import { Field, reduxForm } from "redux-form";
 import MainImagesUploadForm from "./MainImagesUploadForm";
 
 const HeaderUpdateWorkImgForm = (props) => {
-  // useEffect(() => {
-  //   props.changePhoto(props.work.workPhoto);
-  // }, [props.work.workPhoto]);
-
   return (
     <div className="wrapper workIntroEdit">
       <MainImagesUploadForm

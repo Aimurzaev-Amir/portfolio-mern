@@ -15,12 +15,12 @@ const AdminArticlesSpaceContainer = (props) => {
       setCreated(true);
     } catch (e) {}
   };
-  return (
+  return ( 
     <div>
       {created ? (
-        <Redirect to={"/admin/update-latest-article"} />
+        <Redirect to={"/admin/update-latest-article"} /> 
       ) : (
-        <AdminArticlesSpace createArticle={createArticle} />
+        <AdminArticlesSpace createArticle={createArticle} /> 
       )}
     </div>
   );

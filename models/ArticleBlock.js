@@ -3,7 +3,8 @@ const { Schema, model, Types } = require("mongoose");
 const schema = new Schema({
   title: { type: String },
   titlePosition: { type: String },
-  owner: { type: Types.ObjectId, ref: "ArticleFullVersion" },
+  text: { type: String },
+  owner: { type: Types.ObjectId, ref: "Articles" },
 });
 
-module.exports = model("SectionTitle", schema); 
+module.exports = model("ArticleBlock", schema);

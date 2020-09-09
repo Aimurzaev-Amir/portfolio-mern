@@ -1,6 +1,6 @@
-const newArticleType = "ARTICLESREDUCER/ADD-WORK";
 const setCurrentArticleType = "ARTICLESREDUCER/CHANGE-ARTICLE-ID";
-const setArticleData = "ARTICLESREDUCER/SET-ARTICLE-DATA"
+const setArticleData = "ARTICLESREDUCER/SET-ARTICLE-DATA";
+const setBlocksData = "ARTICLESREDUCER/SET-BLOCKS-DATA";
 
 let initialState = {
   Articles: [
@@ -524,8 +524,9 @@ let initialState = {
       ],
     },
   ],
-  articles: null,
-  currentArticleId: 1,
+  articles: [],
+  blocks: [],
+  currentArticleId: null,
 };
 
 const ArticlesReducer = (state = initialState, action) => {
@@ -534,6 +535,11 @@ const ArticlesReducer = (state = initialState, action) => {
       return {
         ...state,
         articles: action.newArticleData,
+      };
+    case setBlocksData:
+      return {
+        ...state,
+        blocks: action.newBlocksData,
       };
     case setCurrentArticleType:
       return {
@@ -551,6 +557,14 @@ export const setArticles = (newArticleData) => {
     newArticleData,
   };
 };
+
+export const setArticleBlocks = (newBlocksData) => {
+  return {
+    type: setBlocksData,
+    newBlocksData,
+  };
+};
+
 export const setArticleId = (currentArticleId) => {
   return {
     type: setCurrentArticleType,

@@ -1,7 +1,8 @@
 const { Router } = require("express");
 const Articles = require("../models/Articles");
-const ArticleFullVersion = require("../models/ArticleFullVersion");
-const ArticleImg = require("../models/ArticleImg");
+const ArticlesImages = require("../models/ArticlesImages");
+const ArticleBlock = require("../models/ArticleBlock");
+const BlocksImages = require("../models/BlocksImages");
 const router = Router();
 
 // Creating main routes for Articles Model.
@@ -9,9 +10,8 @@ const router = Router();
 // /api/articles/create
 router.post("/create", async (req, res) => {
   try {
-    const { articleName, articleSmallDescription, urlAdress } = req.body;
-    const Article = new Articles({ articleName, articleSmallDescription, urlAdress });
-
+    const Article = new Articles(req.body);
+    console.log(Article);
     await Article.save();
 
     res.status(201).json({ Article });
@@ -20,14 +20,62 @@ router.post("/create", async (req, res) => {
   }
 });
 
+// /api/works/ (get all data about all works)
+router.get("/", async (req, res) => {
+  try {
+    const ArticlesData = await Articles.find();
+    res.json(ArticlesData);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+router.post("/createArticleBlock", async (req, res) => {
+  try {
+    const Block = new ArticleBlock(req.body);
+    console.log(Block);
+    await Block.save();
+
+    res.status(201).json({ Block });
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+// /api/works/ (get all data about all works)
+router.get("/getArticleBlockData", async (req, res) => {
+  try {
+    const ArticleBlockData = await ArticleBlock.find();
+    res.json(ArticleBlockData);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
 // /api/articles/addPhoto
 router.post("/addPhoto", async (req, res) => {
-  const { name, descr, type, img, owner } = req.body;
-  const imageData = new ArticleImg({
-    name,
+  const { descr, type, img, owner } = req.body;
+  const imageData = new ArticlesImages({
     descr,
     type,
     owner,
+  });
+  saveImage(imageData, img);
+  try {
+    const newImg = await imageData.save();
+    res.redirect("/admin/update-latest-article");
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+router.post("/block/addPhoto", async (req, res) => {
+  const { descr, type, img, articleOwner, blockOwner } = req.body;
+  const imageData = new BlocksImages({
+    descr,
+    type,
+    articleOwner,
+    blockOwner,
   });
   saveImage(imageData, img);
   try {
@@ -53,51 +101,5 @@ function saveImage(imageData, imgEncoded) {
     imageData.imgType = img.type;
   }
 }
-
-// /api/articles/createFull
-router.post("/createFull", async (req, res) => {
-  try {
-    const Article = Articles.findOne().sort({ field: -_id }).limit(1);
-    // const Article = await Articles.findOne({ _id: req.body.id });
-    // const articleId = Article._id;
-    // const FullVersion = new ArticleFullVersion({ color: req.body.color, owner: articleId });
-    // await FullVersion.save();
-
-    // res.status(201).json({ FullVersion });
-    res.status(201).json({ Article });
-  } catch (e) {
-    res.status(500).json({ message: "Something went wrong, please, try again" });
-  }
-});
-
-// /api/articles/:id
-router.patch("/:id", async (req, res) => {
-  try {
-    const Article = await Articles.updateOne({ _id: req.params.id }, { $set: req.body });
-    res.json({ Article });
-  } catch (e) {
-    res.status(500).json({ message: "Something went wrong, please, try again" });
-  }
-});
-
-// /api/articles/
-router.get("/", async (req, res) => {
-  try {
-    const ArticlesData = await Articles.find();
-    res.json(ArticlesData);
-  } catch (e) {
-    res.status(500).json({ message: "Something went wrong, please, try again" });
-  }
-});
-
-// /api/articles/:id
-router.get("/:id", async (req, res) => {
-  try {
-    const Article = await Articles.findById(req.params.id);
-    res.json(Article);
-  } catch (e) {
-    res.status(500).json({ message: "Something went wrong, please, try again" });
-  }
-});
 
 module.exports = router;
