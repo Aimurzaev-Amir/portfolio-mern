@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 let LatestBlogArticles = (props) => {
   let latestArticles = props.articles.map((article) => {
     return (
-      <div className="articleCard">
+      <div className="articleCard" key={article.id}>
         <div className="articleImg">
           <img src={article.articlePreview} alt={article.previewDescription} />
         </div>

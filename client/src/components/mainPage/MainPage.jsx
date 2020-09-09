@@ -15,10 +15,10 @@ let MainPage = () => {
       behavior: "smooth",
     });
   };
-  
+
   const params = {
     grabCursor: true,
-    slidesPerView: "auto",
+    slidesPerView: "1.2",
     spaceBetween: 30,
     breakpoints: {
       0: {
@@ -31,18 +31,20 @@ let MainPage = () => {
       500: {
         centeredSlides: false,
         pagination: false,
+        slidesPerView: "auto",
       },
       950: {
         allowTouchMove: false,
+        slidesPerView: "auto",
       },
     },
   };
-  return ( 
+  return (
     <div className="bgBlue">
       <header className="aboutMePage">
         <MainBanner gotoSection={gotoSection} />
       </header>
-      <Introduction  section={section} />
+      <Introduction section={section} />
       <SkillsList />
       <LatestWorksContainer params={params} />
       <LatestBlogArticlesContainer params={params} />

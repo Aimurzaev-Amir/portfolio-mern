@@ -1,14 +1,13 @@
 .aboutMePage {
   height: 100vh;
-  /* height: calc(100vh - 92px); */
   /* height: calc(var(--vh, 1vh) * 100); */
   background-color: #fff;
-  /* background-image: url(./img/main.png); */
-  background-image: url(./img/cutted.png);
+  background-image: url(./img/main.png);
+  /* background-image: url(./img/cutted.png); */
   background-attachment: fixed;
   background-position: right bottom;
   background-repeat: no-repeat;
-  background-size: 40%;
+  background-size: 35%;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   transition: 0.3s;
 }
@@ -459,11 +458,6 @@
   width: 28px;
   height: 28px;
 }
-
-.workCards .swiper-container {
-  /* margin-top: 90px; */
-  /* margin-bottom: 100px; */
-}
 .workCards .swiper-slide {
   max-width: 340px;
 }
@@ -474,6 +468,14 @@
   margin-right: 0px !important;
 }
 /* Ways to contact me block END */
+.loadingBlock {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.loadingGif {
+  max-width: 100px;
+}
 
 @media (max-width: 1180px) {
   .aboutMeMainText,
@@ -486,7 +488,6 @@
   }
   .aboutMePage {
     background-attachment: scroll;
-    /* height: 94vh; */
     background-size: 60%;
   }
   .aboutIntro,
@@ -605,6 +606,9 @@
   }
   .contactMe .contactInfo {
     margin-top: 21px;
+  }
+  .mobileLoading {
+    display: none;
   }
 }
 @media (max-width: 500px) {

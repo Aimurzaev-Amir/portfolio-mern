@@ -1,12 +1,10 @@
 import React from "react";
 import "../../MainPage.css";
-import "../../../Media.css";
-import WorkPreview from "./WorkPreview";
 import BlockTitleText from "../../../../common/BlockTitle";
-import Button from "../../../../common/Button";
 import Swiper from "react-id-swiper";
 import "swiper/css/swiper.css";
 import { NavLink } from "react-router-dom";
+import loading from "../../../../common/loading.gif";
 
 let LatestWorks = (props) => {
   let Works = props.works.map((work) => {
@@ -22,7 +20,7 @@ let LatestWorks = (props) => {
       });
     }
     return (
-      <div className="workCard" key={work.id}>
+      <div className="workCard" key={work._id}>
         <div className="cardInfoOverlay">
           <div className="cardHeader">
             <div className="elipses">
@@ -62,9 +60,19 @@ let LatestWorks = (props) => {
         titleclassName={"titleLines titleLines1 titleWrapper"}
         blockTitleText={"Latest works"}
       />
+
       <div className="workCards">
-        {props.loading ? "loading..." : <Swiper {...props.params}>{Works}</Swiper>}
+        {props.loading ? (
+          <div className="loadingBlock">
+            <img className="loadingGif" src={loading} alt="loading" />
+            <img className="loadingGif mobileLoading" src={loading} alt="loading" />
+            <img className="loadingGif mobileLoading" src={loading} alt="loading" />
+          </div>
+        ) : (
+          <Swiper {...props.params}>{Works}</Swiper>
+        )}
       </div>
+
       <div className="buttonPage">
         <NavLink to="/portfolio/">
           <button>View more projects</button>
