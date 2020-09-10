@@ -5,6 +5,8 @@ const schema = new Schema({
   type: { type: String },
   img: { type: String },
   imgType: { type: String },
+  imgPositioning: { type: String },
+  imgWidth: { type: String },
   articleOwner: { type: Types.ObjectId, ref: "Articles" },
   blockOwner: { type: Types.ObjectId, ref: "ArticleBlock" },
 });

@@ -1,6 +1,10 @@
 const setCurrentArticleType = "ARTICLESREDUCER/CHANGE-ARTICLE-ID";
 const setArticleData = "ARTICLESREDUCER/SET-ARTICLE-DATA";
 const setBlocksData = "ARTICLESREDUCER/SET-BLOCKS-DATA";
+const setBlocksImages = "ARTICLESREDUCER/SET-BLOCKS-IMAGES";
+const setArticlesImages = "ARTICLESREDUCER/SET-ARTICLES-IMAGES";
+const setBlocksLists = "ARTICLESREDUCER/SET-BLOCKS-LISTS";
+const setBlocksTextAreas = "ARTICLESREDUCER/SET-BLOCKS-TEXT-AREAS";
 
 let initialState = {
   Articles: [
@@ -524,9 +528,13 @@ let initialState = {
       ],
     },
   ],
+  currentArticleId: 0,
   articles: [],
+  images: [],
   blocks: [],
-  currentArticleId: null,
+  blocksImages: [],
+  blocksLists: [],
+  blocksTextAreas: [],
 };
 
 const ArticlesReducer = (state = initialState, action) => {
@@ -536,10 +544,30 @@ const ArticlesReducer = (state = initialState, action) => {
         ...state,
         articles: action.newArticleData,
       };
+    case setArticlesImages:
+      return {
+        ...state,
+        images: action.newArticlesImages,
+      };
     case setBlocksData:
       return {
         ...state,
         blocks: action.newBlocksData,
+      };
+    case setBlocksImages:
+      return {
+        ...state,
+        blocksImages: action.newBlocksImages,
+      };
+    case setBlocksLists:
+      return {
+        ...state,
+        blocksLists: action.newBlocksLists,
+      };
+    case setBlocksTextAreas:
+      return {
+        ...state,
+        blocksTextAreas: action.newBlocksTextAreas,
       };
     case setCurrentArticleType:
       return {
@@ -551,10 +579,24 @@ const ArticlesReducer = (state = initialState, action) => {
   }
 };
 
+export const setArticleId = (currentArticleId) => {
+  return {
+    type: setCurrentArticleType,
+    currentArticleId,
+  };
+};
+
 export const setArticles = (newArticleData) => {
   return {
     type: setArticleData,
     newArticleData,
+  };
+};
+
+export const setArticlesMainImages = (newArticlesImages) => {
+  return {
+    type: setArticlesImages,
+    newArticlesImages,
   };
 };
 
@@ -565,10 +607,24 @@ export const setArticleBlocks = (newBlocksData) => {
   };
 };
 
-export const setArticleId = (currentArticleId) => {
+export const setArticleBlocksImages = (newBlocksImages) => {
   return {
-    type: setCurrentArticleType,
-    currentArticleId,
+    type: setBlocksImages,
+    newBlocksImages,
+  };
+};
+
+export const setArticleBlocksLists = (newBlocksLists) => {
+  return {
+    type: setBlocksLists,
+    newBlocksLists,
+  };
+};
+
+export const setArticleBlocksTextAreas = (newBlocksTextAreas) => {
+  return {
+    type: setBlocksTextAreas,
+    newBlocksTextAreas,
   };
 };
 

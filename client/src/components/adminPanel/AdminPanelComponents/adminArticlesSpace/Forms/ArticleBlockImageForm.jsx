@@ -21,6 +21,9 @@ registerPlugin(
 
 const ArticleBlockImageForm = (props) => {
   const [files, setFiles] = useState([]);
+  const setValue = () => {
+    console.log();
+  };
   return (
     <div className="filePondWorks wrapper">
       <form action="/api/articles/block/addPhoto" method="POST">
@@ -29,6 +32,17 @@ const ArticleBlockImageForm = (props) => {
           <div className="editInput imgInput">
             <label htmlFor="descr">Description: </label>
             <input type="text" name="descr" />
+          </div>
+          <div className="editInput imgInput">
+            <label htmlFor="imgWidth">Width: </label>
+            <input type="text" name="imgWidth" />
+          </div>
+          <div className="editFontStyle">
+            <label htmlFor="imgPositioning">Position: </label>
+            <select name="imgPositioning">
+              <option value="auto">auto</option>
+              <option value="unset">left</option>
+            </select>
           </div>
           {props.articles.length != 0 ? (
             <div className="editInput imgInput hideInput">
@@ -46,13 +60,14 @@ const ArticleBlockImageForm = (props) => {
               <input
                 type="text"
                 name="blockOwner"
-                defaultValue={props.blocks[props.blocks.length - 1]._id}
+                value={props.blocks[props.blocks.length - 1]._id}
+                onChange={setValue}
               />
             </div>
           ) : null}
           <div className="editFontStyle">
             <label htmlFor="type">Type: </label>
-            <select name="type" id="">
+            <select name="type">
               <option value="articleBlock">articleBlock</option>
             </select>
           </div>

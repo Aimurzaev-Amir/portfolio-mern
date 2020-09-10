@@ -11,16 +11,17 @@ const AdminArticlesSpaceContainer = (props) => {
     try {
       const createArticleData = await request("/api/articles/create", "POST", {
         ...formData,
+        // articleDate: "28 Feb 2020",
       });
       setCreated(true);
     } catch (e) {}
   };
-  return ( 
+  return (
     <div>
       {created ? (
-        <Redirect to={"/admin/update-latest-article"} /> 
+        <Redirect to={"/admin/update-latest-article"} />
       ) : (
-        <AdminArticlesSpace createArticle={createArticle} /> 
+        <AdminArticlesSpace createArticle={createArticle} />
       )}
     </div>
   );

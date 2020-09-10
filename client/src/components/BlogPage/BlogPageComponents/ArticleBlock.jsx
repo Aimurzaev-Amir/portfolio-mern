@@ -6,7 +6,7 @@ let ArticleBlock = (props) => {
     <h3 style={{ textAlign: props.sectionTitle.titlePosition }}>{props.sectionTitle.title}</h3>
   ) : null;
 
-  let sectionImg = props.sectionImg ? (
+  let sectionImg = props.sectionImg ? ( 
     <img
       style={{
         marginLeft: props.sectionImg.imgPositioning,

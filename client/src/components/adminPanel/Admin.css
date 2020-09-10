@@ -180,10 +180,20 @@
   justify-content: space-around;
   margin-bottom: 15px;
 }
+.articleBlockAdditionalData{
+  margin-top: 20px;
+}
 .editFontStyle {
   font-weight: normal;
   font-size: 18px;
   color: #6b6a6a;
+}
+.blockTextArea {
+  background-color: #000;
+  color: #fff;
+  font-size: 18px;
+  padding: 15px;
+  width: 100%;
 }
 .hideInput {
   display: none;

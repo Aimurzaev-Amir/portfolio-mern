@@ -3,6 +3,8 @@ const Articles = require("../models/Articles");
 const ArticlesImages = require("../models/ArticlesImages");
 const ArticleBlock = require("../models/ArticleBlock");
 const BlocksImages = require("../models/BlocksImages");
+const BlocksLists = require("../models/BlocksLists");
+const BlocksTextAreas = require("../models/BlocksTextAreas");
 const router = Router();
 
 // Creating main routes for Articles Model.
@@ -11,7 +13,6 @@ const router = Router();
 router.post("/create", async (req, res) => {
   try {
     const Article = new Articles(req.body);
-    console.log(Article);
     await Article.save();
 
     res.status(201).json({ Article });
@@ -33,10 +34,31 @@ router.get("/", async (req, res) => {
 router.post("/createArticleBlock", async (req, res) => {
   try {
     const Block = new ArticleBlock(req.body);
-    console.log(Block);
     await Block.save();
 
     res.status(201).json({ Block });
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+router.post("/createArticleBlockList", async (req, res) => {
+  try {
+    const BlockList = new BlocksLists(req.body);
+    await BlockList.save();
+
+    res.status(201).json({ BlockList });
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+router.post("/createArticleBlockTextArea", async (req, res) => {
+  try {
+    const BlockTextArea = new BlocksTextAreas(req.body);
+    await BlockTextArea.save();
+
+    res.status(201).json({ BlockTextArea });
   } catch (e) {
     res.status(500).json({ message: "Something went wrong, please, try again" });
   }
@@ -47,6 +69,56 @@ router.get("/getArticleBlockData", async (req, res) => {
   try {
     const ArticleBlockData = await ArticleBlock.find();
     res.json(ArticleBlockData);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+// /api/works/ (get all data about all works)
+router.get("/getArticleBlockData/:id", async (req, res) => {
+  try {
+    const ArticleBlockData = await ArticleBlock.find({ owner: req.params.id });
+    res.json(ArticleBlockData);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+// /api/works/ (get all data about all works)
+router.get("/getArticleBlockLists/:id", async (req, res) => {
+  try {
+    const ArticleBlockListsData = await BlocksLists.find({ articleOwner: req.params.id });
+    res.json(ArticleBlockListsData);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+// /api/works/ (get all data about all works)
+router.get("/getArticleBlockTextAreas/:id", async (req, res) => {
+  try {
+    const ArticleBlockTextAreasData = await BlocksTextAreas.find({ articleOwner: req.params.id });
+    res.json(ArticleBlockTextAreasData);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+// /api/works/ (get all data about all works)
+router.get("/getArticleMainImages/:id", async (req, res) => {
+  try {
+    const ArticleBlockImages = await ArticlesImages.find({ owner: req.params.id });
+    res.json(ArticleBlockImages);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+// /api/works/ (get all data about all works)
+router.get("/getArticleBlockImages/:id", async (req, res) => {
+  try {
+    const ArticleBlockImages = await BlocksImages.find({ articleOwner: req.params.id });
+    res.json(ArticleBlockImages);
   } catch (e) {
     res.status(500).json({ message: "Something went wrong, please, try again" });
   }
@@ -70,10 +142,12 @@ router.post("/addPhoto", async (req, res) => {
 });
 
 router.post("/block/addPhoto", async (req, res) => {
-  const { descr, type, img, articleOwner, blockOwner } = req.body;
+  const { descr, type, img, imgPositioning, imgWidth, articleOwner, blockOwner } = req.body;
   const imageData = new BlocksImages({
     descr,
     type,
+    imgPositioning,
+    imgWidth,
     articleOwner,
     blockOwner,
   });

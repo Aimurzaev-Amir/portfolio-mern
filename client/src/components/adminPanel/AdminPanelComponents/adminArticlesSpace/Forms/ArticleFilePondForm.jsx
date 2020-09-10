@@ -42,7 +42,7 @@ const ArticleFilePondForm = (props) => {
           ) : null}
           <div className="editFontStyle">
             <label htmlFor="type">Type: </label>
-            <select name="type" id="">
+            <select name="type">
               <option value="articlePreview">articlePreview</option>
             </select>
           </div>
