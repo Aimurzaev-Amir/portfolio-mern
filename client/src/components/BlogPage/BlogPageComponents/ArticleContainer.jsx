@@ -29,11 +29,11 @@ let ArticleContainer = (props) => {
           null
         );
         props.setArticles(articlesResponse);
-        if (articlesResponse.length != 0) {
+        if (articlesResponse.length !== 0) {
           const currentId = articlesResponse[0]._id;
           props.setArticleId(currentId);
         }
-        if (props.currentArticleId != 0 && props.currentArticleId === articlesResponse[0]._id) {
+        if (props.currentArticleId !== 0 && props.currentArticleId === articlesResponse[0]._id) {
           const articlesImages = await request(
             `/api/articles/getArticleMainImages/${props.currentArticleId}`,
             "GET",

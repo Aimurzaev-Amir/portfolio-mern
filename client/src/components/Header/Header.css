@@ -11,17 +11,13 @@
 header {
   overflow: hidden;
 }
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
 .navOverlay {
   background: #000;
+  transition: 0.7s;
   animation: nav-animation 1s ease-out forwards;
   position: absolute;
   width: 100%;
-  z-index: 9;
+  z-index: 12;
 }
 .mainNav {
   display: flex;
@@ -167,6 +163,15 @@ header {
 }
 
 @media (max-width: 750px) {
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  .headerOpacity {
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: 0.7s;
+  }
   .navOverlay {
     animation: unset;
     top: 0;

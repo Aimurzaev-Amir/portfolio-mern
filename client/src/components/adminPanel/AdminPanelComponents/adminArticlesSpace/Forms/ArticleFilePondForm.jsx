@@ -30,7 +30,7 @@ const ArticleFilePondForm = (props) => {
             <label htmlFor="descr">Description: </label>
             <input type="text" name="descr" />
           </div>
-          {props.articles.length != 0 ? (
+          {props.articles.length !== 0 ? (
             <div className="editInput imgInput hideInput">
               <label htmlFor="owner">Owner: </label>
               <input

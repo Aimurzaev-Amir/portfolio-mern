@@ -5,7 +5,7 @@ import AdminPanel from "../AdminPanel";
 import { login, setError } from "../../../Redux/AdminReducer";
 
 let AdminPanelContainer = (props) => {
-  const { loading, error, request } = useHttp();
+  const { request } = useHttp();
 
   const registerHandler = async (formData) => {
     try {

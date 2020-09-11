@@ -485,11 +485,13 @@ TABLE {
   td {
     border: none;
   }
-  .desktopScreenshotsRow {
+  .desktopScreenshotsRow,
+  .mobileScreenshotsRow {
     padding: 0px;
     border: none;
   }
-  .desktopScreenshotsRow img {
+  .desktopScreenshotsRow img,
+  .mobileScreenshotsRow img {
     padding: 0px;
     width: 100%;
   }

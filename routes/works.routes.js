@@ -39,6 +39,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+// /api/works/:id (get work data by work name)
+router.get("/getWork/:url", async (req, res) => {
+  try {
+    console.log(req.params.url);
+    const Work = await Works.find({ urlAdress: req.params.url });
+    res.json(Work);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
 // /api/works/:id (get work data by id)
 router.get("/:id", async (req, res) => {
   try {
@@ -169,7 +180,7 @@ function saveImage(imageData, imgEncoded) {
   }
 
   const img = JSON.parse(imgEncoded);
-  if (img != null && imageMimeTypes.includes(img.type)) {
+  if (img !== null && imageMimeTypes.includes(img.type)) {
     imageData.img = new Buffer.from(img.data, "utf-8");
     imageData.imgType = img.type;
   }
@@ -184,7 +195,7 @@ router.get("/getPhotos/:owner", async (req, res) => {
     res.status(500).json({ message: "Something went wrong, please, try again" });
   }
 });
- 
+
 // /api/works/getPhotos/:owner (get only work covers)
 router.get("/getMainPhotos/:type", async (req, res) => {
   try {

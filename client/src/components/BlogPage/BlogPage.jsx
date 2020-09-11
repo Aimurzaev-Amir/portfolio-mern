@@ -8,7 +8,7 @@ let BlogPage = (props) => {
     let BlogPageImages = props.images.map((image) => {
       if (image.owner === article._id) {
         const MainImg =
-          props.images.length != 0 &&
+          props.images.length !== 0 &&
           `data:${image.imgType};charset=utf-8;base64,${image.img.toString("base64")}`;
         return <img key={image._id} src={MainImg} alt={image.descr} />;
       }

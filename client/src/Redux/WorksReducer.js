@@ -2,17 +2,14 @@ const setWorkData = "WORKSREDUCER/SET/WORK/DATA";
 const setWorkStyle = "WORKSREDUCER/SET-WORK-STYLE";
 const setWorkColors = "WORKSREDUCER/SET-WORK-COLORS";
 const setPointWhatIDid = "WORKSREDUCER/SET-POINT-WHATIDID";
-const setWorkDesktopImg = "WORKSREDUCER/SET-WORK-DESKTOP-IMG";
-const setWorkMobileImg = "WORKSREDUCER/SET-WORK-MOBILE-IMG";
-const setMainPhoto = "WORKSREDUCER/SET-MAIN-PHOTO";
-const setMainBackground = "WORKSREDUCER/SET-MAIN-BACKGROUND";
-const setWorkPreview = "WORKSREDUCER/SET-WORK-PREVIEW";
+const setCurrentWorkName = "WORKSREDUCER/SET-CURRENT-WORK-NAME";
 const setCurrentWorkType = "WORKSREDUCER/SET-WORK-ID";
 const setImages = "WORKSREDUCER/SET-IMAGES";
 
 let initialState = {
   works: [],
   currentWorkId: null,
+  currentWorkName: null,
   newWork: {
     id: 0,
     workName: "",
@@ -46,6 +43,11 @@ const worksReducer = (state = initialState, action) => {
       return {
         ...state,
         currentWorkId: action.currentWorkId,
+      };
+    case setCurrentWorkName:
+      return {
+        ...state,
+        currentWorkName: action.currentWorkName,
       };
     case setWorkData:
       return {
@@ -112,6 +114,13 @@ export const setWorkId = (currentWorkId) => {
   return {
     type: setCurrentWorkType,
     currentWorkId,
+  };
+};
+
+export const setWorkName = (currentWorkName) => {
+  return {
+    type: setCurrentWorkName,
+    currentWorkName,
   };
 };
 

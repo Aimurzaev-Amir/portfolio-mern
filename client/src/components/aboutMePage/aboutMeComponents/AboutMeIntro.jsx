@@ -1,10 +1,10 @@
 import React from "react";
 import "../aboutMePage.css";
 import "../../../App.css";
-import "../../Media.css"
 import BlockTitleText from "../../../common/BlockTitle";
 import design from "../img/about-me-design.svg";
 import frontEnd from "../img/about-me-front-end.svg";
+import resume from "../../mainPage/Aimurzayev-Amir-front-end-summary.docx";
 
 let AboutMeIntro = () => {
   return (
@@ -31,7 +31,7 @@ let AboutMeIntro = () => {
         </div>
       </div>
       <div className="buttonPage">
-        <form method="get" action="Aimurzayev-Amir-front-end-summary.docx">
+        <form method="get" action={resume}>
           <button type="submit" className="downloadBtn">
             <svg
               width="19"

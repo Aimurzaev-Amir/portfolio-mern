@@ -1,8 +1,8 @@
 import React from "react";
 import "../MainPage.css";
-import "../../Media.css";
 import BlockTitleText from "../../../common/BlockTitle";
 import { NavLink } from "react-router-dom";
+import resume from "../Aimurzayev-Amir-front-end-summary.docx";
 
 let Introduction = (props) => {
   return (
@@ -25,10 +25,7 @@ let Introduction = (props) => {
         <NavLink to="/about-me">
           <button className="buttonRMargin">LEARN MORE ABOUT ME</button>
         </NavLink>
-        {/* <a href="about-me.html">
-          <button className="buttonRMargin">LEARN MORE ABOUT ME</button>
-        </a> */}
-        <form method="get" action="Aimurzayev-Amir-front-end-summary.docx">
+        <form method="get" action={resume}>
           <button type="submit" className="downloadBtn">
             <svg
               width="19"

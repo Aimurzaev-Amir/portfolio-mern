@@ -62,3 +62,9 @@
 .buttonPage button img {
   margin-right: 15px;
 }
+.menuOpened {
+  overflow: hidden;
+}
+.menuClosed {
+  position: unset;
+}

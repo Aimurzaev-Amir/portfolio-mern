@@ -9,7 +9,7 @@ import loading from "../../../../common/loading.gif";
 let LatestWorks = (props) => {
   let Works = props.works.map((work) => {
     const workPhotoArr = [];
-    if (props.images != undefined) {
+    if (props.images !== undefined) {
       props.images.map((imgData) => {
         if (imgData.owner === work._id) {
           const imgSrc = `data:${imgData.imgType};charset=utf-8;base64,${imgData.img.toString(
@@ -36,7 +36,7 @@ let LatestWorks = (props) => {
           </div>
           <div className="cardBody">
             <img
-              src={workPhotoArr.length != 0 ? workPhotoArr[0].imgSrc : null}
+              src={workPhotoArr.length !== 0 ? workPhotoArr[0].imgSrc : null}
               alt={props.previewDescription}
             />
           </div>

@@ -10,7 +10,7 @@ const schema = new Schema({
 });
 
 schema.virtual("imgSrc").get(function () {
-  if (this.img != null && this.imgType != null) {
+  if (this.img !== null && this.imgType !== null) {
     return `data:${this.imgType};charset=utf-8;base64,${this.img.toString(base64)}`;
   }
 });

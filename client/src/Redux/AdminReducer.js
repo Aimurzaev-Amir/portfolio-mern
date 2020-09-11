@@ -2,6 +2,7 @@ const token = "ADMINREDUCER/TOKEN";
 const userId = "ADMINREDUCER/USERID";
 const error = "ADMINREDUCER/ERROR";
 const authentification = "ADMINREDUCER/AUTHENTIFICATION";
+const menu = "ADMINREDUCER/MENU";
 
 let initialState = {
   userId: null,
@@ -42,6 +43,7 @@ let initialState = {
     },
   ],
   feedbacks: [],
+  menuOpened: false,
 };
 
 const AdminReducer = (state = initialState, action) => {
@@ -65,6 +67,11 @@ const AdminReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.errorMessage,
+      };
+    case menu:
+      return {
+        ...state,
+        menuOpened: action.currentMenuState,
       };
     default:
       return state;
@@ -96,6 +103,13 @@ export const setError = (errorMessage) => {
   return {
     type: error,
     errorMessage,
+  };
+};
+
+export const setMenuState = (currentMenuState) => {
+  return {
+    type: menu,
+    currentMenuState,
   };
 };
 

@@ -14,7 +14,7 @@ const AdminPanelManuContaienr = (props) => {
     const getLastWorkData = async () => {
       const worksData = await request("/api/works", "GET", null);
       props.setWork(worksData);
-      if (worksData.length != 0) {
+      if (worksData.length !== 0) {
         const images = await request("/api/works/getMainPhotos/workPhoto", "GET", null);
         props.setImagesData(images);
       }

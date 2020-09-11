@@ -16,13 +16,21 @@ let BlogPageContainer = (props) => {
     };
     articles();
   }, []);
-  return <BlogPage articles={props.articles} images={props.images} loading={loading} />;
+  return (
+    <BlogPage
+      articles={props.articles}
+      images={props.images}
+      loading={loading}
+      menuOpened={props.menuOpened}
+    />
+  );
 };
 
 let mapStateToProps = (state) => {
   return {
     articles: state.articles.articles,
     images: state.articles.images,
+    menuOpened: state.admin.menuOpened,
   };
 };
 

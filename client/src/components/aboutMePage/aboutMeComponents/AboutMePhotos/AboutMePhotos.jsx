@@ -1,16 +1,7 @@
 import React from "react";
 import "../../aboutMePage.css";
-import "../../../Media.css";
 import BlockTitleText from "../../../../common/BlockTitle";
 import PhotoCard from "./PhotoCard";
-import first from "../../img/photos/1.jpg";
-import second from "../../img/photos/2.jpg";
-import third from "../../img/photos/3.jpg";
-import fourth from "../../img/photos/4.jpg";
-import fifth from "../../img/photos/5.jpg";
-import sixth from "../../img/photos/6.jpg";
-import next from "../../img/photos/next.png";
-import prev from "../../img/photos/prev.png";
 import { useState } from "react";
 
 let AboutMePhotos = (props) => {

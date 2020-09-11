@@ -6,7 +6,7 @@ import "../../Admin.css";
 const WorkSpacePreview = (props) => {
   let Works = props.works.map((work) => {
     const workPhotoArr = [];
-    if (props.images != undefined) {
+    if (props.images !== undefined) {
       props.images.map((imgData) => {
         if (imgData.owner === work._id) {
           const imgSrc = `data:${imgData.imgType};charset=utf-8;base64,${imgData.img.toString(
@@ -20,7 +20,7 @@ const WorkSpacePreview = (props) => {
       <PanelWorkItem
         loading={props.loading}
         key={work.id}
-        workPhoto={workPhotoArr.length != 0 ? workPhotoArr[0].imgSrc : null}
+        workPhoto={workPhotoArr.length !== 0 ? workPhotoArr[0].imgSrc : null}
         workName={work.workName}
         previewDescription={work.previewDescription}
       />
@@ -29,7 +29,7 @@ const WorkSpacePreview = (props) => {
 
   let Articles = props.articles.map((article) => {
     const articlePhotoArr = [];
-    if (props.articleImages != undefined) {
+    if (props.articleImages !== undefined) {
       props.articleImages.map((imgData) => {
         if (imgData.owner === article._id) {
           const imgSrc = `data:${imgData.imgType};charset=utf-8;base64,${imgData.img.toString(
@@ -43,7 +43,7 @@ const WorkSpacePreview = (props) => {
       <PanelArticleItem
         loading={props.loading}
         key={article.id}
-        articlePhoto={articlePhotoArr.length != 0 ? articlePhotoArr[0].imgSrc : null}
+        articlePhoto={articlePhotoArr.length !== 0 ? articlePhotoArr[0].imgSrc : null}
         articleName={article.articleName}
         previewDescription={article.previewDescription}
       />

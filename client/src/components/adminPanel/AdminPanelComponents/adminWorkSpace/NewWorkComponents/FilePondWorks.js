@@ -37,14 +37,14 @@ const FilePondWorks = (props) => {
             <label htmlFor="descr">Description: </label>
             <input type="text" name="descr" />
           </div>
-          {props.allWorks != undefined || props.allWorks != null ? (
+          {props.allWorks !== undefined || props.allWorks !== null ? (
             <div className="editInput imgInput hideInput">
               <label htmlFor="owner">Owner: </label>
               <input
                 type="text"
                 name="owner"
                 value={
-                  props.allWorks.length != 0 ? props.allWorks[props.allWorks.length - 1]._id : null
+                  props.allWorks.length !== 0 ? props.allWorks[props.allWorks.length - 1]._id : null
                 }
               />
             </div>

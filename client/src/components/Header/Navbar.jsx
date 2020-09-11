@@ -1,6 +1,5 @@
 import React from "react";
 import "./Header.css";
-import "../Media.css";
 import logo from "./img/Logo.svg";
 import logoMobile from "./img/Logo-mobile.svg";
 import behance from "./img/socialNetworks/behance-footer.svg";
@@ -8,24 +7,13 @@ import instagram from "./img/socialNetworks/instagram-footer.svg";
 import linkedin from "./img/socialNetworks/linkedin-footer.svg";
 import vk from "./img/socialNetworks/vk-footer.svg";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 
 let Navbar = (props) => {
-  let [toggle, setToggle] = useState(false);
-
-  const onToggleClick = () => {
-    if (!toggle) {
-      setToggle(true);
-    } else {
-      setToggle(false);
-    } 
-  };
-
-  const closeMenu = () => {
-    setToggle(false);
-  };
   return (
-    <div className="navOverlay" id="myHeader">
+    <div
+      className={props.opacity ? "navOverlay headerOpacity sticky" : "navOverlay sticky"}
+      id="myHeader"
+    >
       <nav className="wrapper mainNav">
         <div className="logo">
           <NavLink to={"/"}>
@@ -35,13 +23,13 @@ let Navbar = (props) => {
             <img className="logoMobile" src={logoMobile} alt="Aimurzaev Amir m-logo" />
           </NavLink>
         </div>
-        <div className="hamburger" onClick={onToggleClick}>
+        <div className="hamburger" onClick={props.onToggleClick}>
           <div className="line"></div>
           <div className="line"></div>
           <div className="line"></div>
         </div>
-        <ul className={toggle ? "navLinks open" : "navLinks"}>
-          <li className={toggle ? "navItem fade" : "navItem"} onClick={closeMenu}>
+        <ul className={props.toggle ? "navLinks open" : "navLinks"}>
+          <li className={props.toggle ? "navItem fade" : "navItem"} onClick={props.closeMenu}>
             <NavLink to={"/about-me"} className="navItemLink">
               About me
             </NavLink>
@@ -49,7 +37,7 @@ let Navbar = (props) => {
           <li className="menuLine">
             <hr />
           </li>
-          <li className={toggle ? "navItem fade" : "navItem"} onClick={closeMenu}>
+          <li className={props.toggle ? "navItem fade" : "navItem"} onClick={props.closeMenu}>
             <NavLink to={"/portfolio"} className="navItemLink">
               Portfolio
             </NavLink>
@@ -57,7 +45,7 @@ let Navbar = (props) => {
           <li className="menuLine">
             <hr />
           </li>
-          <li className={toggle ? "navItem fade" : "navItem"} onClick={closeMenu}>
+          <li className={props.toggle ? "navItem fade" : "navItem"} onClick={props.closeMenu}>
             <NavLink to={"/blog"} className="navItemLink">
               Blog
             </NavLink>
@@ -65,7 +53,7 @@ let Navbar = (props) => {
           <li className="menuLine">
             <hr />
           </li>
-          <li className={toggle ? "navItem fade" : "navItem"} onClick={closeMenu}>
+          <li className={props.toggle ? "navItem fade" : "navItem"} onClick={props.closeMenu}>
             <NavLink to={"/contacts"} className="navItemLink">
               Contacts
             </NavLink>
@@ -73,7 +61,7 @@ let Navbar = (props) => {
           <li className="menuLine">
             <hr />
           </li>
-          <li className={toggle ? "navItem fade" : "navItem"} onClick={closeMenu}>
+          <li className={props.toggle ? "navItem fade" : "navItem"} onClick={props.closeMenu}>
             <NavLink to={"/authorization"} className="navItemLink">
               {props.validation ? "aimurzayev" : "Login"}
             </NavLink>

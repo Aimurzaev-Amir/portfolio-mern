@@ -1,68 +1,74 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../BlogPage.css";
+import logo from "../../Header/img/Logo.svg";
+import facebook from "../img/facebook.svg";
+import googlePlus from "../img/google-plus.svg";
+import linkedin from "../img/linkedin.svg";
+import pinterest from "../img/pinterest.svg";
+import twitter from "../img/twitter.svg";
+import vk from "../img/vk.svg";
 
 const ShareArticle = () => {
+  const urlAddress = window.location.href;
   return (
     <div className="shareButtons">
       <a
-        href="http://www.facebook.com/sharer/sharer.php?s=100&p%5Btitle%5D=[TITLE]&p%5Bsummary%5D=[TEXT]&p%5Burl%5D=[LINK]&p%5Bimages%5D%5B0%5D=[IMAGE]"
+        href={
+          "http://www.facebook.com/sharer/sharer.php?s=100&p%5Btitle%5D=" +
+          urlAddress +
+          "&p%5Bsummary%5D=Aimurzayev Amir Article&p%5Burl%5D=" +
+          urlAddress +
+          "&p%5Bimages%5D%5B0%5D=" +
+          logo
+        }
         target="_blank"
-        // onClick="return Share.me(this);"
       >
         <div className="facebook shareBlock">
-          {/* <FontAwesomeIcon icon="facebook" /> */}
-          <i className="fa fa-facebook" aria-hidden="true"></i>
+          <img src={facebook} alt="facebook logo icon" />
         </div>
       </a>
 
-      <a
-        href="https://plus.google.com/share?url=[LINK]"
-        target="_blank"
-        // onClick="return Share.me(this);"
-      >
+      <a href={"https://plus.google.com/share?url=" + urlAddress} target="_blank">
         <div className="google shareBlock">
-          <i className="fa fa-google-plus" aria-hidden="true"></i>
+          <img src={googlePlus} alt="google plus icon logo" />
         </div>
       </a>
 
-      <a
-        href="https://www.linkedin.com/cws/share?url=[LINK]"
-        target="_blank"
-        // onClick="return Share.me(this);"
-      >
+      <a href={"https://www.linkedin.com/cws/share?url=" + urlAddress} target="_blank">
         <div className="linkedin shareBlock">
-          <i className="fa fa-linkedin" aria-hidden="true"></i>
+          <img src={linkedin} alt="linkedin icon logo" />
         </div>
       </a>
 
       <a
-        href="https://www.pinterest.com/pin/create/bookmarklet/?description=<?=get_the_title($id)?>&url=[LINK]"
+        href={
+          "https://www.pinterest.com/pin/create/bookmarklet/?description=<?=get_the_title($id)?>&url=" +
+          urlAddress
+        }
         target="_blank"
-        // onClick="return Share.me(this);"
       >
         <div className="pinterest shareBlock">
-          <i className="fa fa-pinterest" aria-hidden="true"></i>
+          <img src={pinterest} alt="pinterest icon logo" />
         </div>
       </a>
 
-      <a
-        href="https://vk.com/share.php?url=[LINK]"
-        target="_blank"
-        // onClick="return Share.me(this);"
-      >
+      <a href={"https://vk.com/share.php?url=" + urlAddress} target="_blank">
         <div className="vk shareBlock">
-          <i className="fa fa-vk" aria-hidden="true"></i>
+          <img src={vk} alt="vk icon logo" />
         </div>
       </a>
 
       <a
-        href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ffiddle.jshell.net%2F_display%2F&text=[TITLE]&url=[LINK]"
+        href={
+          "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ffiddle.jshell.net%2F_display%2F&text=" +
+          urlAddress +
+          "&url=" +
+          urlAddress
+        }
         target="_blank"
-        // onClick="return Share.me(this)"
       >
         <div className="twitter shareBlock">
-          <i className="fa fa-twitter" aria-hidden="true"></i>
+          <img src={twitter} alt="twitter icon logo" />
         </div>
       </a>
     </div>

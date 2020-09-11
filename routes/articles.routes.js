@@ -191,7 +191,7 @@ function saveImage(imageData, imgEncoded) {
   }
 
   const img = JSON.parse(imgEncoded);
-  if (img != null && imageMimeTypes.includes(img.type)) {
+  if (img !== null && imageMimeTypes.includes(img.type)) {
     imageData.img = new Buffer.from(img.data, "utf-8");
     imageData.imgType = img.type;
   }

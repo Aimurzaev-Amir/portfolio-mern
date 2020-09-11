@@ -4,7 +4,7 @@ import BlockTitleText from "../../../../../common/BlockTitle";
 const WorkImagesEdit = (props) => {
   const MobileArr = [];
   const DesktopArr = [];
-  if (props.images.length != 0) {
+  if (props.images.length !== 0) {
     const createArr = props.images.map((ImgData) => {
       if (ImgData.type === "mobileImg") {
         MobileArr.push(ImgData);
@@ -15,7 +15,7 @@ const WorkImagesEdit = (props) => {
   }
 
   const DesktopImg = (num) => {
-    if (DesktopArr.length != 0 && DesktopArr.length >= num + 1) {
+    if (DesktopArr.length !== 0 && DesktopArr.length >= num + 1) {
       const imgSrc = `data:${DesktopArr[num].imgType};charset=utf-8;base64,${DesktopArr[
         num
       ].img.toString("base64")}`;
@@ -30,7 +30,7 @@ const WorkImagesEdit = (props) => {
   };
 
   const MobileImg = (num) => {
-    if (MobileArr.length != 0 && MobileArr.length >= num + 1) {
+    if (MobileArr.length !== 0 && MobileArr.length >= num + 1) {
       const imgSrc = `data:${MobileArr[num].imgType};charset=utf-8;base64,${MobileArr[
         num
       ].img.toString("base64")}`;
@@ -48,10 +48,10 @@ const WorkImagesEdit = (props) => {
       <BlockTitleText titleclassName="titleLines titleLines3" blockTitleText="desktop version" />
       <p className="sectionsParagraph">
         Main sections of the{" "}
-        {props.allWorks.length != 0
+        {props.allWorks.length !== 0
           ? props.allWorks[props.allWorks.length - 1].workName + " "
           : '"WorkName"'}
-        {props.allWorks.length != 0
+        {props.allWorks.length !== 0
           ? props.allWorks[props.allWorks.length - 1].smallDescription
           : '"WorkType"'}
         . <br />
@@ -75,10 +75,10 @@ const WorkImagesEdit = (props) => {
         <BlockTitleText titleclassName="titleLines titleLines3" blockTitleText="mobile version" />
         <p className="sectionsParagraph">
           Main sections of the{" "}
-          {props.allWorks.length != 0
+          {props.allWorks.length !== 0
             ? props.allWorks[props.allWorks.length - 1].workName + " "
             : '"WorkName"  '}
-          {props.allWorks.length != 0
+          {props.allWorks.length !== 0
             ? props.allWorks[props.allWorks.length - 1].smallDescription
             : '"WorkType"'}
           . <br />

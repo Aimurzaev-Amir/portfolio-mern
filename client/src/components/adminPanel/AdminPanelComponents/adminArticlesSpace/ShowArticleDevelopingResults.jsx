@@ -7,7 +7,7 @@ const ShowArticleDevelopingResults = (props) => {
   };
   const ArticleMap = props.articles.map((article) => {
     const MainImg =
-      props.articleImages.length != 0 &&
+      props.articleImages.length !== 0 &&
       `data:${
         props.articleImages[0].imgType
       };charset=utf-8;base64,${props.articleImages[0].img.toString("base64")}`;
@@ -19,7 +19,7 @@ const ShowArticleDevelopingResults = (props) => {
           <div className="dateViews">
             <p className="date">By Amir Aimurzayev on {article.articleDate}</p>
           </div>
-          {props.articleImages.length != 0 && (
+          {props.articleImages.length !== 0 && (
             <img src={MainImg} alt={props.articleImages[0].descr} />
           )}
         </div>

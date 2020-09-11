@@ -40,7 +40,7 @@ let PortfolioPage = (props) => {
 
   let Works = props.works.map((work) => {
     const workPhotoArr = [];
-    if (props.images != undefined) {
+    if (props.images !== undefined) {
       props.images.map((imgData) => {
         if (imgData.owner === work._id) {
           const imgSrc = `data:${imgData.imgType};charset=utf-8;base64,${imgData.img.toString(
@@ -64,7 +64,7 @@ let PortfolioPage = (props) => {
           </div>
         </div>
         <div className="workImg">
-          <img src={workPhotoArr.length != 0 ? workPhotoArr[0].imgSrc : null} alt="" />
+          <img src={workPhotoArr.length !== 0 ? workPhotoArr[0].imgSrc : null} alt="" />
         </div>
       </div>
     );

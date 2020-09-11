@@ -6,10 +6,10 @@ import { useHttp } from "../../../../hooks/http.hook";
 
 const AdminArticlesSpaceContainer = (props) => {
   const [created, setCreated] = useState(false);
-  const { loading, error, request } = useHttp();
+  const { request } = useHttp();
   const createArticle = async (formData) => {
     try {
-      const createArticleData = await request("/api/articles/create", "POST", {
+      await request("/api/articles/create", "POST", {
         ...formData,
         // articleDate: "28 Feb 2020",
       });

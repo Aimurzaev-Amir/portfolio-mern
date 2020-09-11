@@ -14,16 +14,16 @@ import {
 } from "../../../../Redux/ArticlesReducer";
 
 const UpdateLatestArticleDataContainer = (props) => {
-  const { loading, error, request } = useHttp();
+  const { request } = useHttp();
   useEffect(() => {
     const articles = async () => {
       const articlesResponse = await request("/api/articles", "GET", null);
       props.setArticles(articlesResponse);
-      if (articlesResponse.length != 0) {
+      if (articlesResponse.length !== 0) {
         const currentId = articlesResponse[articlesResponse.length - 1]._id;
         props.setArticleId(currentId);
       }
-      if (props.currentArticleId != 0) {
+      if (props.currentArticleId !== 0) {
         const articlesImages = await request(
           `/api/articles/getArticleMainImages/${props.currentArticleId}`,
           "GET",

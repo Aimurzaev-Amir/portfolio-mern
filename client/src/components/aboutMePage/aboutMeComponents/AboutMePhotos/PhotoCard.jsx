@@ -1,6 +1,5 @@
 import React from "react";
 import "../../aboutMePage.css";
-import "../../../Media.css";
 
 let PhotoCard = (props) => {
   return (

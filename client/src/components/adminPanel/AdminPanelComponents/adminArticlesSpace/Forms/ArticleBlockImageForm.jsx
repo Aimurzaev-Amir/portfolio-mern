@@ -44,7 +44,7 @@ const ArticleBlockImageForm = (props) => {
               <option value="unset">left</option>
             </select>
           </div>
-          {props.articles.length != 0 ? (
+          {props.articles.length !== 0 ? (
             <div className="editInput imgInput hideInput">
               <label htmlFor="owner">Owner: </label>
               <input
@@ -54,7 +54,7 @@ const ArticleBlockImageForm = (props) => {
               />
             </div>
           ) : null}
-          {props.blocks.length != 0 ? (
+          {props.blocks.length !== 0 ? (
             <div className="editInput imgInput hideInput">
               <label htmlFor="owner">Owner: </label>
               <input

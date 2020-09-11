@@ -1,6 +1,5 @@
 import React from "react";
 import "../MainPage.css";
-import "../../Media.css";
 
 let SkillCard = (props) => {
     return(

@@ -7,7 +7,7 @@ import FeedbacksMenu from "./FeedbacksMenu";
 import "../../Admin.css";
 
 const WorkSpaceFeedbacksContainer = (props) => {
-  const { loading, error, request } = useHttp();
+  const { request } = useHttp();
   useEffect(() => {
     const feedbacksA = async () => {
       const response = await request(`/api/feedback`, "GET", null);

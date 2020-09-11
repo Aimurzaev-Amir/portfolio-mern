@@ -1,6 +1,5 @@
 import React from "react";
 import "../aboutMePage.css";
-import "../../Media.css";
 import BlockTitleText from "../../../common/BlockTitle";
 import AstronautBg from "../img/bg.png";
 

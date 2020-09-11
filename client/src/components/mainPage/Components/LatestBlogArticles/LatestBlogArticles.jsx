@@ -1,6 +1,5 @@
 import React from "react";
 import "../../MainPage.css";
-import "../../../Media.css";
 import BlockTitleText from "../../../../common/BlockTitle";
 import loading from "../../../../common/loading.gif";
 import Swiper from "react-id-swiper";
@@ -12,17 +11,17 @@ let LatestBlogArticles = (props) => {
     let latestArticlesImages = props.images.map((image) => {
       if (article._id === image.owner) {
         const MainImg =
-          props.images.length != 0 &&
+          props.images.length !== 0 &&
           `data:${image.imgType};charset=utf-8;base64,${image.img.toString("base64")}`;
         return (
-          <div className="articleImg">
-            <img key={image._id} src={MainImg} alt={image.descr} />
+          <div className="articleImg" key={image._id}>
+            <img src={MainImg} alt={image.descr} />
           </div>
         );
       }
     });
     return (
-      <div className="articleCard" key={article.id}>
+      <div className="articleCard" key={article._id}>
         {latestArticlesImages}
         <div className="articleDate">
           <div className="dateText">
@@ -45,7 +44,7 @@ let LatestBlogArticles = (props) => {
           </div>
         </div>
         <div className="articleHover">
-          <NavLink to={"/blog/" + article.urlAdress}>
+          <NavLink to={"/article/" + article.urlAdress}>
             <h3>Read more...</h3>
           </NavLink>
         </div>
