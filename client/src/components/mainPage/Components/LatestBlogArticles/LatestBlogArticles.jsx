@@ -1,20 +1,29 @@
 import React from "react";
 import "../../MainPage.css";
 import "../../../Media.css";
-import LatestBlogArticle from "./LatestBlogArticle";
 import BlockTitleText from "../../../../common/BlockTitle";
-import Button from "../../../../common/Button";
+import loading from "../../../../common/loading.gif";
 import Swiper from "react-id-swiper";
 import "swiper/css/swiper.css";
 import { NavLink } from "react-router-dom";
 
 let LatestBlogArticles = (props) => {
   let latestArticles = props.articles.map((article) => {
+    let latestArticlesImages = props.images.map((image) => {
+      if (article._id === image.owner) {
+        const MainImg =
+          props.images.length != 0 &&
+          `data:${image.imgType};charset=utf-8;base64,${image.img.toString("base64")}`;
+        return (
+          <div className="articleImg">
+            <img key={image._id} src={MainImg} alt={image.descr} />
+          </div>
+        );
+      }
+    });
     return (
       <div className="articleCard" key={article.id}>
-        <div className="articleImg">
-          <img src={article.articlePreview} alt={article.previewDescription} />
-        </div>
+        {latestArticlesImages}
         <div className="articleDate">
           <div className="dateText">
             <p>{article.articleDate}</p>
@@ -51,7 +60,15 @@ let LatestBlogArticles = (props) => {
         blockTitleText={"Latest Blog Articles"}
       />
       <div className="articlesCards">
-        <Swiper {...props.params}>{latestArticles}</Swiper>
+        {props.loading ? (
+          <div className="loadingBlock">
+            <img className="loadingGif" src={loading} alt="loading" />
+            <img className="loadingGif mobileLoading" src={loading} alt="loading" />
+            <img className="loadingGif mobileLoading" src={loading} alt="loading" />
+          </div>
+        ) : (
+          <Swiper {...props.params}>{latestArticles}</Swiper>
+        )}
       </div>
       <div className="buttonPage">
         <NavLink to="/blog/">

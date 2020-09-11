@@ -7,6 +7,7 @@ import {
   setArticles,
   setArticlesMainImages,
   setArticleBlocks,
+  setCurrentBlockId,
   setArticleBlocksImages,
   setArticleBlocksLists,
   setArticleBlocksTextAreas,
@@ -34,6 +35,8 @@ const UpdateLatestArticleDataContainer = (props) => {
           "GET",
           null
         );
+        const currentBlockId = articlesBlocksresponse[articlesBlocksresponse.length - 1]._id;
+        props.setCurrentBlockId(currentBlockId);
         props.setArticleBlocks(articlesBlocksresponse);
         const articlesBlocksImages = await request(
           `/api/articles/getArticleBlockImages/${props.currentArticleId}`,
@@ -41,7 +44,6 @@ const UpdateLatestArticleDataContainer = (props) => {
           null
         );
         props.setArticleBlocksImages(articlesBlocksImages);
-
         const articlesBlocksLists = await request(
           `/api/articles/getArticleBlockLists/${props.currentArticleId}`,
           "GET",
@@ -60,82 +62,60 @@ const UpdateLatestArticleDataContainer = (props) => {
   }, [props.currentArticleId]);
 
   const addArticleBlock = async (formData) => {
-    const articlesResponse = await request("/api/articles", "GET", null);
-    const lastArticleId = articlesResponse[articlesResponse.length - 1]._id;
     const createArticleBlock = await request("/api/articles/createArticleBlock", "POST", {
       ...formData,
-      owner: lastArticleId,
+      owner: props.currentArticleId,
     });
-    if (props.currentArticleId === lastArticleId) {
-      const getArticleBlocks = await request(
-        `/api/articles/getArticleBlockData/${props.currentArticleId}`,
-        "GET",
-        null
-      );
-      props.setArticleBlocks(getArticleBlocks);
-      formData.title = null;
-      formData.text = null;
-    }
+    const getArticleBlocks = await request(
+      `/api/articles/getArticleBlockData/${props.currentArticleId}`,
+      "GET",
+      null
+    );
+    const currentBlockId = getArticleBlocks[getArticleBlocks.length - 1]._id;
+    props.setCurrentBlockId(currentBlockId);
+    props.setArticleBlocks(getArticleBlocks);
+    formData.title = null;
+    formData.text = null;
   };
 
   const addArticleBlockListItem = async (formData) => {
-    const articlesResponse = await request("/api/articles", "GET", null);
-    const lastArticleId = articlesResponse[articlesResponse.length - 1]._id;
-    const getArticleBlocks = await request(
-      `/api/articles/getArticleBlockData/${props.currentArticleId}`,
+    const createArticleBlockList = await request("/api/articles/createArticleBlockList", "POST", {
+      ...formData,
+      articleOwner: props.currentArticleId,
+      blockOwner: props.currentBlockId,
+    });
+    const articlesBlocksLists = await request(
+      `/api/articles/getArticleBlockLists/${props.currentArticleId}`,
       "GET",
       null
     );
-    const lastArticleBlockId = getArticleBlocks[getArticleBlocks.length - 1]._id;
-    const createArticleBlockList = await request("/api/articles/createArticleBlockList", "POST", {
-      ...formData,
-      articleOwner: lastArticleId,
-      blockOwner: lastArticleBlockId,
-    });
-    if (props.currentArticleId === lastArticleId) {
-      const articlesBlocksLists = await request(
-        `/api/articles/getArticleBlockLists/${props.currentArticleId}`,
-        "GET",
-        null
-      );
-      props.setArticleBlocksLists(articlesBlocksLists);
-      const articlesBlocksTextAreas = await request(
-        `/api/articles/getArticleBlockTextAreas/${props.currentArticleId}`,
-        "GET",
-        null
-      );
-      props.setArticleBlocksTextAreas(articlesBlocksTextAreas);
-      formData.title = null;
-    }
+    props.setArticleBlocksLists(articlesBlocksLists);
+    const articlesBlocksTextAreas = await request(
+      `/api/articles/getArticleBlockTextAreas/${props.currentArticleId}`,
+      "GET",
+      null
+    );
+    props.setArticleBlocksTextAreas(articlesBlocksTextAreas);
+    formData.title = null;
   };
 
   const addArticleBlockTextArea = async (formData) => {
-    const articlesResponse = await request("/api/articles", "GET", null);
-    const lastArticleId = articlesResponse[articlesResponse.length - 1]._id;
-    const getArticleBlocks = await request(
-      `/api/articles/getArticleBlockData/${props.currentArticleId}`,
-      "GET",
-      null
-    );
-    const lastArticleBlockId = getArticleBlocks[getArticleBlocks.length - 1]._id;
     const createArticleBlockTextArea = await request(
       "/api/articles/createArticleBlockTextArea",
       "POST",
       {
         ...formData,
-        articleOwner: lastArticleId,
-        blockOwner: lastArticleBlockId,
+        articleOwner: props.currentArticleId,
+        blockOwner: props.currentBlockId,
       }
     );
-    if (props.currentArticleId === lastArticleId) {
-      const articlesBlocksTextAreas = await request(
-        `/api/articles/getArticleBlockTextAreas/${props.currentArticleId}`,
-        "GET",
-        null
-      );
-      props.setArticleBlocksTextAreas(articlesBlocksTextAreas);
-      formData.text = null;
-    }
+    const articlesBlocksTextAreas = await request(
+      `/api/articles/getArticleBlockTextAreas/${props.currentArticleId}`,
+      "GET",
+      null
+    );
+    props.setArticleBlocksTextAreas(articlesBlocksTextAreas);
+    formData.text = null;
   };
   return (
     <div>
@@ -158,10 +138,11 @@ const UpdateLatestArticleDataContainer = (props) => {
 let mapStateToProps = (state) => {
   return {
     allArticles: state.articles.articles,
+    currentArticleId: state.articles.currentArticleId,
     articleImages: state.articles.images,
     blocks: state.articles.blocks,
+    currentBlockId: state.articles.currentBlockId,
     blocksImages: state.articles.blocksImages,
-    currentArticleId: state.articles.currentArticleId,
     blocksLists: state.articles.blocksLists,
     blocksTextAreas: state.articles.blocksTextAreas,
   };
@@ -172,6 +153,7 @@ export default connect(mapStateToProps, {
   setArticles,
   setArticlesMainImages,
   setArticleBlocks,
+  setCurrentBlockId,
   setArticleBlocksImages,
   setArticleBlocksLists,
   setArticleBlocksTextAreas,

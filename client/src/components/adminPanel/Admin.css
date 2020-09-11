@@ -93,7 +93,9 @@
 }
 .panelItems {
   margin-top: 20px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 30px;
   justify-content: space-around;
 }
 .panelItem {
@@ -180,7 +182,7 @@
   justify-content: space-around;
   margin-bottom: 15px;
 }
-.articleBlockAdditionalData{
+.articleBlockAdditionalData {
   margin-top: 20px;
 }
 .editFontStyle {

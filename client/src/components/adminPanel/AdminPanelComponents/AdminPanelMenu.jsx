@@ -13,6 +13,7 @@ const AdminPanelMenu = (props) => {
           works={props.works}
           images={props.images}
           articles={props.articles}
+          articleImages={props.articleImages}
           loading={props.loading}
         />
       </div>

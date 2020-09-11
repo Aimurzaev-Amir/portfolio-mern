@@ -1,6 +1,7 @@
 import React from "react";
 import PanelWorkItem from "./PanelWorkItem";
 import PanelArticleItem from "./PanelArticleItem";
+import "../../Admin.css";
 
 const WorkSpacePreview = (props) => {
   let Works = props.works.map((work) => {
@@ -27,10 +28,22 @@ const WorkSpacePreview = (props) => {
   });
 
   let Articles = props.articles.map((article) => {
+    const articlePhotoArr = [];
+    if (props.articleImages != undefined) {
+      props.articleImages.map((imgData) => {
+        if (imgData.owner === article._id) {
+          const imgSrc = `data:${imgData.imgType};charset=utf-8;base64,${imgData.img.toString(
+            "base64"
+          )}`;
+          articlePhotoArr.push({ imgSrc });
+        }
+      });
+    }
     return (
       <PanelArticleItem
+        loading={props.loading}
         key={article.id}
-        articlePhoto={article.articlePreview}
+        articlePhoto={articlePhotoArr.length != 0 ? articlePhotoArr[0].imgSrc : null}
         articleName={article.articleName}
         previewDescription={article.previewDescription}
       />

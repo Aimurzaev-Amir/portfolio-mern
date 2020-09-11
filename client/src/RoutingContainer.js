@@ -60,7 +60,7 @@ function App(props) {
       <Route path="/work/:workName?" component={() => <WorkContainer />} />
       {/* Blog pages Routers */}
       <Route exact path="/blog" render={SuspenseHOC(BlogPageContainer)} />
-      <Route path="/blog/:articleName?" component={() => <ArticleContainer />} />
+      <Route path="/article/:articleName?" component={() => <ArticleContainer />} />
       {/* Admin Panel Routers */}
       <Route exact path="/authorization" render={SuspenseHOC(AdminPanelContainer)} />
       <Route exact path="/admin" render={SuspenseHOC(AdminPanelMenuContainer)} />

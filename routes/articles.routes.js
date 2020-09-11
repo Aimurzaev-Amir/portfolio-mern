@@ -31,6 +31,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+// /api/works/:id (get work data by work name)
+router.get("/getArticle/:url", async (req, res) => {
+  try {
+    console.log(req.params.url);
+    const Article = await Articles.find({ urlAdress: req.params.url });
+    res.json(Article);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
 router.post("/createArticleBlock", async (req, res) => {
   try {
     const Block = new ArticleBlock(req.body);
@@ -99,6 +110,16 @@ router.get("/getArticleBlockTextAreas/:id", async (req, res) => {
   try {
     const ArticleBlockTextAreasData = await BlocksTextAreas.find({ articleOwner: req.params.id });
     res.json(ArticleBlockTextAreasData);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+// /api/works/ (get all data about all works)
+router.get("/getArticleMainImages", async (req, res) => {
+  try {
+    const ArticleBlockImages = await ArticlesImages.find();
+    res.json(ArticleBlockImages);
   } catch (e) {
     res.status(500).json({ message: "Something went wrong, please, try again" });
   }
