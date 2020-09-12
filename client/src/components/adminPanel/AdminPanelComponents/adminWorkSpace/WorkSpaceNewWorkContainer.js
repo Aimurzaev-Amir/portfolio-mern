@@ -12,7 +12,7 @@ import {
 import { useHttp } from "../../../../hooks/http.hook";
 
 const WorkSpaceNewWorkContainer = (props) => {
-  const { loading, error, request } = useHttp();
+  const { loading, request } = useHttp();
   useEffect(() => {
     const getLastWorkData = async () => {
       const worksData = await request("/api/works", "GET", null);
@@ -38,13 +38,9 @@ const WorkSpaceNewWorkContainer = (props) => {
     setColor(e.currentTarget.value);
   };
 
-  const [mainImg, setMainImg] = useState(null);
-  const [mainPreview, setMainPreview] = useState(null);
-  const [mainBackground, setMainBackground] = useState(null);
-
   const createWorkItem = async (formData) => {
     try {
-      const createWorkData = await request("/api/works/create", "POST", {
+      await request("/api/works/create", "POST", {
         ...formData,
       });
       const worksData = await request("/api/works", "GET", null);
@@ -70,7 +66,7 @@ const WorkSpaceNewWorkContainer = (props) => {
       const worksData = await request("/api/works", "GET", null);
       const currentWorkId = worksData[worksData.length - 1]._id;
       props.setWorkId(currentWorkId);
-      const createColor = await request("/api/works/create-color", "POST", {
+      await request("/api/works/create-color", "POST", {
         id: currentWorkId,
         color: color,
       });
@@ -82,7 +78,7 @@ const WorkSpaceNewWorkContainer = (props) => {
       const worksData = await request("/api/works", "GET", null);
       const currentWorkId = worksData[worksData.length - 1]._id;
       props.setWorkId(currentWorkId);
-      const createStyle = await request("/api/works/create-textStyle", "POST", {
+      await request("/api/works/create-textStyle", "POST", {
         id: currentWorkId,
         ...formData,
       });

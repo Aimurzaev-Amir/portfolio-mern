@@ -62,7 +62,7 @@ const UpdateLatestArticleDataContainer = (props) => {
   }, [props.currentArticleId]);
 
   const addArticleBlock = async (formData) => {
-    const createArticleBlock = await request("/api/articles/createArticleBlock", "POST", {
+    await request("/api/articles/createArticleBlock", "POST", {
       ...formData,
       owner: props.currentArticleId,
     });
@@ -79,7 +79,7 @@ const UpdateLatestArticleDataContainer = (props) => {
   };
 
   const addArticleBlockListItem = async (formData) => {
-    const createArticleBlockList = await request("/api/articles/createArticleBlockList", "POST", {
+    await request("/api/articles/createArticleBlockList", "POST", {
       ...formData,
       articleOwner: props.currentArticleId,
       blockOwner: props.currentBlockId,
@@ -100,15 +100,11 @@ const UpdateLatestArticleDataContainer = (props) => {
   };
 
   const addArticleBlockTextArea = async (formData) => {
-    const createArticleBlockTextArea = await request(
-      "/api/articles/createArticleBlockTextArea",
-      "POST",
-      {
-        ...formData,
-        articleOwner: props.currentArticleId,
-        blockOwner: props.currentBlockId,
-      }
-    );
+    await request("/api/articles/createArticleBlockTextArea", "POST", {
+      ...formData,
+      articleOwner: props.currentArticleId,
+      blockOwner: props.currentBlockId,
+    });
     const articlesBlocksTextAreas = await request(
       `/api/articles/getArticleBlockTextAreas/${props.currentArticleId}`,
       "GET",

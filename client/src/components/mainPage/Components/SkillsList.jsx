@@ -16,18 +16,35 @@ let SkillsList = () => {
         blockTitleText={"This is what i do"}
       />
       <div className="skillsCards">
-        <SkillCard img={idea} imgDescr={"Great ideas skill"} skillText={"Great ideas"} />
-        <SkillCard img={design} imgDescr={"design skill"} skillText={"Professional design"} />
-        <SkillCard img={FrontEnd} imgDescr={"front-end skill"} skillText={"HTMl + CSS + JS"} />
+        <SkillCard
+          img={idea}
+          imgDescr={"Great ideas skill"}
+          skillText={"Great ideas"}
+          aosDelay="0"
+        />
+        <SkillCard
+          img={design}
+          imgDescr={"design skill"}
+          skillText={"Professional design"}
+          aosDelay="200"
+        />
+        <SkillCard
+          img={FrontEnd}
+          imgDescr={"front-end skill"}
+          skillText={"HTMl + CSS + JS"}
+          aosDelay="400"
+        />
         <SkillCard
           img={Adaptive}
           imgDescr={"adaptive skill"}
           skillText={"Clean code and responsive layout"}
+          aosDelay="600"
         />
         <SkillCard
           img={CrossBrowsers}
           imgDescr={"cross-browsers skill"}
           skillText={"Browser Compatibility"}
+          aosDelay="800"
         />
       </div>
     </div>

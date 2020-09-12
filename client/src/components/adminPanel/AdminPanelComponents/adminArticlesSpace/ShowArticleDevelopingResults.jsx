@@ -5,13 +5,14 @@ const ShowArticleDevelopingResults = (props) => {
   const onChangeTextArea = () => {
     console.log();
   };
-  const ArticleMap = props.articles.map((article) => {
-    const MainImg =
-      props.articleImages.length !== 0 &&
-      `data:${
-        props.articleImages[0].imgType
-      };charset=utf-8;base64,${props.articleImages[0].img.toString("base64")}`;
-    if (article._id === props.currentArticleId) {
+  const ArticleMap = props.articles
+    .filter((article) => props.currentArticleId === article._id)
+    .map((article) => {
+      const MainImg =
+        props.articleImages.length !== 0 &&
+        `data:${
+          props.articleImages[0].imgType
+        };charset=utf-8;base64,${props.articleImages[0].img.toString("base64")}`;
       return (
         <div className="blogArticle" key={article._id}>
           <h1>{article.articleName}</h1>
@@ -24,8 +25,7 @@ const ShowArticleDevelopingResults = (props) => {
           )}
         </div>
       );
-    }
-  });
+    });
 
   const BlocksMap = props.blocks.map((block) => {
     const BlockImages = props.blocksImages.map((image) => {

@@ -6,8 +6,12 @@ import Preloader from "../../../common/Preloader/Preloader";
 import bg from "../../adminPanel/img/mainBackgroundExample.jpg";
 
 let Work = (props) => {
-  let WorkData = props.works.map((work) => {
-    if (work.textStyles != undefined && work.colors != undefined && work.whatIDid != undefined) {
+  let WorkData = props.works
+    .filter(
+      (work) =>
+        work.textStyles !== undefined && work.colors !== undefined && work.whatIDid !== undefined
+    )
+    .map((work) => {
       let workStyle = work.textStyles.map((style) => {
         return (
           <p
@@ -35,7 +39,7 @@ let Work = (props) => {
       const DesktopArr = [];
 
       if (props.images.length !== 0) {
-        props.images.map((ImgData) => {
+        props.images.forEach((ImgData) => {
           if (ImgData.type === "mobileImg") {
             MobileArr.push(ImgData);
           } else if (ImgData.type === "desktopImg") {
@@ -150,7 +154,12 @@ let Work = (props) => {
                     <h3>TECHNOLOGY USED</h3>
                     <p>{work.technologyUsed}</p>
                   </div>
-                  <Button btnUrl={work.onlineUrl} btnTarget="_blank" btnText="Visit site" />
+                  <Button
+                    btnUrl={work.onlineUrl}
+                    btnTarget="_blank"
+                    rel="noopener noreferrer"
+                    btnText="Visit site"
+                  />
                 </div>
               </div>
             </div>
@@ -211,13 +220,17 @@ let Work = (props) => {
               <p className="viewAllParagraph">
                 To view all sections, please go to the project website.
               </p>
-              <Button btnUrl={work.onlineUrl} btnTarget="_blank" btnText="Visit site" />
+              <Button
+                btnUrl={work.onlineUrl}
+                btnTarget="_blank"
+                rel="noopener noreferrer"
+                btnText="Visit site"
+              />
             </div>
           </div>
         </div>
       );
-    }
-  });
+    });
 
   return <div>{props.loading ? <Preloader /> : WorkData}</div>;
 };

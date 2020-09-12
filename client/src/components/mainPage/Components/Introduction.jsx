@@ -11,7 +11,7 @@ let Introduction = (props) => {
         titleclassName={"titleLines titleLines1"}
         blockTitleText={"A brief Introduction"}
       />
-      <div className="introText" data-aos="fade-up" data-aos-duration="2000">
+      <div className="introText" data-aos="fade-up" data-aos-duration="1500">
         <p>
           Hi I am a web developer & designer based in Almaty in Kazakhstan. I believe working in a
           multi-disciplined approach brings creative inspiration to my work. I am passionate about

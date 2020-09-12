@@ -10,8 +10,8 @@ import Preloader from "../../common/Preloader/Preloader";
 
 let PortfolioPage = (props) => {
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
   const params = {
     effect: "coverflow",
     grabCursor: true,
@@ -37,38 +37,37 @@ let PortfolioPage = (props) => {
       clickable: true,
     },
   };
-
-  let Works = props.works.map((work) => {
-    const workPhotoArr = [];
-    if (props.images !== undefined) {
-      props.images.map((imgData) => {
-        if (imgData.owner === work._id) {
+  let Works = props.works
+    .filter(() => props.images !== undefined)
+    .map((work) => {
+      const workPhotoArr = [];
+      props.images
+        .filter((imgData) => imgData.owner === work._id)
+        .map((imgData) => {
           const imgSrc = `data:${imgData.imgType};charset=utf-8;base64,${imgData.img.toString(
             "base64"
           )}`;
           workPhotoArr.push({ imgSrc });
-        }
-      });
-    }
+        });
 
-    return (
-      <div key={work._id} className="work">
-        <div className="workInfo">
-          <h1>{work.workName}</h1>
-          {/* <h2>{work.whatIDid}</h2> */}
-          <h2>UX | UI | WEB DEVELOPMENT</h2>
-          <div className="buttonPage">
-            <NavLink to={"/work/" + work.urlAdress} className="navItemLink">
-              <button>View project</button>
-            </NavLink>
+      return (
+        <div key={work._id} className="work">
+          <div className="workInfo">
+            <h1>{work.workName}</h1>
+            {/* <h2>{work.whatIDid}</h2> */}
+            <h2>UX | UI | WEB DEVELOPMENT</h2>
+            <div className="buttonPage">
+              <NavLink to={"/work/" + work.urlAdress} className="navItemLink">
+                <button>View project</button>
+              </NavLink>
+            </div>
+          </div>
+          <div className="workImg">
+            <img src={workPhotoArr.length !== 0 ? workPhotoArr[0].imgSrc : null} alt="" />
           </div>
         </div>
-        <div className="workImg">
-          <img src={workPhotoArr.length !== 0 ? workPhotoArr[0].imgSrc : null} alt="" />
-        </div>
-      </div>
-    );
-  });
+      );
+    });
 
   return (
     <div>

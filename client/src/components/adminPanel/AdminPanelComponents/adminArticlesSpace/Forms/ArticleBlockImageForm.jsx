@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FilePond, File, registerPlugin, setOptions } from "react-filepond";
+import { FilePond, registerPlugin } from "react-filepond";
 import "../../../Admin.css";
 
 // Import FilePond styles

@@ -28,11 +28,7 @@ let AboutMeEducation = () => {
         />
         <EducationCard
           eduType={"Design"}
-          eduName={
-            <p id="design-studio">
-              Raz<span>1</span>Dva<span>2</span> Studio
-            </p>
-          }
+          eduName={"Raz1Dva2 Studio"}
           eduNameAdv={"Speciality: UI/UX Design"}
           eduDate={"2019"}
           eduImg={designEdu}

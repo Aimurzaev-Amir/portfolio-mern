@@ -22,19 +22,20 @@ const ShareArticle = () => {
           logo
         }
         target="_blank"
+        rel="noopener noreferrer"
       >
         <div className="facebook shareBlock">
           <img src={facebook} alt="facebook logo icon" />
         </div>
       </a>
 
-      <a href={"https://plus.google.com/share?url=" + urlAddress} target="_blank">
+      <a href={"https://plus.google.com/share?url=" + urlAddress} target="_blank" rel="noopener noreferrer">
         <div className="google shareBlock">
           <img src={googlePlus} alt="google plus icon logo" />
         </div>
       </a>
 
-      <a href={"https://www.linkedin.com/cws/share?url=" + urlAddress} target="_blank">
+      <a href={"https://www.linkedin.com/cws/share?url=" + urlAddress} target="_blank" rel="noopener noreferrer">
         <div className="linkedin shareBlock">
           <img src={linkedin} alt="linkedin icon logo" />
         </div>
@@ -45,14 +46,14 @@ const ShareArticle = () => {
           "https://www.pinterest.com/pin/create/bookmarklet/?description=<?=get_the_title($id)?>&url=" +
           urlAddress
         }
-        target="_blank"
+        target="_blank" rel="noopener noreferrer"
       >
         <div className="pinterest shareBlock">
           <img src={pinterest} alt="pinterest icon logo" />
         </div>
       </a>
 
-      <a href={"https://vk.com/share.php?url=" + urlAddress} target="_blank">
+      <a href={"https://vk.com/share.php?url=" + urlAddress} target="_blank" rel="noopener noreferrer">
         <div className="vk shareBlock">
           <img src={vk} alt="vk icon logo" />
         </div>
@@ -65,7 +66,7 @@ const ShareArticle = () => {
           "&url=" +
           urlAddress
         }
-        target="_blank"
+        target="_blank" rel="noopener noreferrer"
       >
         <div className="twitter shareBlock">
           <img src={twitter} alt="twitter icon logo" />

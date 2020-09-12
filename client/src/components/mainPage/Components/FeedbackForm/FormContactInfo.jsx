@@ -28,22 +28,22 @@ let FormContactInfo = () => {
           also on social:
         </p>
         <div className="socialList">
-          <a href="https://www.behance.net/Aimurzayev" target="_blank">
+          <a href="https://www.behance.net/Aimurzayev" target="_blank" rel="noopener noreferrer">
             <div className="socialEllipse behanceEllipse">
               <img src={behance} alt="behance Aimurzayev Amir" />
             </div>
           </a>
-          <a href="https://www.instagram.com/amiraimurzayev/" target="_blank">
+          <a href="https://www.instagram.com/amiraimurzayev/" target="_blank" rel="noopener noreferrer">
             <div className="socialEllipse instagramEllipse">
               <img src={instagram} alt="instagram Aimurzayev Amir" />
             </div>
           </a>
-          <a href="#" target="_blank">
+          <a href="#" target="_blank" rel="noopener noreferrer">
             <div className="socialEllipse linkedinEllipse">
               <img src={linkedin} alt="linkedin Aimurzayev Amir" />
             </div>
           </a>
-          <a href="https://vk.com/id140204225" target="_blank">
+          <a href="https://vk.com/id140204225" target="_blank" rel="noopener noreferrer">
             <div className="socialEllipse vkEllipse">
               <img src={vk} alt="vk Aimurzayev Amir" />
             </div>

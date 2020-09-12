@@ -3,7 +3,13 @@ import "../../aboutMePage.css";
 
 let SkillGraphBar = (props) => {
   return (
-    <div className="bar" id={props.barId} data-aos="fade-up" data-aos-delay="200">
+    <div
+      className="bar"
+      id={props.barId}
+      data-aos="fade-up"
+      data-aos-offset="700"
+      data-aos-delay={props.aosDelay}
+    >
       <div className="barText">
         <p className="barTextProcent">
           {props.barProcent} <span>%</span>

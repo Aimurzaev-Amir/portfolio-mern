@@ -18,7 +18,7 @@ import {
 let ArticleContainer = (props) => {
   let ArticleName = props.match.params.articleName;
   props.setArticleName(ArticleName);
-  const { loading, error, request } = useHttp();
+  const { loading, request } = useHttp();
   useEffect(() => {
     const articles = async () => {
       // get all articles data

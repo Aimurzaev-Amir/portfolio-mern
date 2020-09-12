@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 // import { Field } from "redux-form";
 import mainBackground from "../../../img/mainBackgroundExample.jpg";
 import CreateNewWorkItem from "./Forms/HeaderCreateWorkForm";
-import UpdateWorkImages from "./Forms/HeaderUpdateWorkImgForm";
 
 const HeaderOFWork = (props) => {
   if (!props.work.workBackground) {

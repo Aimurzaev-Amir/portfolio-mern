@@ -5,13 +5,16 @@ const WorkImagesEdit = (props) => {
   const MobileArr = [];
   const DesktopArr = [];
   if (props.images.length !== 0) {
-    const createArr = props.images.map((ImgData) => {
-      if (ImgData.type === "mobileImg") {
+    props.images
+      .filter((ImgData) => ImgData.type === "mobileImg")
+      .map((ImgData) => {
         MobileArr.push(ImgData);
-      } else if (ImgData.type === "desktopImg") {
+      });
+    props.images
+      .filter((ImgData) => ImgData.type === "desktopImg")
+      .map((ImgData) => {
         DesktopArr.push(ImgData);
-      }
-    });
+      });
   }
 
   const DesktopImg = (num) => {

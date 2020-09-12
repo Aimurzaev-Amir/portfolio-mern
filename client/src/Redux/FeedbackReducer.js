@@ -1,4 +1,3 @@
-const newFeedback = "FEEDBACKREDUCER/NEWFEEDBACK";
 const feedbackError = "FEEDBACKREDUCER/FEEDBACKERROR";
 const setFeedbacksData = "FEEDBACKREDUCER/SET-FEEDBACKS-DATA";
 
@@ -19,13 +18,6 @@ const FeedbackReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-// export const addFeedback = (feedbackData) => {
-//   return {
-//     type: newFeedback,
-//     feedbackData,
-//   };
-// };
 
 export const setFeedbacks = (feedbackData) => {
   return {

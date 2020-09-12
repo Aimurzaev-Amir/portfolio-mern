@@ -157,7 +157,8 @@
   margin-bottom: 110px;
 }
 .bars {
-  padding-left: 35px;
+  padding-left: 15px;
+  padding-right: 5px;
   position: absolute;
   bottom: 0;
   display: flex;
@@ -169,7 +170,7 @@
 }
 .bar {
   position: relative;
-  width: 16%;
+  width: 12%;
   color: #fff;
   border-radius: 5px 5px 0px 0px;
 }
@@ -198,9 +199,10 @@
   text-align: center;
   font-weight: normal;
   font-size: 16px;
+  padding: 5px;
 }
 #bar1 {
-  height: 95%;
+  height: 70%;
   background: linear-gradient(180deg, #afdbd6, #5fb2a8 50%);
 }
 #bar2 {
@@ -208,7 +210,7 @@
   background: linear-gradient(180deg, #f3dbd5, #e2af9f 50%);
 }
 #bar3 {
-  height: 50%;
+  height: 75%;
   background: linear-gradient(180deg, #fcda8c, #dfae37 50%);
 }
 #bar4 {
@@ -218,6 +220,14 @@
 #bar5 {
   height: 90%;
   background: linear-gradient(180deg, #d96c6b, #ca4645 50%);
+}
+#bar6 {
+  height: 70%;
+  background: linear-gradient(180deg, #ad66a1, #9f3ed5 50%);
+}
+#bar7 {
+  height: 60%;
+  background: linear-gradient(180deg, #ffaa73, #ff6400 50%);
 }
 
 /* Graph-skills block END */
@@ -528,10 +538,13 @@
   .ticks p {
     font-size: 16px;
   }
+  .bars {
+    padding-left: 10px;
+  }
   .barText {
     display: grid;
     grid-template-columns: auto auto;
-    grid-column-gap: 20px;
+    grid-column-gap: 10px;
     writing-mode: tb-rl;
     transform: rotate(-180deg);
   }

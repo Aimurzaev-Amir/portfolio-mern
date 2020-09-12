@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../../Admin.css";
 import mainImg from "../../img/mainImgExample.png";
 import HeaderOFWork from "./NewWorkComponents/HeaderOfWork";
@@ -6,7 +6,6 @@ import WorkOverviewEdit from "./NewWorkComponents/WorkOverviewEdit";
 import WorkDetailsEdit from "./NewWorkComponents/WorkDetailesEdit";
 import WorkImagesEdit from "./NewWorkComponents/WorkImagesEdit";
 import FilePondWorks from "./NewWorkComponents/FilePondWorks";
-import { useHttp } from "../../../../hooks/http.hook";
 
 const WorkSpaceNewWork = (props) => {
   return (

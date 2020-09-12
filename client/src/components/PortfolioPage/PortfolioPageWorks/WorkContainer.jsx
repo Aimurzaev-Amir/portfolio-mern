@@ -13,13 +13,12 @@ import {
   setStyle,
   setImagesData,
 } from "../../../Redux/WorksReducer";
-import { useState } from "react";
 
 let WorkContainer = (props) => {
   // get data from url
   let workName = props.match.params.workName;
   props.setWorkName(workName);
-  const { loading, error, request } = useHttp();
+  const { loading, request } = useHttp();
   useEffect(() => {
     const getLastWorkData = async () => {
       if (props.currentWorkName === workName) {

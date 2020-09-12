@@ -9,7 +9,7 @@ import { setWork, setImagesData } from "../../../Redux/WorksReducer";
 import { setArticles, setArticlesMainImages } from "../../../Redux/ArticlesReducer";
 import "../Admin.css";
 const AdminPanelManuContaienr = (props) => {
-  const { loading, error, request } = useHttp();
+  const { loading, request } = useHttp();
   useEffect(() => {
     const getLastWorkData = async () => {
       const worksData = await request("/api/works", "GET", null);

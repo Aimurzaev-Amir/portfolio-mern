@@ -5,14 +5,14 @@ import Preloader from "../../common/Preloader/Preloader";
 
 let BlogPage = (props) => {
   let BlogPageElements = props.articles.map((article) => {
-    let BlogPageImages = props.images.map((image) => {
-      if (image.owner === article._id) {
+    let BlogPageImages = props.images
+      .filter((image) => image.owner === article._id)
+      .map((image) => {
         const MainImg =
           props.images.length !== 0 &&
           `data:${image.imgType};charset=utf-8;base64,${image.img.toString("base64")}`;
         return <img key={image._id} src={MainImg} alt={image.descr} />;
-      }
-    });
+      });
     return (
       <BlogPageElement
         key={article._id}

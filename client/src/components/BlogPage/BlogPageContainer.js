@@ -5,7 +5,7 @@ import { useHttp } from "../../hooks/http.hook";
 import { setArticles, setArticlesMainImages } from "../../Redux/ArticlesReducer";
 
 let BlogPageContainer = (props) => {
-  const { loading, error, request } = useHttp();
+  const { loading, request } = useHttp();
   useEffect(() => {
     const articles = async () => {
       const articlesResponse = await request("/api/articles", "GET", null);

@@ -5,7 +5,7 @@ import { useHttp } from "../../../../hooks/http.hook";
 import { setWork, setImagesData } from "../../../../Redux/WorksReducer";
 
 let LatestWorksContainer = (props) => {
-  const { loading, error, request } = useHttp();
+  const { loading, request } = useHttp();
   useEffect(() => {
     const getLastWorkData = async () => {
       const worksData = await request("/api/works", "GET", null);

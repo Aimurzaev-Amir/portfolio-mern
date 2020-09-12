@@ -21,11 +21,47 @@ let AboutMeSkills = () => {
             <hr />
           </div>
           <div className="bars">
-            <SkillGraphBar barId={"bar1"} barProcent={"95"} barText={"Tea drinking"} />
-            <SkillGraphBar barId={"bar2"} barProcent={"85"} barText={"HTML5 / CSS3"} />
-            <SkillGraphBar barId={"bar3"} barProcent={"50"} barText={"JavaScript"} />
-            <SkillGraphBar barId={"bar4"} barProcent={"60"} barText={"SQL"} />
-            <SkillGraphBar barId={"bar5"} barProcent={"90"} barText={"Photoshop / Figma"} />
+            <SkillGraphBar
+              barId={"bar7"}
+              barProcent={"60"}
+              barText={"OOP, DRY, SOLID, SEO"}
+              aosDelay="0"
+            />
+            <SkillGraphBar
+              barId={"bar1"}
+              barProcent={"70"}
+              barText={"NPM, Git, Linux (cmd)"}
+              aosDelay="150"
+            />
+            <SkillGraphBar
+              barId={"bar2"}
+              barProcent={"85"}
+              barText={"HTML5 / CSS3, Responsive Design"}
+            />
+            <SkillGraphBar
+              barId={"bar3"}
+              barProcent={"75"}
+              barText={"JavaScript, React.js"}
+              aosDelay="300"
+            />
+            <SkillGraphBar
+              barId={"bar6"}
+              barProcent={"70"}
+              barText={"Ajax, RESTful API, Axios"}
+              aosDelay="450"
+            />
+            <SkillGraphBar
+              barId={"bar4"}
+              barProcent={"60"}
+              barText={"Node.js, SQL"}
+              aosDelay="600"
+            />
+            <SkillGraphBar
+              barId={"bar5"}
+              barProcent={"90"}
+              barText={"Photoshop / Figma"}
+              aosDelay="750"
+            />
           </div>
         </div>
       </div>

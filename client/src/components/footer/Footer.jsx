@@ -10,12 +10,12 @@ import { NavLink } from "react-router-dom";
 let Footer = () => {
   return (
     <div className="footer">
-      <div className="logoFooter" data-aos="zoom-in-up">
-        <a href="index.html">
+      <div className="logoFooter" data-aos="zoom-in-up" data-aos-duration="600">
+        <NavLink to={"/"}>
           <img src={Logo} alt="Logo Aimurzayev Amir" />
-        </a>
+        </NavLink>
       </div>
-      <nav className="footerNav" data-aos="zoom-in-up" data-aos-delay="100">
+      <nav className="footerNav" data-aos="zoom-in-up" data-aos-duration="600" data-aos-delay="200">
         <ul className="navLinks">
           <li className="navItem">
             <NavLink to={"/about-me"} className="navItemLink">
@@ -40,20 +40,25 @@ let Footer = () => {
         </ul>
       </nav>
 
-      <p data-aos="zoom-in-up" data-aos-delay="200">
+      <p data-aos="zoom-in-up" data-aos-duration="600" data-aos-delay="300">
         © 2020 Amir Aimurzayev. All rights reserved.
       </p>
-      <div className="footerSocial" data-aos="zoom-in-up" data-aos-delay="300">
-        <a href="" target="_blank">
+      <div
+        className="footerSocial"
+        data-aos="zoom-in-up"
+        data-aos-delay="500"
+        data-aos-duration="600"
+      >
+        <a href="" target="_blank" rel="noopener noreferrer">
           <img src={linkedin} alt="linkedin Aimurzayev Amir" />
         </a>
-        <a href="https://www.behance.net/Aimurzayev" target="_blank">
+        <a href="https://www.behance.net/Aimurzayev" target="_blank" rel="noopener noreferrer">
           <img src={behance} alt="behance Aimurzayev Amir" />
         </a>
-        <a href="https://vk.com/id140204225" target="_blank">
+        <a href="https://vk.com/id140204225" target="_blank" rel="noopener noreferrer">
           <img src={vk} alt="vk Aimurzayev Amir" />
         </a>
-        <a href="https://www.instagram.com/amiraimurzayev/" target="_blank">
+        <a href="https://www.instagram.com/amiraimurzayev/" target="_blank" rel="noopener noreferrer">
           <img src={instagram} alt="instagram Aimurzayev Amir" />
         </a>
       </div>
