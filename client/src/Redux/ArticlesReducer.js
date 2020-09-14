@@ -7,6 +7,8 @@ const setBlocksImages = "ARTICLESREDUCER/SET-BLOCKS-IMAGES";
 const setArticlesImages = "ARTICLESREDUCER/SET-ARTICLES-IMAGES";
 const setBlocksLists = "ARTICLESREDUCER/SET-BLOCKS-LISTS";
 const setBlocksTextAreas = "ARTICLESREDUCER/SET-BLOCKS-TEXT-AREAS";
+const setCurrentArticleComments = "ARTICLESREDUCER/SET-CURRENT-ARTICLE-COMMENTS";
+const setCommentAnswerId = "ARTICLESREDUCER/SET-COMMENT-ANSWERID";
 
 let initialState = {
   currentArticleId: 0,
@@ -18,6 +20,8 @@ let initialState = {
   blocksImages: [],
   blocksLists: [],
   blocksTextAreas: [],
+  articleComments: [],
+  currentCommentId: null,
 };
 
 const ArticlesReducer = (state = initialState, action) => {
@@ -66,6 +70,16 @@ const ArticlesReducer = (state = initialState, action) => {
       return {
         ...state,
         currentArticleName: action.currentArticleName,
+      };
+    case setCurrentArticleComments:
+      return {
+        ...state,
+        articleComments: action.currentArticleComments,
+      };
+    case setCommentAnswerId:
+      return {
+        ...state,
+        currentCommentId: action.newCurrentCommentId,
       };
     default:
       return state;
@@ -132,6 +146,20 @@ export const setArticleBlocksTextAreas = (newBlocksTextAreas) => {
   return {
     type: setBlocksTextAreas,
     newBlocksTextAreas,
+  };
+};
+
+export const uploadCurrentArticleComments = (currentArticleComments) => {
+  return {
+    type: setCurrentArticleComments,
+    currentArticleComments,
+  };
+};
+
+export const uploadCurrentCommentId = (newCurrentCommentId) => {
+  return {
+    type: setCommentAnswerId,
+    newCurrentCommentId,
   };
 };
 

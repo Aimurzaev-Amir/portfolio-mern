@@ -5,6 +5,7 @@ const ArticleBlock = require("../models/ArticleBlock");
 const BlocksImages = require("../models/BlocksImages");
 const BlocksLists = require("../models/BlocksLists");
 const BlocksTextAreas = require("../models/BlocksTextAreas");
+const ArticleComment = require("../models/ArticleComment");
 const router = Router();
 
 // Creating main routes for Articles Model.
@@ -140,6 +141,29 @@ router.get("/getArticleBlockImages/:id", async (req, res) => {
   try {
     const ArticleBlockImages = await BlocksImages.find({ articleOwner: req.params.id });
     res.json(ArticleBlockImages);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+//  ARTICLE COOMMENTS ROUTES
+// create comment for an article /api/articles/createArticleComment/:id
+router.post("/createArticleComment", async (req, res) => {
+  try {
+    const newArticleComment = new ArticleComment(req.body);
+    await newArticleComment.save();
+
+    res.status(201).json({ newArticleComment });
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+// /api/articles/getArticleComments/:id (get all data for current article)
+router.get("/getArticleComments/:id", async (req, res) => {
+  try {
+    const ArticleCommentsResponse = await ArticleComment.find({ articleOwner: req.params.id });
+    res.json(ArticleCommentsResponse);
   } catch (e) {
     res.status(500).json({ message: "Something went wrong, please, try again" });
   }

@@ -3,6 +3,8 @@ import ShareArticle from "./ShareArticle";
 import "../BlogPage.css";
 import "../../adminPanel/Admin.css";
 import Preloader from "../../../common/Preloader/Preloader";
+import ArticleComments from "./ArticleComments";
+import ArticleCommentsContainer from "./ArticleCommentsContainer";
 
 let Article = (props) => {
   const onChangeTextArea = () => {
@@ -77,10 +79,10 @@ let Article = (props) => {
     return (
       <div key={block._id} className="articleBlock">
         {BlockImages}
-        {block.title && <h3 style={{ textAlign: block.titlePosition }}>{block.title}</h3>}
+        {block.title !== null && <h3 style={{ textAlign: block.titlePosition }}>{block.title}</h3>}
         <ul className="articleList">{BlocksList}</ul>
-        {block.text && <p>{block.text}</p>}
-        {BlockTextArea}
+        {block.text !== null && <p>{block.text}</p>}
+        {props.blocksTextAreas.length != 0 && BlockTextArea}
       </div>
     );
   });
@@ -92,11 +94,12 @@ let Article = (props) => {
       ) : (
         <div className="bgBlue blogPaperOverlay">
           <div className="articleReadMore blogPaper wrapper">
-            <div className="blogOverlay">
+            <div className="blogOverlay"> 
               {ArticleMap}
               <div className="blogArticle">{BlocksMap}</div>
             </div>
             <ShareArticle />
+            <ArticleCommentsContainer />
           </div>
         </div>
       )}

@@ -13,6 +13,7 @@ import {
   setArticleBlocksImages,
   setArticleBlocksLists,
   setArticleBlocksTextAreas,
+  uploadCurrentArticleComments,
 } from "../../../Redux/ArticlesReducer";
 
 let ArticleContainer = (props) => {
@@ -64,6 +65,12 @@ let ArticleContainer = (props) => {
             null
           );
           props.setArticleBlocksTextAreas(articlesBlocksTextAreas);
+          const articleCommentsResponse = await request(
+            `/api/articles/getArticleComments/${props.currentArticleId}`,
+            "GET",
+            null
+          );
+          props.uploadCurrentArticleComments(articleCommentsResponse);
         }
       }
     };
@@ -73,6 +80,7 @@ let ArticleContainer = (props) => {
   return (
     <div>
       <Article
+        //props data
         loading={loading}
         articles={props.articles}
         currentArticleId={props.currentArticleId}
@@ -81,6 +89,7 @@ let ArticleContainer = (props) => {
         blocksImages={props.blocksImages}
         blocksLists={props.blocksLists}
         blocksTextAreas={props.blocksTextAreas}
+        articleComments={props.articleComments}
       />
     </div>
   );
@@ -110,6 +119,7 @@ export default compose(
     setArticleBlocksImages,
     setArticleBlocksLists,
     setArticleBlocksTextAreas,
+    uploadCurrentArticleComments,
   }),
   withRouter
 )(ArticleContainer);
