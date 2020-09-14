@@ -5,11 +5,15 @@ const setPointWhatIDid = "WORKSREDUCER/SET-POINT-WHATIDID";
 const setCurrentWorkName = "WORKSREDUCER/SET-CURRENT-WORK-NAME";
 const setCurrentWorkType = "WORKSREDUCER/SET-WORK-ID";
 const setImages = "WORKSREDUCER/SET-IMAGES";
+const setCurrentWorkComments = "WORKSREDUCER/SET-CURRENT-WORK-COMMENTS";
+const setCommentAnswerId = "WORKSREDUCER/SET-COMMENT-ANSWER-ID";
 
 let initialState = {
   works: [],
   currentWorkId: null,
   currentWorkName: null,
+  currentCommentId: null,
+  workComments: [],
   newWork: {
     id: 0,
     workName: "",
@@ -98,6 +102,16 @@ const worksReducer = (state = initialState, action) => {
         ...state,
         images: action.imagesData,
       };
+    case setCurrentWorkComments:
+      return {
+        ...state,
+        workComments: action.currentWorkComments,
+      };
+    case setCommentAnswerId:
+      return {
+        ...state,
+        currentCommentId: action.newCurrentCommentId,
+      };
     default:
       return state;
   }
@@ -149,6 +163,20 @@ export const setImagesData = (imagesData) => {
   return {
     type: setImages,
     imagesData,
+  };
+};
+
+export const uploadCurrentWorkComments = (currentWorkComments) => {
+  return {
+    type: setCurrentWorkComments,
+    currentWorkComments,
+  };
+};
+
+export const uploadCurrentCommentId = (newCurrentCommentId) => {
+  return {
+    type: setCommentAnswerId,
+    newCurrentCommentId,
   };
 };
 

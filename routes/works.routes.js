@@ -5,6 +5,7 @@ const textStyles = require("../models/TextStyles");
 const whatIDid = require("../models/WhatIDid");
 const Img = require("../models/Img");
 const router = Router();
+const WorkComments = require("../models/WorkComment");
 
 // /api/works/create (create work)
 router.post("/create", async (req, res) => {
@@ -147,6 +148,29 @@ router.get("/didPoint/:id", async (req, res) => {
     const workId = Work._id;
     const textStyle = await whatIDid.find({ owner: workId });
     res.json(textStyle);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+//  WORK COOMMENTS ROUTES
+// create comment for an work /api/works/createWorkComment
+router.post("/createWorkComment", async (req, res) => {
+  try {
+    const newWorkComment = new WorkComments(req.body);
+    await newWorkComment.save();
+
+    res.status(201).json({ newWorkComment });
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
+// /api/works/getWorkComments/:id (get all comments for current work)
+router.get("/getWorkComments/:id", async (req, res) => {
+  try {
+    const WorkCommentsResponse = await WorkComments.find({ workOwner: req.params.id });
+    res.json(WorkCommentsResponse);
   } catch (e) {
     res.status(500).json({ message: "Something went wrong, please, try again" });
   }

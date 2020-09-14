@@ -1,14 +1,14 @@
+import { PromiseProvider } from "mongoose";
 import React from "react";
-import "../BlogPage.css";
-import logo from "../../Header/img/Logo.svg";
-import facebook from "../img/facebook.svg";
-import googlePlus from "../img/google-plus.svg";
-import linkedin from "../img/linkedin.svg";
-import pinterest from "../img/pinterest.svg";
-import twitter from "../img/twitter.svg";
-import vk from "../img/vk.svg";
+import logo from "../components/Header/img/Logo.svg";
+import facebook from "./facebook.svg";
+import googlePlus from "./google-plus.svg";
+import linkedin from "./linkedin.svg";
+import pinterest from "./pinterest.svg";
+import twitter from "./twitter.svg";
+import vk from "./vk.svg";
 
-const ShareArticle = () => {
+const Share = (props) => {
   const urlAddress = window.location.href;
   return (
     <div className="shareButtons">
@@ -16,7 +16,9 @@ const ShareArticle = () => {
         href={
           "http://www.facebook.com/sharer/sharer.php?s=100&p%5Btitle%5D=" +
           urlAddress +
-          "&p%5Bsummary%5D=Aimurzayev Amir Article&p%5Burl%5D=" +
+          "&p%5Bsummary%5D=Aimurzayev Amir" +
+          props.shareObject +
+          "&p%5Burl%5D=" +
           urlAddress +
           "&p%5Bimages%5D%5B0%5D=" +
           logo
@@ -29,13 +31,21 @@ const ShareArticle = () => {
         </div>
       </a>
 
-      <a href={"https://plus.google.com/share?url=" + urlAddress} target="_blank" rel="noopener noreferrer">
+      <a
+        href={"https://plus.google.com/share?url=" + urlAddress}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <div className="google shareBlock">
           <img src={googlePlus} alt="google plus icon logo" />
         </div>
       </a>
 
-      <a href={"https://www.linkedin.com/cws/share?url=" + urlAddress} target="_blank" rel="noopener noreferrer">
+      <a
+        href={"https://www.linkedin.com/cws/share?url=" + urlAddress}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <div className="linkedin shareBlock">
           <img src={linkedin} alt="linkedin icon logo" />
         </div>
@@ -46,14 +56,19 @@ const ShareArticle = () => {
           "https://www.pinterest.com/pin/create/bookmarklet/?description=<?=get_the_title($id)?>&url=" +
           urlAddress
         }
-        target="_blank" rel="noopener noreferrer"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <div className="pinterest shareBlock">
           <img src={pinterest} alt="pinterest icon logo" />
         </div>
       </a>
 
-      <a href={"https://vk.com/share.php?url=" + urlAddress} target="_blank" rel="noopener noreferrer">
+      <a
+        href={"https://vk.com/share.php?url=" + urlAddress}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <div className="vk shareBlock">
           <img src={vk} alt="vk icon logo" />
         </div>
@@ -66,7 +81,8 @@ const ShareArticle = () => {
           "&url=" +
           urlAddress
         }
-        target="_blank" rel="noopener noreferrer"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <div className="twitter shareBlock">
           <img src={twitter} alt="twitter icon logo" />
@@ -76,4 +92,4 @@ const ShareArticle = () => {
   );
 };
 
-export default ShareArticle;
+export default Share;

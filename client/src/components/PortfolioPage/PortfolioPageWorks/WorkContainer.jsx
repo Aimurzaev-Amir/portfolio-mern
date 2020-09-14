@@ -12,6 +12,7 @@ import {
   setWorkName,
   setStyle,
   setImagesData,
+  uploadCurrentWorkComments,
 } from "../../../Redux/WorksReducer";
 
 let WorkContainer = (props) => {
@@ -44,6 +45,12 @@ let WorkContainer = (props) => {
           props.setWhatIDid(whatIDid);
           const images = await request(`/api/works/getPhotos/${props.currentWorkId}`, "GET", null);
           props.setImagesData(images);
+          const workCommentsResponse = await request(
+            `/api/works/getWorkComments/${props.currentWorkId}`,
+            "GET",
+            null
+          );
+          props.uploadCurrentWorkComments(workCommentsResponse);
         }
       }
     };
@@ -71,6 +78,7 @@ export default compose(
     setWorkName,
     setStyle,
     setImagesData,
+    uploadCurrentWorkComments,
   }),
   withRouter
 )(WorkContainer);

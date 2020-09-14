@@ -1,9 +1,8 @@
 import React from "react";
-import ShareArticle from "./ShareArticle";
+import Share from "../../../common/Share";
 import "../BlogPage.css";
 import "../../adminPanel/Admin.css";
 import Preloader from "../../../common/Preloader/Preloader";
-import ArticleComments from "./ArticleComments";
 import ArticleCommentsContainer from "./ArticleCommentsContainer";
 
 let Article = (props) => {
@@ -94,11 +93,11 @@ let Article = (props) => {
       ) : (
         <div className="bgBlue blogPaperOverlay">
           <div className="articleReadMore blogPaper wrapper">
-            <div className="blogOverlay"> 
+            <div className="blogOverlay">
               {ArticleMap}
               <div className="blogArticle">{BlocksMap}</div>
             </div>
-            <ShareArticle />
+            <Share shareObject={"blog article"} />
             <ArticleCommentsContainer />
           </div>
         </div>

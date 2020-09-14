@@ -147,7 +147,7 @@ router.get("/getArticleBlockImages/:id", async (req, res) => {
 });
 
 //  ARTICLE COOMMENTS ROUTES
-// create comment for an article /api/articles/createArticleComment/:id
+// create comment for an article /api/articles/createArticleComment
 router.post("/createArticleComment", async (req, res) => {
   try {
     const newArticleComment = new ArticleComment(req.body);
@@ -159,7 +159,7 @@ router.post("/createArticleComment", async (req, res) => {
   }
 });
 
-// /api/articles/getArticleComments/:id (get all data for current article)
+// /api/articles/getArticleComments/:id (get all comments for current article)
 router.get("/getArticleComments/:id", async (req, res) => {
   try {
     const ArticleCommentsResponse = await ArticleComment.find({ articleOwner: req.params.id });

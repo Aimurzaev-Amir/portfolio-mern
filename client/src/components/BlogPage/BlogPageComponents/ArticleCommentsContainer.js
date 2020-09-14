@@ -67,4 +67,4 @@ let mapStateToProps = (state) => {
 };
 export default connect(mapStateToProps, { uploadCurrentArticleComments, uploadCurrentCommentId })(
   ArticleCommentsContainer
-);
+); 

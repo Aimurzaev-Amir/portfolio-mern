@@ -4,6 +4,8 @@ import Button from "../../../common/Button";
 import "./PortfolioPageWorks.css";
 import Preloader from "../../../common/Preloader/Preloader";
 import bg from "../../adminPanel/img/mainBackgroundExample.jpg";
+import WorkCommentsContainer from "./WorkCommentsContainer";
+import Share from "../../../common/Share";
 
 let Work = (props) => {
   let WorkData = props.works
@@ -100,134 +102,134 @@ let Work = (props) => {
 
       return (
         <div key={work._id}>
-          <div>
-            <header
-              className="workHeader"
-              style={{
-                background: work.background,
-                backgroundImage: "url(" + Background + ")",
-              }}
-            >
-              <div className="workIntro">
-                <div className="workIntroText wrapper">
-                  <h1>{work.workName}</h1>
-                  <p>{work.workTitle}</p>
-                </div>
-              </div>
-            </header>
-
-            <div className="workDescriber">
-              <div className="workMainLogo">{MainImg()}</div>
-              <div className="workMainInfo wrapper">
-                <div className="workOverview">
-                  <div className="workTitle">
-                    <h2>ABOUT PROJECT</h2>
-                    <p>{work.aboutProject}</p>
-                  </div>
-                  <div className="designInfo">
-                    <div className="workTypography">
-                      <h2>Typography</h2>
-                      <p>{work.fontName}</p>
-                      <p>ABCDEFGIJKLMNOPQRSTUVWXYZ</p>
-                      <p>abcdefgijklmnopqrstuvwxyz</p>
-                    </div>
-                    <div className="workStyles">
-                      <h2>Text styles</h2>
-                      {workStyle}
-                    </div>
-                    <div className="workColors">
-                      <h2>Colors</h2>
-                      <div className="colorEllipses">{workColors}</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="workDetails">
-                  <div className="detailsInfo">
-                    <h3>PROJECT TYPE</h3>
-                    <p>{work.smallDescription}</p>
-                  </div>
-                  <div className="detailsInfo">
-                    <h3>WHAT I DID</h3>
-                    {whatIDid}
-                  </div>
-                  <div className="detailsInfo">
-                    <h3>TECHNOLOGY USED</h3>
-                    <p>{work.technologyUsed}</p>
-                  </div>
-                  <Button
-                    btnUrl={work.onlineUrl}
-                    btnTarget="_blank"
-                    rel="noopener noreferrer"
-                    btnText="Visit site"
-                  />
-                </div>
+          <header
+            className="workHeader"
+            style={{
+              background: work.background,
+              backgroundImage: "url(" + Background + ")",
+            }}
+          >
+            <div className="workIntro">
+              <div className="workIntroText wrapper">
+                <h1>{work.workName}</h1>
+                <p>{work.workTitle}</p>
               </div>
             </div>
+          </header>
 
-            <div className="workScreenshots wrapper">
-              <BlockTitleText
-                titleclassName="titleLines titleLines3"
-                blockTitleText="desktop version"
-              />
-              <p className="sectionsParagraph">
-                Main sections of the {work ? work.workName + " " : '"WorkName"'}
-                {work ? work.smallDescription : '"WorkType"'}
-                . <br />
-                Display on the desktop version.
-              </p>
-
-              <table className="desktopScreenshots">
-                <tbody>
-                  <tr>
-                    <td className="desktopScreenshotsRow">{DesktopImg(0)}</td>
-                    <td className="desktopScreenshotsRow">{DesktopImg(1)}</td>
-                  </tr>
-                  <tr>
-                    <td className="desktopScreenshotsRow">{DesktopImg(2)}</td>
-                    <td className="desktopScreenshotsRow">{DesktopImg(3)}</td>
-                  </tr>
-                </tbody>
-              </table>
-              {MobileArr.length !== 0 ? (
-                <div className="mobileVersionSection">
-                  <BlockTitleText
-                    titleclassName="titleLines titleLines3"
-                    blockTitleText="mobile version"
-                  />
-                  <p className="sectionsParagraph">
-                    Main sections of the {work ? work.workName + " " : '"WorkName"'}
-                    {work ? work.smallDescription : '"WorkType"'}
-                    . <br />
-                    Display on the mobile version.
-                  </p>
-
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td className="mobileScreenshotsRow">{MobileImg(0)}</td>
-                        <td className="mobileScreenshotsRow">{MobileImg(1)}</td>
-                        <td className="mobileScreenshotsRow">{MobileImg(2)}</td>
-                      </tr>
-                      <tr>
-                        <td className="mobileScreenshotsRow">{MobileImg(3)}</td>
-                        <td className="mobileScreenshotsRow">{MobileImg(4)}</td>
-                        <td className="mobileScreenshotsRow">{MobileImg(5)}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+          <div className="workDescriber">
+            <div className="workMainLogo">{MainImg()}</div>
+            <div className="workMainInfo wrapper">
+              <div className="workOverview">
+                <div className="workTitle">
+                  <h2>ABOUT PROJECT</h2>
+                  <p>{work.aboutProject}</p>
                 </div>
-              ) : null}
-              <p className="viewAllParagraph">
-                To view all sections, please go to the project website.
-              </p>
-              <Button
-                btnUrl={work.onlineUrl}
-                btnTarget="_blank"
-                rel="noopener noreferrer"
-                btnText="Visit site"
-              />
+                <div className="designInfo">
+                  <div className="workTypography">
+                    <h2>Typography</h2>
+                    <p>{work.fontName}</p>
+                    <p>ABCDEFGIJKLMNOPQRSTUVWXYZ</p>
+                    <p>abcdefgijklmnopqrstuvwxyz</p>
+                  </div>
+                  <div className="workStyles">
+                    <h2>Text styles</h2>
+                    {workStyle}
+                  </div>
+                  <div className="workColors">
+                    <h2>Colors</h2>
+                    <div className="colorEllipses">{workColors}</div>
+                  </div>
+                </div>
+              </div>
+              <div className="workDetails">
+                <div className="detailsInfo">
+                  <h3>PROJECT TYPE</h3>
+                  <p>{work.smallDescription}</p>
+                </div>
+                <div className="detailsInfo">
+                  <h3>WHAT I DID</h3>
+                  {whatIDid}
+                </div>
+                <div className="detailsInfo">
+                  <h3>TECHNOLOGY USED</h3>
+                  <p>{work.technologyUsed}</p>
+                </div>
+                <Button
+                  btnUrl={work.onlineUrl}
+                  btnTarget="_blank"
+                  rel="noopener noreferrer"
+                  btnText="Visit site"
+                />
+              </div>
             </div>
           </div>
+
+          <div className="workScreenshots wrapper">
+            <BlockTitleText
+              titleclassName="titleLines titleLines3"
+              blockTitleText="desktop version"
+            />
+            <p className="sectionsParagraph">
+              Main sections of the {work ? work.workName + " " : '"WorkName"'}
+              {work ? work.smallDescription : '"WorkType"'}
+              . <br />
+              Display on the desktop version.
+            </p>
+
+            <table className="desktopScreenshots">
+              <tbody>
+                <tr>
+                  <td className="desktopScreenshotsRow">{DesktopImg(0)}</td>
+                  <td className="desktopScreenshotsRow">{DesktopImg(1)}</td>
+                </tr>
+                <tr>
+                  <td className="desktopScreenshotsRow">{DesktopImg(2)}</td>
+                  <td className="desktopScreenshotsRow">{DesktopImg(3)}</td>
+                </tr>
+              </tbody>
+            </table>
+            {MobileArr.length !== 0 ? (
+              <div className="mobileVersionSection">
+                <BlockTitleText
+                  titleclassName="titleLines titleLines3"
+                  blockTitleText="mobile version"
+                />
+                <p className="sectionsParagraph">
+                  Main sections of the {work ? work.workName + " " : '"WorkName"'}
+                  {work ? work.smallDescription : '"WorkType"'}
+                  . <br />
+                  Display on the mobile version.
+                </p>
+
+                <table>
+                  <tbody>
+                    <tr>
+                      <td className="mobileScreenshotsRow">{MobileImg(0)}</td>
+                      <td className="mobileScreenshotsRow">{MobileImg(1)}</td>
+                      <td className="mobileScreenshotsRow">{MobileImg(2)}</td>
+                    </tr>
+                    <tr>
+                      <td className="mobileScreenshotsRow">{MobileImg(3)}</td>
+                      <td className="mobileScreenshotsRow">{MobileImg(4)}</td>
+                      <td className="mobileScreenshotsRow">{MobileImg(5)}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ) : null}
+            <p className="viewAllParagraph">
+              To view all sections, please go to the project website.
+            </p>
+            <Button
+              btnUrl={work.onlineUrl}
+              btnTarget="_blank"
+              rel="noopener noreferrer"
+              btnText="Visit site"
+            />
+          </div>
+          <Share shareObject={"portfolio work" + work.workName} />
+          <WorkCommentsContainer />
         </div>
       );
     });

@@ -1,18 +1,17 @@
 import React from "react";
-import "../BlogPage.css";
 import user from "../../../common/user.png";
-import UpdateArticleAnswerForm from "./Forms/CreateArticleAnswerForm";
-import UpdateArticleCommentForm from "./Forms/CreateArticleCommentForm";
+import UpdateWorkAnswerForm from "./Forms/CreateWorkAnswerForm";
+import UpdateWorkCommentForm from "./Forms/CreateWorkCommentsForm";
 
-const ArticleComments = (props) => {
+const WorkComments = (props) => {
   const showNormalizedDate = (object) => {
     const dateISO = new Date(object.CommentDate).toString().split(" ").splice(1, 4).join(" ");
     return dateISO;
   };
-  const ShowComments = props.articleComments
+  const ShowComments = props.workComments
     .filter((comment) => comment.commentOwner === undefined)
     .map((comment) => {
-      const ShowCommentsAnswers = props.articleComments
+      const ShowCommentsAnswers = props.workComments
         .filter((answer) => answer.commentOwner === comment._id)
         .map((answer) => {
           return (
@@ -29,13 +28,14 @@ const ArticleComments = (props) => {
                     answer
                   </p>
                   {props.currentCommentId === answer._id && (
-                    <UpdateArticleAnswerForm onSubmit={props.addArticleCommentAnswer} />
+                    <UpdateWorkAnswerForm onSubmit={props.addWorkCommentAnswer} />
                   )}
                 </div>
               </div>
             </div>
           );
         });
+
       return (
         <div key={comment._id} className="showCommentsArea">
           <div className="commentItem">
@@ -51,10 +51,10 @@ const ArticleComments = (props) => {
                   answer
                 </p>
                 {props.currentCommentId === comment._id && (
-                  <UpdateArticleAnswerForm onSubmit={props.addArticleCommentAnswer} />
+                  <UpdateWorkAnswerForm onSubmit={props.addWorkCommentAnswer} />
                 )}
               </div>
-            </div> 
+            </div>
           </div>
           {ShowCommentsAnswers}
         </div>
@@ -63,10 +63,10 @@ const ArticleComments = (props) => {
 
   return (
     <div className=" commentsArea">
-      <UpdateArticleCommentForm onSubmit={props.addArticleComment} />
+      <UpdateWorkCommentForm onSubmit={props.addWorkComment} />
       {ShowComments}
     </div>
   );
 };
 
-export default ArticleComments;
+export default WorkComments;
