@@ -4,6 +4,8 @@ import "../BlogPage.css";
 import "../../adminPanel/Admin.css";
 import Preloader from "../../../common/Preloader/Preloader";
 import ArticleCommentsContainer from "./ArticleCommentsContainer";
+import like from "../img/thumb-up.svg";
+import correct from "../img/correct.svg";
 
 let Article = (props) => {
   const onChangeTextArea = () => {
@@ -21,8 +23,24 @@ let Article = (props) => {
           <h1>{article.articleName}</h1>
           <hr />
           <div className="dateViews">
-            <p className="date">By Amir Aimurzayev on {article.articleDate}</p>
+            <p className="date pressLikeParagraph">By Amir Aimurzayev on {article.articleDate}</p>
+            {props.like ? (
+              <div className="pressLike">
+                <p className="pressLikeParagraph">Thank you for your vote!</p>
+                <div className="like shareBlock">
+                  <img src={correct} alt="twitter icon logo" />
+                </div>
+              </div>
+            ) : (
+              <div className="pressLike" onClick={props.setLike}>
+                <p className="pressLikeParagraph">Press like if it was helpfull</p>
+                <div className="like shareBlock">
+                  <img src={like} alt="twitter icon logo" />
+                </div>
+              </div>
+            )}
           </div>
+
           {props.articleImages.length !== 0 && (
             <img src={MainImg} alt={props.articleImages[0].descr} />
           )}

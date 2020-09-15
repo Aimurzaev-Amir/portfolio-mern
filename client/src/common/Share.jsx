@@ -1,4 +1,3 @@
-import { PromiseProvider } from "mongoose";
 import React from "react";
 import logo from "../components/Header/img/Logo.svg";
 import facebook from "./facebook.svg";
@@ -91,5 +90,4 @@ const Share = (props) => {
     </div>
   );
 };
-
 export default Share;

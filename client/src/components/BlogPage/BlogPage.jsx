@@ -3,7 +3,7 @@ import "./BlogPage.css";
 import BlogPageElement from "./BlogPageComponents/BlogPageElement";
 import Preloader from "../../common/Preloader/Preloader";
 
-let BlogPage = (props) => { 
+let BlogPage = (props) => {
   let BlogPageElements = props.articles.map((article) => {
     let BlogPageImages = props.images
       .filter((image) => image.owner === article._id)

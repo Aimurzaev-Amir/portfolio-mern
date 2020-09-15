@@ -4,7 +4,7 @@ import "../../../App.css";
 import BlockTitleText from "../../../common/BlockTitle";
 import design from "../img/about-me-design.svg";
 import frontEnd from "../img/about-me-front-end.svg";
-import resume from "../../mainPage/Aimurzayev-Amir-front-end-summary.docx";
+import resume from "../../mainPage/Aimurzayev-Amir-front-end-summary.pdf";
 
 let AboutMeIntro = () => {
   return (
@@ -31,8 +31,8 @@ let AboutMeIntro = () => {
         </div>
       </div>
       <div className="buttonPage">
-        <form method="get" action={resume}>
-          <button type="submit" className="downloadBtn">
+        <a href={resume} target="_blank" rel="noopener noreferrer">
+          <button className="downloadBtn">
             <svg
               width="19"
               height="14"
@@ -51,7 +51,7 @@ let AboutMeIntro = () => {
             </svg>
             Download resume
           </button>
-        </form>
+        </a>
       </div>
     </div>
   );

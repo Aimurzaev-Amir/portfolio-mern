@@ -210,6 +210,21 @@ button {
   text-decoration: underline;
   cursor: pointer;
 }
+.pressLike {
+  display: flex;
+}
+.pressLikeParagraph {
+  margin-bottom: 0;
+  padding-top: 12px;
+  margin-right: 10px;
+}
+.like {
+  border-radius: 100%;
+  cursor: pointer;
+}
+.like img {
+  width: 25px;
+}
 
 /* --------- Article page END ----------  */
 

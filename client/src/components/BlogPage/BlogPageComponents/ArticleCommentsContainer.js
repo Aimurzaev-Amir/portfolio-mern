@@ -20,11 +20,16 @@ const ArticleCommentsContainer = (props) => {
         "GET",
         null
       );
+      const comments = parseInt(props.articles[0].comments);
+      const plusLikeCounter = await request(`/api/articles/${props.currentArticleId}`, "PATCH", {
+        comments: comments ? comments + 1 : 1,
+      });
       props.uploadCurrentArticleComments(articleCommentsResponse);
       formData.userName = "";
       formData.CommentText = "";
     } catch (e) {}
   };
+
   const addArticleCommentAnswer = async (formData) => {
     try {
       await request("/api/articles/createArticleComment", "POST", {
@@ -37,6 +42,10 @@ const ArticleCommentsContainer = (props) => {
         "GET",
         null
       );
+      const comments = parseInt(props.articles[0].comments);
+      const plusLikeCounter = await request(`/api/articles/${props.currentArticleId}`, "PATCH", {
+        comments: comments ? comments + 1 : 1,
+      });
       props.uploadCurrentArticleComments(articleCommentsResponse);
       props.uploadCurrentCommentId(null);
     } catch (e) {}
@@ -60,6 +69,7 @@ const ArticleCommentsContainer = (props) => {
 
 let mapStateToProps = (state) => {
   return {
+    articles: state.articles.articles,
     articleComments: state.articles.articleComments,
     currentArticleId: state.articles.currentArticleId,
     currentCommentId: state.articles.currentCommentId,
@@ -67,4 +77,4 @@ let mapStateToProps = (state) => {
 };
 export default connect(mapStateToProps, { uploadCurrentArticleComments, uploadCurrentCommentId })(
   ArticleCommentsContainer
-); 
+);

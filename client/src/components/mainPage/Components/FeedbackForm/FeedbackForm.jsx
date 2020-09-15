@@ -11,7 +11,7 @@ const FeedbackForm = (props) => {
         <FeedbackFormInputs />
         <FormContactInfo />
       </div>
-      <div className="buttonPage">
+      <div className="buttonPage buttonSend">
         <button disabled={props.loading}>Send message</button>
       </div>
     </form>

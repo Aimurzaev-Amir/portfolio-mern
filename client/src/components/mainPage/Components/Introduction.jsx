@@ -2,7 +2,7 @@ import React from "react";
 import "../MainPage.css";
 import BlockTitleText from "../../../common/BlockTitle";
 import { NavLink } from "react-router-dom";
-import resume from "../Aimurzayev-Amir-front-end-summary.docx";
+import resume from "../Aimurzayev-Amir-front-end-summary.pdf";
 
 let Introduction = (props) => {
   return (
@@ -22,11 +22,11 @@ let Introduction = (props) => {
       </div>
 
       <div className="buttonPage">
-        <NavLink to="/about-me">
-          <button className="buttonRMargin">LEARN MORE ABOUT ME</button>
+        <NavLink to="/about-me" className="buttonRMargin">
+          <button>LEARN MORE ABOUT ME</button>
         </NavLink>
-        <form method="get" action={resume}>
-          <button type="submit" className="downloadBtn">
+        <a href={resume} target="_blank" rel="noopener noreferrer">
+          <button className="downloadBtn">
             <svg
               width="19"
               height="14"
@@ -45,7 +45,7 @@ let Introduction = (props) => {
             </svg>
             Download resume
           </button>
-        </form>
+        </a>
       </div>
     </div>
   );

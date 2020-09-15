@@ -184,9 +184,6 @@ header {
     background: white;
     margin: 5px;
   }
-  .mainImgBg {
-    padding-top: 62px;
-  }
   .mainNav .hamburger {
     position: relative;
     cursor: pointer;

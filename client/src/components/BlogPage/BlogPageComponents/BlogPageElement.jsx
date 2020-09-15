@@ -9,6 +9,9 @@ let BlogPageElement = (props) => {
       <hr />
       <div className="dateViews">
         <p className="date">By Amir Aimurzayev on {props.articleDate}</p>
+        <p>
+          likes: {props.likes ? props.likes : 0} comments: {props.comments ? props.comments : 0}
+        </p>
       </div>
       {props.BlogPageImages}
       <article>{props.articleSmallDescription}</article>

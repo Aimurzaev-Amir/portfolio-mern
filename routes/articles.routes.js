@@ -22,6 +22,16 @@ router.post("/create", async (req, res) => {
   }
 });
 
+// /api/articles/:id (update data for current work(by id))
+router.patch("/:id", async (req, res) => {
+  try {
+    const Article = await Articles.updateOne({ _id: req.params.id }, { $set: req.body });
+    res.json({ Article });
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong, please, try again" });
+  }
+});
+
 // /api/works/ (get all data about all works)
 router.get("/", async (req, res) => {
   try {

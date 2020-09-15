@@ -483,6 +483,9 @@
   transition: 0.4s;
   fill: white;
 }
+.buttonSend button {
+  max-width: 200px;
+}
 @media (max-width: 1180px) {
   .aboutMeMainText,
   .intro,

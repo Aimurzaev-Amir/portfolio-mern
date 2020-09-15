@@ -36,10 +36,10 @@ let LatestBlogArticles = (props) => {
         <div className="socialLine">
           <div className="articleSocial">
             <div className="articleComments">
-              <p>{article.comments} comments</p>
+              <p>{article.comments ? article.comments : 0} comments</p>
             </div>
             <div className="articleShare">
-              <p>{article.likes} likes</p>
+              <p>{article.likes ? article.likes : 0} likes</p>
             </div>
           </div>
         </div>

@@ -15,6 +15,7 @@ import {
   setArticleBlocksTextAreas,
   uploadCurrentArticleComments,
 } from "../../../Redux/ArticlesReducer";
+import { useState } from "react";
 
 let ArticleContainer = (props) => {
   let ArticleName = props.match.params.articleName;
@@ -77,6 +78,14 @@ let ArticleContainer = (props) => {
     articles();
   }, [props.currentArticleId, props.currentArticleName]);
 
+  const [like, setLikeState] = useState(false);
+  const setLike = async () => {
+    const likes = parseInt(props.articles[0].likes);
+    const plusLikeCounter = await request(`/api/articles/${props.currentArticleId}`, "PATCH", {
+      likes: likes ? likes + 1 : 1,
+    });
+    setLikeState(true);
+  };
   return (
     <div>
       <Article
@@ -90,6 +99,9 @@ let ArticleContainer = (props) => {
         blocksLists={props.blocksLists}
         blocksTextAreas={props.blocksTextAreas}
         articleComments={props.articleComments}
+        //functions
+        like={like}
+        setLike={setLike}
       />
     </div>
   );
