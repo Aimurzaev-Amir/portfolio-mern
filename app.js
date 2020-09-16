@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const PORT = process.env.PORT || config.get("port") || 5000;
+const PORT = process.env.PORT || config.get("port");
 
 async function start() {
   try {
@@ -40,6 +40,6 @@ async function start() {
 
 start();
 
-app.listen(5000, () => {
+app.listen(process.env.PORT || config.get("port"), () => {
   console.log(`App has been started on port ${PORT}...`);
 });
