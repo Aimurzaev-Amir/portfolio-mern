@@ -25,6 +25,7 @@ async function start() {
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
+    app.use(express.static("client/build"));
     if (process.env.NODE_ENV === "production") {
       app.use(express.static("client/build"));
       app.get("*", (req, res) => {
