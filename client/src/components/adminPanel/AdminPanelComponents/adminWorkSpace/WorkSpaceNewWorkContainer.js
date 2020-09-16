@@ -31,7 +31,7 @@ const WorkSpaceNewWorkContainer = (props) => {
       }
     };
     getLastWorkData();
-  }, []);
+  }, [props.allWorks.length]);
 
   let [color, setColor] = useState(null);
   const onColorChange = (e) => {
@@ -45,6 +45,9 @@ const WorkSpaceNewWorkContainer = (props) => {
       });
       const worksData = await request("/api/works", "GET", null);
       props.setWork(worksData);
+      formData.workName = "";
+      formData.urlAdress = "";
+      formData.workTitle = "";
     } catch (e) {}
   };
 

@@ -1,28 +1,12 @@
 .workHeader {
-  height: 100vh;
+  /* height: 100vh; */
+  height: calc(var(--vh, 1vh) * 100);
   position: relative;
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 }
-
-/* .workMoveBg {
-    background-image: url(../../../Redux/img/work-move/main-move-bg.jpg);
-  }
-  .workBedentistBg {
-    background-image: url(../../../Redux/img/work-bedentist/main-img.png);
-  }
-  .workKaztransgasBg {
-    background-image: url(../../../Redux/img/work-kaztransgas/kaztransgas-main-bg.jpg);
-  }
-  .workPortfolioBg {
-    background: linear-gradient(180deg, #000000 29.17%, rgba(0, 0, 0, 0) 100%);
-    box-shadow: unset;
-  } */
-
-/* Main description block STARt */
-
 .workDescriber {
   position: relative;
   margin-top: -44vh;
@@ -91,96 +75,6 @@
   margin-top: 16px;
   color: #6b6a6a;
 }
-/* .workOverview .designInfo .workStyles .workPortfolioH1 {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 30px;
-  }
-  .workOverview .designInfo .workStyles .workPortfolioH2 {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-  }
-  .workOverview .designInfo .workStyles .workPortfolioH3 {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 15px;
-  }
-  .workOverview .designInfo .workStyles .workPortfolioH4 {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-  }
-  .workOverview .designInfo .workStyles .workMoveH1 {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 30px;
-  }
-  .workOverview .designInfo .workStyles .workMoveH2 {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-  }
-  .workOverview .designInfo .workStyles .workMoveH3 {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 15px;
-  }
-  .workOverview .designInfo .workStyles .workMoveH4 {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-  }
-  .workOverview .designInfo .workStyles .workKaztransgasH1 {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 30px;
-  }
-  .workOverview .designInfo .workStyles .workKaztransgasH2 {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-  }
-  .workOverview .designInfo .workStyles .workKaztransgasH3 {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 15px;
-  }
-  .workOverview .designInfo .workStyles .workBedentistH1 {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 43px;
-  }
-  .workOverview .designInfo .workStyles .workBedentistH2 {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 38px;
-  }
-  .workOverview .designInfo .workStyles .workBedentistH3 {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 28px;
-  }
-  .workOverview .designInfo .workStyles .workBedentistH4 {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-  }
-  .workOverview .designInfo .workStyles .workBedentistH5 {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-  }
-  .workOverview .designInfo .workStyles .workBedentistH6 {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 18px;
-  }
-  .workOverview .designInfo .workStyles .workBedentistH7 {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-  } */
 .workColors {
   text-align: center;
 }
@@ -225,65 +119,6 @@ TABLE {
   max-width: 350px;
   width: 100%;
 }
-
-/* .portfolioEllips1 {
-    background: #e7b02f;
-  }
-  .portfolioEllips2 {
-    background: #000;
-  }
-  .portfolioEllips3 {
-    background: #f5f5f5;
-    border: 0.6px solid #000000;
-  }
-  .portfolioEllips4 {
-    background: #ffffff;
-    border: 0.6px solid #000000;
-  }
-  .moveEllips1 {
-    background: #da4b52;
-  }
-  .moveEllips2 {
-    background: #000;
-  }
-  .moveEllips3 {
-    background: #8f8585;
-  }
-  .moveEllips4 {
-    background: #585858;
-  }
-  .kaztransgasEllips1 {
-    background: #007ab9;
-  }
-  .kaztransgasEllips2 {
-    background: #000;
-  }
-  .kaztransgasEllips3 {
-    background: #ffffff;
-    border: 0.6px solid #000000;
-  }
-  .kaztransgasEllips4 {
-    background: #f3f4f4;
-    border: 0.6px solid #000000;
-  }
-  .bedentistEllips1 {
-    background: #2a93c9;
-  }
-  .bedentistEllips2 {
-    background: #65b6df;
-  }
-  .bedentistEllips3 {
-    background: #a4a8aa;
-  }
-  .bedentistEllips4 {
-    background: #616262;
-  }
-  .bedentistEllips5 {
-    background: #000;
-  }
-  .bedentistEllips6 {
-    background: #eaeaea;
-  } */
 .workDetails {
   max-width: 230px;
   padding-left: 27px;
@@ -335,41 +170,6 @@ TABLE {
   justify-content: left;
   align-items: baseline;
 }
-
-/* desktop-images block*/
-
-/* .desktopVersionScreenshots {
-    display: grid;
-    grid-template-columns: auto 1px auto;
-  
-    margin: 0 auto;
-  }
-  .verticalLine {
-    border-left: 1px solid #6b6a6a;
-  }
-  .horizontalLine {
-    border-bottom: 1px solid #6b6a6a;
-  }
-  .desktopVersionScreenshots img {
-    padding: 30px;
-    width: 100%;
-  } */
-
-/* mobile-images block*/
-
-/* .mobileVersionSection {
-    margin-top: 90px;
-  }
-  .mobileVersionScreenshots {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: auto 1px auto 1px auto;
-    text-align: center;
-  }
-  .mobileVersionScreenshots img {
-    width: 100%;
-    padding: 50px;
-  } */
 
 @media (min-height: 1000px) {
   .workDescriber {

@@ -16,11 +16,11 @@ app.use("/api/feedback", require("./routes/feedback.routes"));
 app.use("/api/works", require("./routes/works.routes"));
 app.use("/api/articles", require("./routes/articles.routes"));
 
-const PORT = config.get("port") || 5000;
+const PORT = process.env.PORT || config.get("port") || 5000;
 
 async function start() {
   try {
-    await mongoose.connect(config.get("mongoURI"), {
+    await mongoose.connect(process.env.MONGODB_URI || config.get("mongoURI"), {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
@@ -30,7 +30,9 @@ async function start() {
     process.exit(1);
   }
 }
-
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 start();
 
 app.listen(5000, () => {

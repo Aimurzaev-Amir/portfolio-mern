@@ -177,13 +177,13 @@ router.get("/getWorkComments/:id", async (req, res) => {
 });
 
 // /api/works/addPhoto
-router.post("/addPhoto", async (req, res) => {
-  const { name, descr, type, img, owner } = req.body;
+router.post("/addPhoto/:id", async (req, res) => {
+  const { name, descr, type, img } = req.body;
   const imageData = new Img({
     name,
     descr,
     type,
-    owner,
+    owner: req.params.id,
   });
   saveImage(imageData, img);
   try {

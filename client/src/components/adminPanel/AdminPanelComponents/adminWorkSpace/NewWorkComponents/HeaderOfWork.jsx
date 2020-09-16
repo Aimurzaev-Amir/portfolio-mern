@@ -14,13 +14,6 @@ const HeaderOFWork = (props) => {
       style={{ backgroundImage: "url(" + props.work.workBackground + ")" }}
     >
       <div className="workIntro workIntroEdit">
-        {/* <UpdateWorkImages 
-          onSubmit={props.updateWorkItem}
-          work={props.work}
-          onChangePhoto={props.onChangePhoto}
-          onChangeBackground={props.onChangeBackground}
-          onChangePreview={props.onChangePreview}
-        /> */}
         <CreateNewWorkItem onSubmit={props.createWorkItem} />
       </div>
     </header>

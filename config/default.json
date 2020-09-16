@@ -3,3 +3,4 @@
   "jwtSecret": "amir portfolio mern",
   "mongoURI": "mongodb+srv://Aimurzayev:3223homya4ki3223@cluster0.3ha0y.mongodb.net/app?retryWrites=true&w=majority"
 }
+ 

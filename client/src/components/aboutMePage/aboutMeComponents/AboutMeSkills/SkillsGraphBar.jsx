@@ -7,7 +7,7 @@ let SkillGraphBar = (props) => {
       className="bar"
       id={props.barId}
       data-aos="fade-up"
-      data-aos-offset="700"
+      data-aos-offset={window.innerWidth > 700 ? "260" : "100"}
       data-aos-delay={props.aosDelay}
     >
       <div className="barText">

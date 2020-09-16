@@ -41,7 +41,7 @@ let MainPage = () => {
   };
   return (
     <div className="bgBlue">
-      <header className="aboutMePage">
+      <header className="aboutMePage" >
         <MainBanner gotoSection={gotoSection} />
       </header>
       <Introduction section={section} />

@@ -10,7 +10,7 @@ import FilePondWorks from "./NewWorkComponents/FilePondWorks";
 const WorkSpaceNewWork = (props) => {
   return (
     <div>
-      <HeaderOFWork
+      <HeaderOFWork 
         work={props.work}
         createWorkItem={props.createWorkItem}
         updateWorkItem={props.updateWorkItem}
