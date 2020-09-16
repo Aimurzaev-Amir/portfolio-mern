@@ -1,6 +1,9 @@
 {
   "name": "portfolio-mongodb",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.x"
+  },
   "description": "Updating personal portfolio using nodejs + react + redux + mongodb + express ",
   "main": "app.js",
   "scripts": {
