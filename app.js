@@ -1,7 +1,7 @@
 const express = require("express");
 const config = require("config");
 const mongoose = require("mongoose");
-
+const path = require("path");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -25,14 +25,18 @@ async function start() {
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
+    if (process.env.NODE_ENV === "production") {
+      app.use(express.static("client/build"));
+      app.get("*", (req, res) => {
+        res.senFile(path.join(__dirname, "client", "build", "index.html"));
+      });
+    }
   } catch (e) {
     console.log("Server Error", e.message);
     process.exit(1);
   }
 }
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+
 start();
 
 app.listen(5000, () => {
