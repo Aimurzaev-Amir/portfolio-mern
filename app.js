@@ -16,12 +16,12 @@ app.use("/api/feedback", require("./routes/feedback.routes"));
 app.use("/api/works", require("./routes/works.routes"));
 app.use("/api/articles", require("./routes/articles.routes"));
 
-// if (process.env.NODE_ENV === "production") {
-  app.use('/',  express.static(path.join(__dirname, 'client', 'build')))
+if (process.env.NODE_ENV === "production") {
+  app.use("/", express.static(path.join(__dirname, "client", "build")));
   app.get("*", (req, res) => {
-    res.senFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.senFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
-// }
+}
 
 const PORT = process.env.PORT || config.get("port") || 5000;
 
@@ -30,7 +30,7 @@ async function start() {
     await mongoose.connect(process.env.MONGODB_URI || config.get("mongoURI"), {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true, 
+      useCreateIndex: true,
     });
   } catch (e) {
     console.log("Server Error", e.message);
