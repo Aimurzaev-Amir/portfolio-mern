@@ -1,16 +1,16 @@
 {
   "name": "portfolio-mongodb",
-  "version": "1.0.0",
+  "version": "1.0.0",heroku plugins:install heroku-cli-static
   "description": "Updating personal portfolio using nodejs + react + redux + mongodb + express ",
   "main": "app.js",
   "scripts": {
     "build": "npm run build --prefix client",
     "install-client": "npm install --prefix client",
     "heroku-postbuild": "npm run install-client && npm run build",
-    "start": "cross-env NODE_ENV=production node app.js",
+    "start": "NODE_ENV=production node app.js",
     "server": "nodemon app.js",
     "client": "npm run start --prefix client",
-    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
+    "dev": "NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [
     "mern",
