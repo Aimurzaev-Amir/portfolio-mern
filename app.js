@@ -16,6 +16,12 @@ app.use("/api/feedback", require("./routes/feedback.routes"));
 app.use("/api/works", require("./routes/works.routes"));
 app.use("/api/articles", require("./routes/articles.routes"));
 
+if (process.env.NODE_ENV === "production") {
+  app.use('/',  express.static(path.join(__dirname, 'client', 'build')))
+  app.get("*", (req, res) => {
+    res.senFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+
 const PORT = process.env.PORT || config.get("port") || 5000;
 
 async function start() {
@@ -25,16 +31,17 @@ async function start() {
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
-    app.use(express.static('client/build'));
-    app.get("*", (req, res) => {
-      res.senFile(path.join(__dirname, "client", "build", "index.html"));
-    });
-    if (process.env.NODE_ENV === "production") {
-      app.use(express.static("client/build"));
-      app.get("*", (req, res) => {
-        res.senFile(path.join(__dirname, "client", "build", "index.html"));
-      });
-    }
+    // app.use(express.static('client/build'));
+    // app.get("*", (req, res) => {
+    //   res.senFile(path.join(__dirname, "client", "build", "index.html"));
+    // });
+    // if (process.env.NODE_ENV === "production") {
+    //   app.use('/',  express.static(path.join(__dirname, 'client', 'build')))
+    //   app.use(express.static("client/build"));
+    //   app.get("*", (req, res) => {
+    //     res.senFile(path.join(__dirname, "client", "build", "index.html"));
+    //   });
+    // }
   } catch (e) {
     console.log("Server Error", e.message);
     process.exit(1);
