@@ -21,6 +21,7 @@ if (process.env.NODE_ENV === "production") {
   app.get("*", (req, res) => {
     res.senFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
+}
 
 const PORT = process.env.PORT || config.get("port") || 5000;
 
