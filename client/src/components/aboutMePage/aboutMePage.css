@@ -25,6 +25,9 @@
   max-width: 270px;
   text-align: center;
   z-index: 2;
+  -webkit-animation: side-text-anim 1s ease-out forwards 0.4s;
+  -moz-animation: side-text-anim 1s ease-out forwards 0.4s;
+  -o-animation: side-text-anim 1s ease-out forwards 0.4s;
   animation: side-text-anim 1s ease-out forwards 0.4s;
   opacity: 0;
 }
@@ -44,6 +47,9 @@
   left: 0;
 }
 .designSide img {
+  -webkit-animation: design-animation 0.5s ease-out forwards;
+  -moz-animation: design-animation 0.5s ease-out forwards;
+  -o-animation: design-animation 0.5s ease-out forwards;
   animation: design-animation 0.5s ease-out forwards;
   z-index: 1;
   height: 100%;
@@ -51,11 +57,38 @@
   display: block;
 }
 .frontEndSide img {
+  -webkit-animation: front-end-animation 0.5s ease-out forwards;
+  -moz-animation: front-end-animation 0.5s ease-out forwards;
+  -o-animation: front-end-animation 0.5s ease-out forwards;
   animation: front-end-animation 0.5s ease-out forwards;
   z-index: 1;
   height: 100%;
   margin-right: auto;
   display: block;
+}
+@-webkit-keyframes side-text-anim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes side-text-anim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes side-text-anim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes side-text-anim {
   from {
@@ -65,9 +98,57 @@
     opacity: 1;
   }
 }
+@-webkit-keyframes design-animation {
+  from {
+    transform: translatex(-100%);
+  }
+  to {
+    transform: translatex(0);
+  }
+}
+@-moz-keyframes design-animation {
+  from {
+    transform: translatex(-100%);
+  }
+  to {
+    transform: translatex(0);
+  }
+}
+@-o-keyframes design-animation {
+  from {
+    transform: translatex(-100%);
+  }
+  to {
+    transform: translatex(0);
+  }
+}
 @keyframes design-animation {
   from {
     transform: translatex(-100%);
+  }
+  to {
+    transform: translatex(0);
+  }
+}
+@-webkit-keyframes front-end-animation {
+  from {
+    transform: translatex(100%);
+  }
+  to {
+    transform: translatex(0);
+  }
+}
+@-moz-keyframes front-end-animation {
+  from {
+    transform: translatex(100%);
+  }
+  to {
+    transform: translatex(0);
+  }
+}
+@-o-keyframes front-end-animation {
+  from {
+    transform: translatex(100%);
   }
   to {
     transform: translatex(0);
@@ -539,9 +620,9 @@
     margin-right: unset;
   }
   .designSide,
-.frontEndSide {
-  display: flex;
-}
+  .frontEndSide {
+    display: flex;
+  }
 }
 
 @media (max-width: 815px) {
@@ -577,9 +658,9 @@
     font-size: 16px;
   }
   .designSide,
-.frontEndSide {
-  display: unset;
-}
+  .frontEndSide {
+    display: unset;
+  }
 }
 
 @media (max-width: 700px) {
