@@ -1,9 +1,9 @@
 .workHeader {
   height: calc(var(--vh, 1vh) * 100);
   position: relative;
-  background-position: top;
-  background-size: cover;
-  background-repeat: no-repeat;
+  /* background-position: top; */
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
 }
 .workDescriber {
   position: relative;
@@ -202,6 +202,10 @@ TABLE {
   }
 }
 @media (max-width: 700px) {
+  .workHeader {
+    background-position-x: 20% !important;
+    background-position-y: 15% !important;
+  }
   .leftSideButton {
     justify-content: unset;
     align-items: unset;
