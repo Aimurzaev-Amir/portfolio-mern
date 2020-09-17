@@ -19,11 +19,11 @@ const UpdateLatestArticleDataContainer = (props) => {
     const articles = async () => {
       const articlesResponse = await request("/api/articles", "GET", null);
       props.setArticles(articlesResponse);
-      if (articlesResponse.length !== 0) {
+      if (articlesResponse.length !== null) {
         const currentId = articlesResponse[articlesResponse.length - 1]._id;
         props.setArticleId(currentId);
       }
-      if (props.currentArticleId !== 0) {
+      if (props.currentArticleId !== null) {
         const articlesImages = await request(
           `/api/articles/getArticleMainImages/${props.currentArticleId}`,
           "GET",

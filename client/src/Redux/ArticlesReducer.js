@@ -11,9 +11,9 @@ const setCurrentArticleComments = "ARTICLESREDUCER/SET-CURRENT-ARTICLE-COMMENTS"
 const setCommentAnswerId = "ARTICLESREDUCER/SET-COMMENT-ANSWERID";
 
 let initialState = {
-  currentArticleId: 0,
-  currentArticleName: 0,
-  currentBlockId: 0,
+  currentArticleId: null,
+  currentArticleName: null,
+  currentBlockId: null,
   articles: [],
   images: [],
   blocks: [],

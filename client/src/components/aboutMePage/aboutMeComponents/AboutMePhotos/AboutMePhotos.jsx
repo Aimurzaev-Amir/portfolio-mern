@@ -3,33 +3,32 @@ import "../../aboutMePage.css";
 import BlockTitleText from "../../../../common/BlockTitle";
 import PhotoCard from "./PhotoCard";
 import { useState } from "react";
+import prev from "../../img/photos/prev.png";
+import next from "../../img/photos/next.png";
 
 let AboutMePhotos = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [imgModal, setImg] = useState(0);
-  // const [finish, setFinish] = useState(false);
-
-  const getModal = () => {
-    setShowModal(true);
-  };
   const CloseModal = () => {
     setShowModal(false);
   };
   const setModalImg = (e) => {
-    const imgId = e.currentTarget.id;
-    setImg(imgId);
+    setImg(parseInt(e.currentTarget.id));
     setShowModal(true);
   };
-
   const nextPhoto = () => {
-    setImg(imgModal + 1);
-    if (imgModal === 5) {
-      console.log("hello!");
+    if (parseInt(imgModal) + 1 >= props.photos.length) {
+      setImg(0);
+    } else {
+      setImg(parseInt(imgModal) + 1);
     }
   };
-
   const prevPhoto = () => {
-    setImg(imgModal - 1);
+    if (parseInt(imgModal) === 0) {
+      setImg(props.photos.length - 1);
+    } else {
+      setImg(parseInt(imgModal) - 1);
+    }
   };
 
   let PhotosBlock = props.photos.map((photo) => {
@@ -54,7 +53,7 @@ let AboutMePhotos = (props) => {
             <span className="close" onClick={CloseModal}>
               &times;
             </span>
-            {/* <img
+            <img
               id="nextPhoto"
               className="nextPhoto galleryButton"
               src={next}
@@ -67,7 +66,7 @@ let AboutMePhotos = (props) => {
               src={prev}
               alt="previous button"
               onClick={prevPhoto}
-            /> */}
+            />
             <img className="modalContent" src={props.photos[imgModal].img} alt="" />
             <div>
               <p>{props.photos[imgModal].imdDescr}</p>

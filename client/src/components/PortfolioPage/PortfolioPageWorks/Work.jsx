@@ -100,13 +100,15 @@ let Work = (props) => {
             )}`
           : bg;
 
+      const BackgroundColor = work.background;
       return (
         <div key={work._id}>
           <header
             className="workHeader"
             style={{
-              background: work.background,
-              backgroundImage: "url(" + Background + ")",
+              background:
+                BackgroundArr[0] !== undefined ? "url(" + Background + ")" : BackgroundColor,
+              boxShadow: BackgroundArr[0] !== undefined && "0px 4px 10px rgba(0, 0, 0, 0.25)",
             }}
           >
             <div className="workIntro">
@@ -159,7 +161,7 @@ let Work = (props) => {
                   btnUrl={work.onlineUrl}
                   btnTarget="_blank"
                   rel="noopener noreferrer"
-                  btnText="Visit site"
+                  btnText={work.onlineUrl ? "Visit site" : "Comming Soon"}
                 />
               </div>
             </div>

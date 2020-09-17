@@ -6,9 +6,9 @@ import SetTechnologies from "./Forms/DetailesTechnologiesForm";
 const WorkDetailsEdit = (props) => {
   return (
     <div className="workDetails">
-      <SetTypeOfWork onSubmit={props.updateWorkItem} />
-      <SetDidPoint work={props.work} onSubmit={props.createWorkDidPoint} />
-      <SetTechnologies onSubmit={props.updateWorkItem} />
+      <SetTypeOfWork allWorks={props.allWorks} onSubmit={props.updateWorkItem} />
+      <SetDidPoint allWorks={props.allWorks} onSubmit={props.createWorkDidPoint} />
+      <SetTechnologies allWorks={props.allWorks} onSubmit={props.updateWorkItem} />
     </div>
   );
 };

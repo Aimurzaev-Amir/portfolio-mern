@@ -12,7 +12,7 @@ let AboutMePage = (props) => {
     <div className="bgBlue">
       <AboutMePageBanner />
       <AboutMeIntro />
-      <AboutMeSkills />
+      <AboutMeSkills /> 
       <AboutMeEducation />
       <AboutMeFacts />
       <AboutMePhotos photos={props.photos} />

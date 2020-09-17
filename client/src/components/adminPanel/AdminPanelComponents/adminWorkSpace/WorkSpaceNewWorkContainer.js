@@ -102,7 +102,6 @@ const WorkSpaceNewWorkContainer = (props) => {
 
   return (
     <WorkSpaceNewWork
-      work={props.newWork}
       images={props.images}
       allWorks={props.allWorks}
       //async req to server
@@ -122,9 +121,7 @@ const WorkSpaceNewWorkContainer = (props) => {
 
 let mapStateToProps = (state) => {
   return {
-    urlAdress: state.works.newWork.urlAdress,
     token: state.admin.token,
-    newWork: state.works.newWork,
     allWorks: state.works.works,
     images: state.works.images,
     currentWorkId: state.works.currentWorkId,

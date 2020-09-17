@@ -7,7 +7,7 @@ const schema = new Schema({
   smallDescription: { type: String },
   urlAdress: { type: String, required: true, unique: true },
   onlineUrl: { type: String },
-
+  background: { type: String },
   workTitle: { type: String },
   aboutProject: { type: String },
   fontName: { type: String },

@@ -1,5 +1,4 @@
 .aboutMePage {
-  /* height: 100vh; */
   height: calc(var(--vh, 1vh) * 100);
   background-color: #fff;
   background-image: url(./img/main.png);
@@ -263,14 +262,10 @@
 .articleCard:hover .articleHover {
   opacity: 1;
 }
-/* .articlesCards :last-child {
-  margin-right: 0px;
-} */
 .articleCard .articleImg {
   overflow: hidden;
 }
 .articleCard .articleImg img {
-  /* width: 100%; */
   border-radius: 5px;
   height: 220px;
 }
@@ -542,9 +537,6 @@
   .workCardInfo {
     opacity: 1;
   }
-  /* .articleCard .atricleText {
-    height: 310px;
-  } */
 }
 @media (max-width: 815px) {
   .aboutMeMainText {

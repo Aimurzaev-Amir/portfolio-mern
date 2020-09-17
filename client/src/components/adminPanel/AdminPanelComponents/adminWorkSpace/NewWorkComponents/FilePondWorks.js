@@ -26,8 +26,7 @@ const FilePondWorks = (props) => {
   const inputOnChange = (e) => {
     setInput(e.currentTarget.value);
   };
-  const currentId =
-    props.allWorks.length !== 0 ? props.allWorks[props.allWorks.length - 1]._id : null;
+  const currentId = props.currentWorkId;
   return (
     <div className="filePondWorks wrapper">
       <form action={"/api/works/addPhoto/" + currentId} method="POST">

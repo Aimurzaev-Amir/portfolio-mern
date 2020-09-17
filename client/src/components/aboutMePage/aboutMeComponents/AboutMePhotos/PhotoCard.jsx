@@ -10,7 +10,7 @@ let PhotoCard = (props) => {
         onClick={props.setModalImg}
         alt={props.imgDescr}
         src={props.img}
-      />
+      /> 
     </div>
   );
 };

@@ -42,7 +42,7 @@ const WorkSpacePreview = (props) => {
     return (
       <PanelArticleItem
         loading={props.loading}
-        key={article.id}
+        key={article._id}
         articlePhoto={articlePhotoArr.length !== 0 ? articlePhotoArr[0].imgSrc : null}
         articleName={article.articleName}
         previewDescription={article.previewDescription}

@@ -2,9 +2,12 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 
 const DetailesWhatIDidForm = (props) => {
-  let whatIDid = props.work.additional.whatIDid.map((point) => {
-    return <p key={point.id}> {point.name}</p>;
-  });
+  let whatIDid =
+    props.allWorks[props.allWorks.length - 1] &&
+    props.allWorks[props.allWorks.length - 1].whatIDid &&
+    props.allWorks[props.allWorks.length - 1].whatIDid.map((point) => {
+      return <p key={point._id}> {point.name}</p>;
+    });
 
   return (
     <form className="detailsInfo" onSubmit={props.handleSubmit}>
