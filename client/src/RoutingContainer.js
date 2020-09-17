@@ -9,9 +9,11 @@ import PortfolioPageContainer from "./components/PortfolioPage/PortfolioPageCont
 import WorkContainer from "./components/PortfolioPage/PortfolioPageWorks/WorkContainer";
 import Footer from "./components/footer/Footer";
 import NavbarContainer from "./components/Header/NavbarContainer";
+import AboutMePage from "./components/aboutMePage/AboutMePage";
 const BlogPageContainer = React.lazy(() => import("./components/BlogPage/BlogPageContainer"));
 const MainPage = React.lazy(() => import("./components/mainPage/MainPage"));
-const AboutMePage = React.lazy(() => import("./components/aboutMePage/AboutMePage"));
+
+// const AboutMePage = React.lazy(() => import("./components/aboutMePage/AboutMePage"));
 const FeedbackContainer = React.lazy(() =>
   import("./components/mainPage/Components/FeedbackForm/FeedbackContainer")
 );
@@ -53,7 +55,7 @@ function App(props) {
       <NavbarContainer />
       {/* Main pages Routers */}
       <Route exact path="/" render={SuspenseHOC(MainPage)} />
-      <Route exact path="/about-me" render={SuspenseHOC(AboutMePage)} />
+      <Route exact path="/about-me" component={() => <AboutMePage />} />
       <Route exact path="/contacts" render={SuspenseHOC(FeedbackContainer)} />
       {/* Portfolio pages Routers */}
       <Route exact path="/portfolio" component={() => <PortfolioPageContainer />} />

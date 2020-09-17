@@ -576,6 +576,10 @@
   .factsInfo ul li {
     font-size: 16px;
   }
+  .designSide,
+.frontEndSide {
+  display: unset;
+}
 }
 
 @media (max-width: 700px) {
