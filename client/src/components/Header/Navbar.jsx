@@ -6,6 +6,7 @@ import behance from "./img/socialNetworks/behance-footer.svg";
 import instagram from "./img/socialNetworks/instagram-footer.svg";
 import linkedin from "./img/socialNetworks/linkedin-footer.svg";
 import vk from "./img/socialNetworks/vk-footer.svg";
+import github from "./img/socialNetworks/github.svg";
 import { NavLink } from "react-router-dom";
 
 let Navbar = (props) => {
@@ -68,6 +69,11 @@ let Navbar = (props) => {
           </li>
           <li>
             <div className="navSocial">
+              <div className="socialItem">
+                <a href="https://github.com/Aimurzaev-Amir">
+                  <img src={github} alt="github Aimurzaev Amir" />
+                </a>
+              </div>
               <div className="socialItem">
                 <a href="#a">
                   <img src={linkedin} alt="linkedin Aimurzaev Amir" />

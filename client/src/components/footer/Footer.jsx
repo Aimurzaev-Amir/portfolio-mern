@@ -5,6 +5,7 @@ import behance from "./img/socialNetworks/behance-footer.svg";
 import instagram from "./img/socialNetworks/instagram-footer.svg";
 import linkedin from "./img/socialNetworks/linkedin-footer.svg";
 import vk from "./img/socialNetworks/vk-footer.svg";
+import github from "./img/socialNetworks/github.svg";
 import { NavLink } from "react-router-dom";
 
 let Footer = () => {
@@ -49,6 +50,9 @@ let Footer = () => {
         data-aos-delay="500"
         data-aos-duration="600"
       >
+        <a href="https://github.com/Aimurzaev-Amir" target="_blank" rel="noopener noreferrer">
+          <img src={github} alt="github Aimurzayev Amir" />
+        </a>
         <a href="" target="_blank" rel="noopener noreferrer">
           <img src={linkedin} alt="linkedin Aimurzayev Amir" />
         </a>
@@ -58,7 +62,11 @@ let Footer = () => {
         <a href="https://vk.com/id140204225" target="_blank" rel="noopener noreferrer">
           <img src={vk} alt="vk Aimurzayev Amir" />
         </a>
-        <a href="https://www.instagram.com/amiraimurzayev/" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.instagram.com/amiraimurzayev/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img src={instagram} alt="instagram Aimurzayev Amir" />
         </a>
       </div>
