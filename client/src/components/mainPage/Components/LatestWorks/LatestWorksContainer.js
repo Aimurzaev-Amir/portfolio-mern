@@ -9,7 +9,8 @@ let LatestWorksContainer = (props) => {
   useEffect(() => {
     const getLastWorkData = async () => {
       const worksData = await request("/api/works", "GET", null);
-      props.setWork(worksData);
+      const worksDataReverse = worksData.reverse();
+      props.setWork(worksDataReverse);
       if (worksData.length !== 0) {
         const images = await request("/api/works/getMainPhotos/workPreview", "GET", null);
         props.setImagesData(images);

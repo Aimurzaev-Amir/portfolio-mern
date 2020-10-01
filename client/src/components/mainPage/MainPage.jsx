@@ -29,12 +29,12 @@ let MainPage = () => {
         },
       },
       500: {
-        centeredSlides: false,
-        pagination: false,
+        centeredSlides: true,
+        pagination: true,
         slidesPerView: "auto",
       },
       950: {
-        allowTouchMove: false,
+        allowTouchMove: true,
         slidesPerView: "auto",
       },
     },
