@@ -1,7 +1,7 @@
 import React from "react";
 import "../aboutMePage.css";
-import left from "../img/left.png";
-import right from "../img/right.png";
+import left from "../img/left.jpg";
+import right from "../img/right.jpg";
 
 let AboutMePageBanner = () => {
   return (

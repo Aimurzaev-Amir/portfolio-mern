@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import "./Admin.css";
-import adminPanelImg from "../../Redux/img/adminPanel/adminPanel.png";
+import adminPanelImg from "../../Redux/img/adminPanel/adminPanel.jpg";
 import LoginForm from "./AdminPanelComponents/LoginForm";
 
 let AdminPanel = (props) => {
