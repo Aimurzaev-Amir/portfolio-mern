@@ -21,7 +21,7 @@ const WorkSpaceNewWork = (props) => {
     )}`;
   return (
     <div>
-      <HeaderOFWork 
+      <HeaderOFWork  
         images={props.images}
         allWorks={props.allWorks}
         createWorkItem={props.createWorkItem}

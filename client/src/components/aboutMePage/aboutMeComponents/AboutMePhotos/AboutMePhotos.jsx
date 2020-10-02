@@ -67,7 +67,7 @@ let AboutMePhotos = (props) => {
               alt="previous button"
               onClick={prevPhoto}
             />
-            <img className="modalContent" src={props.photos[imgModal].img} alt="" />
+            <img className="modalContent" src={props.photos[imgModal].img} alt="private images from Aimurzayev Amir life" />
             <div>
               <p>{props.photos[imgModal].imdDescr}</p>
             </div>

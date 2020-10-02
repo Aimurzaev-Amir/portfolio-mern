@@ -171,6 +171,9 @@ button {
   .workImg img {
     min-width: unset;
   }
+  .portfolio {
+    padding-top: 92px;
+  }
 }
 @media (max-width: 450px) {
   .workInfo .buttonPage {

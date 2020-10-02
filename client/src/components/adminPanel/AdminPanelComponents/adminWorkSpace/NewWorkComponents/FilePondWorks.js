@@ -22,10 +22,6 @@ registerPlugin(
 
 const FilePondWorks = (props) => {
   const [files, setFiles] = useState([]);
-  const [input, setInput] = useState();
-  const inputOnChange = (e) => {
-    setInput(e.currentTarget.value);
-  };
   const currentId = props.currentWorkId;
   return (
     <div className="filePondWorks wrapper">
@@ -37,18 +33,12 @@ const FilePondWorks = (props) => {
             <input type="text" name="name" />
           </div>
           <div className="editInput imgInput">
-            <label htmlFor="descr">Description: </label>
+            <label htmlFor="descr">Description: </label> 
             <input type="text" name="descr" />
           </div>
-          {props.allWorks !== undefined || props.allWorks !== null ? (
-            <div className="editInput imgInput hideInput">
-              <label htmlFor="owner">Owner: </label>
-              <input type="text" name="owner" onChange={inputOnChange} value={input} />
-            </div>
-          ) : null}
           <div className="editFontStyle">
             <label htmlFor="type">Type: </label>
-            <select name="type" id="">
+            <select name="type">
               <option value="workPhoto">workPhoto</option>
               <option value="workPreview">workPreview</option>
               <option value="workBackground">workBackground</option>

@@ -12,7 +12,7 @@ let AboutMeIntro = () => {
       <BlockTitleText titleclassName={"titleLines titleLines2"} blockTitleText={"About me"} />
       <div className="aboutInfo">
         <div className="aboutFrontEnd">
-          <img src={frontEnd} alt="" />
+          <img src={frontEnd} alt="front-end part svg icon" />
           <h2>development</h2>
           <p>
             I'm a coder first, designer second: I enjoy developing simple, efficient and scalable
@@ -21,7 +21,7 @@ let AboutMeIntro = () => {
           </p>
         </div>
         <div className="aboutDesign">
-          <img src={design} alt="" />
+          <img src={design} alt="design part side svg icon colors" />
           <h2>design</h2>
           <p>
             I also have a passion for web design. If you require a fresh, slick design for a new

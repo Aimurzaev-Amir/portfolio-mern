@@ -84,7 +84,6 @@ let Article = (props) => {
             <textarea
               className="blockTextArea"
               name="blockTextArea"
-              id=""
               rows="12"
               value={area.text}
               onChange={onChangeTextArea}

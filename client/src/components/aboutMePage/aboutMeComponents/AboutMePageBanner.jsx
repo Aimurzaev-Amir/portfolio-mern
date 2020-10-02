@@ -16,7 +16,7 @@ let AboutMePageBanner = () => {
                 experiences.
               </p>
             </div>
-            <img src={left} alt="" />
+            <img src={left} alt="left previous arrow" />
           </div>
 
           <div className="frontEndSide">
@@ -25,7 +25,7 @@ let AboutMePageBanner = () => {
               <p>Front End Developer who focuses on writing clean, elegant and efficient code.</p>
             </div>
 
-            <img src={right} alt="" />
+            <img src={right} alt="right next arrow" />
           </div>
         </div>
       </div>
