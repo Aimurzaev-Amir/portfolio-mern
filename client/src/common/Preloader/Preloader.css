@@ -8,6 +8,7 @@
   align-items: center;
   transition: ease-in-out 0.3s;
   z-index: 9;
+  transition: 0.3s;
 }
 .preloader img {
   width: 100px;
